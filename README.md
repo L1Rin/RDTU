@@ -4,9 +4,6 @@
 
 ### Does LLM-based Time Series Forecasting Really Need Pre-Alignment?
 
-**Yuqing Wang · University of Cambridge**<br>
-Supplementary materials for the ICASSP manuscript
-
 [**Complete PDF**](supplement/RDTU-Supplementary.pdf) · [**Original tables**](assets/tables/README.md) · [**CSV data**](data/README.md) · [**Citation**](#citation)
 
 </div>
