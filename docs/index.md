@@ -2,9 +2,12 @@
 
 [Home](../README.md) · [Complete PDF](../supplement/RDTU-Supplementary.pdf)
 
-Start with **Appendix A** for the experimental protocol, **Appendices B and C** for the full result tables, and **Appendix D** for the sample-mining algorithm. The earlier chapters retain context from the full manuscript so that the supplement can be read independently.
+**Read the supplementary material directly in the [README](../README.md).** It contains the result tables, analysis, figures, training settings and statistical comparisons. Full horizon-level results and the original prompt expand on the same page.
 
-Figures can be opened as vector PDFs by clicking their previews. Wide numerical tables are split by dataset and transposed for online reading. Each result table also has a CSV export.
+[Forecasting results](../README.md#forecasting-results) · [Generalization](../README.md#generalization) · [Ablations](../README.md#ablations) · [Visual examples](../README.md#visual-examples) · [Training and statistics](../README.md#training)
+
+<details>
+<summary>Individual chapter copies</summary>
 
 | Chapter | Content |
 | :--- | :--- |
@@ -20,6 +23,8 @@ Figures can be opened as vector PDFs by clicking their previews. Wide numerical 
 | [E](E-qualitative-gallery.md) | Additional qualitative comparisons |
 | [F](F-prompt.md) | Prompt and response example |
 | [G](G-societal-impacts.md) | Societal impacts |
+
+</details>
 
 ## Additional navigation
 
