@@ -27,6 +27,12 @@ R_{total}=0.1R_{len}+0.1R_{fmt}+0.8R_{acc}.
 
 The length reward decays exponentially with the difference between predicted and requested sequence lengths. The format reward checks numeric validity, floating-point structure and precision, with weights 0.2, 0.3 and 0.5. The accuracy reward is exp(−10 × MSE). The length decay factor is 0.5.
 
+### Forecasting-paradigm comparison
+
+[![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
+
+### Hard sample mining
+
 [![Dual-stream hard sample mining for constructing the RDFR training set](assets/figures/RDFR.png)](assets/figures/RDFR.pdf)
 
 **Sample selection.** The syntactic stream prioritizes explicit formatting failures, then fills its quota with low-format-score examples. The semantic stream selects examples with MSE above the dataset mean and samples across error bins in proportion to their density. The union forms the RDFR training set.
@@ -67,13 +73,6 @@ Output: RDFR training set D_RDFR
    D_RDFR = union(D_syn, D_sem).
    Return D_RDFR.
 ```
-
-</details>
-
-<details>
-<summary>Forecasting-paradigm comparison</summary>
-
-[![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
 
 </details>
 
@@ -120,14 +119,7 @@ The final reward is computed as a weighted sum $`R_{total} = \lambda_{len} R_{le
 
 RDTU forecasts time series directly as numerical text. **Supervised Temporal Instruction Tuning (STIT)** adapts the language model to the task; **Reinforcement-Driven Forecasting Refinement (RDFR)** improves prediction length, numerical format and accuracy. No auxiliary pre-alignment module is used.
 
-| Main finding | Reported evidence |
-| :--- | :--- |
-| **Refinement improves accuracy** | ETTh1, H = 96: MSE **0.403 → 0.351** and MAE **0.428 → 0.382** after RDFR. |
-| **The method transfers across datasets** | Lowest horizon-averaged MSE in **7 of 8** evaluated ETT transfer directions. |
-| **It also handles short-term forecasting** | M4 weighted **SMAPE 11.979**, **MASE 1.599**, **OWA 0.859**. |
-| **Selected samples reduce refinement cost** | ETTh1 RDFR: **0.3 h** on selected samples versus **>3 h** on the full set, with lower error. |
-
-**On this page:** [Method](#method) · [Forecasting results](#forecasting-results) · [Generalization](#generalization) · [Ablations](#ablations) · [Visual examples](#visual-examples) · [Training and statistics](#training) · [Prompt](#prompt)
+**On this page:** [Method](#method) · [Forecasting results](#forecasting-results) · [Generalization](#generalization) · [Ablations](#ablations) · [Visual examples](#visual-examples) · [Training](#training) · [Prompt](#prompt)
 
 The results and analysis below restore material removed or condensed for the ICASSP page limit. Key tables and figures are shown directly; the complete horizon-level tables can be expanded **on this page**. Tables are rendered from the manuscripts’ original LaTeX, with their row and column structure, precision, missing entries and color annotations preserved. Click a preview to open its vector PDF. Known source-ranking inconsistencies are documented in the [source notes](docs/source-notes.md).
 
@@ -285,16 +277,6 @@ RDTU is trained only through **H = 336 with 5% data**, then directly evaluated a
 
 **Analysis.** Generating a longer sequence does not require a new output head or horizon-specific retraining. Error increases relative to the H = 720 training reference, while remaining close on these three datasets. On ETTh1, the extrapolation setting obtains 0.705 MSE versus 0.694 for the reference. The comparison also changes the training-data fraction, so it is not an isolated test of horizon alone.
 
-### Transfer to different application domains
-
-All zero-shot models below are trained on **ETTh1**, then evaluated on Electricity, Weather, Traffic and Illness **without target-domain training**. Supervised RDTU provides a target-domain reference.
-
-[![Cross-domain zero-shot generalization results](assets/tables/s17.png)](assets/tables/s17.pdf)
-
-[Vector PDF](assets/tables/s17.pdf) · [CSV](data/cross_domain_zero_shot.csv)
-
-**Analysis.** Zero-shot RDTU has lower MSE and MAE than zero-shot Time-LLM and GPT4TS on all four targets. On Electricity, its MSE is 0.182 versus 0.254 and 0.328. The supervised RDTU reference remains more accurate on every target, showing the remaining cost of transferring without target-domain training.
-
 <a id="ablations"></a>
 
 ## Ablations and refinement efficiency
@@ -416,57 +398,9 @@ The same three failure modes are illustrated on two additional datasets. In the 
 
 <a id="training"></a>
 
-## Training setup, datasets and statistical analysis
+## Training configuration
 
-### Training configuration
-
-The reported experiments use **Qwen2.5-7B-Instruct** on **8 NVIDIA A100 GPUs with 80 GB memory each**.
-
-| Setting | STIT | RDFR |
-| :--- | :--- | :--- |
-| Initialization | Qwen2.5-7B-Instruct | STIT checkpoint |
-| Learning rate | 2 × 10⁻⁴ | 5 × 10⁻⁶ |
-| Adaptation / optimization | LoRA r = 16, α = 32; query and value modules; AdamW | GRPO, group size 8 |
-| Other settings | Global batch size 32; cosine schedule; warmup 0.03 | KL coefficient 0.04; reward ratio 1:1:8 |
-
-### Per-dataset training budgets
-
-In each paired cell, values are **STIT / RDFR**. Training times and memory usage are approximate, as reported in the manuscript.
-
-[![Training settings and resource usage on different datasets](assets/tables/s06.png)](assets/tables/s06.pdf)
-
-[Vector PDF](assets/tables/s06.pdf) · [CSV](data/training_resource.csv)
-
-**Analysis.** STIT takes approximately 2.5–4.3 hours across the listed datasets; RDFR adds approximately 0.3–0.5 hours. RDFR uses fewer examples, while its reported peak memory per GPU is approximately 32 GB versus 24 GB for STIT.
-
-### Three-seed comparison with Time-LLM
-
-The manuscript reports **mean ± standard deviation over three runs**, at **H = 96**, and paired two-sided t-tests. Each paired cell in the original table reports MSE / MAE.
-
-[![Statistical significance analysis on representative long-term forecasting settings with H=96](assets/tables/s08.png)](assets/tables/s08.pdf)
-
-[Vector PDF](assets/tables/s08.pdf) · [CSV](data/significance_main.csv)
-
-**Analysis.** The reported mean error is lower for RDTU on ETTh1, Electricity and Traffic, with p-values below 0.05 for both metrics in every listed dataset. The Average row is reproduced from the manuscript. These statistics are reported results; this repository does not recompute tests from seed-level logs.
-
-### Three-seed check of the RDFR stage
-
-[![Statistical significance analysis of the RDFR stage on ETTh1 with H=96](assets/tables/s09.png)](assets/tables/s09.pdf)
-
-[Vector PDF](assets/tables/s09.pdf) · [CSV](data/significance_rdfr.csv)
-
-The STIT-to-RDTU improvement persists in the reported three-run comparison, with p = 0.004 for MSE and p = 0.006 for MAE.
-
-<details>
-<summary>Dataset dimensions, train / validation / test sizes, frequencies and metrics</summary>
-
-[![Dataset statistics](assets/tables/s07.png)](assets/tables/s07.pdf)
-
-[Vector PDF](assets/tables/s07.pdf) · [CSV](data/dataset.csv)
-
-Dataset Size gives **(training, validation, testing)** counts. Long-term evaluation uses MSE and MAE. M4 uses SMAPE, MASE and OWA; OWA is the average of SMAPE and MASE normalized by the Naïve2 reference. [Full metric definitions](docs/A-experimental-details.md#equ-metrics).
-
-</details>
+The reported experiments use **Qwen2.5-7B-Instruct** on **8 NVIDIA A100 GPUs with 80 GB memory each**. STIT adapts the query and value modules with LoRA (r = 16, α = 32), using AdamW with a learning rate of 2 × 10⁻⁴, a global batch size of 32, a cosine learning-rate schedule and a warmup ratio of 0.03. RDFR starts from the STIT checkpoint and uses GRPO with a group size of 8, a learning rate of 5 × 10⁻⁶ and a KL-divergence coefficient of 0.04. The length, format and accuracy rewards are weighted in a 1:1:8 ratio.
 
 <a id="prompt"></a>
 
