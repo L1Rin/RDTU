@@ -1,0 +1,26 @@
+
+\section{Long-term and Short-term Forecasting}\label{appx:long-short-term}
+
+\subsection{Long-term Forecasting}
+
+By leveraging two-stage \method{} framework while bypassing pre-alignment, our method attains SOTA performance in \textbf{35} instances across eight time series benchmarks. This underscores the considerable potential of LLMs as robust and reliable time series forecasters.
+
+\shortautoref{tab:long-term-forecasting-full} presents a comprehensive evaluation of long-term forecasting performance across eight benchmark datasets, categorizing baseline models by their input modality (Language, Multi-Modal, Visual, and Numerical).
+
+\input{tables/long-term-forecasting-full-new}
+
+\input{tables/long-term-forecasting-additional}
+
+
+\shortautoref{tab:long-term-forecasting-additional} presents an extensive evaluation of the proposed RDTU method against six state-of-the-art baseline models (Autoformer, Stationary, ETSformer, LightTS, Informer, and Reformer) across eight benchmark datasets. The experimental results clearly demonstrate the superior performance of RDTU for long-term time series forecasting.
+
+As indicated by the bold red values, RDTU achieves the lowest Mean Squared Error (MSE) across the listed settings and the lowest Mean Absolute Error (MAE) in all but one individual horizon setting ($H \in \{24, 36, 48, 60\}$ for ILI and $H \in \{96, 192, 336, 720\}$ for other datasets). The quantitative summary at the bottom of the table confirms this dominance, with a source-reported "1st Count" of 40 for RDTU and 0 for each listed baseline. This count is retained as reported; it is distinct from the number of individual MSE and MAE cells in the table. While models such as LightTS and ETSformer occasionally yield the second-best results (highlighted in blue), RDTU consistently provides significant accuracy improvements.
+
+
+\subsection{Short-term Forecasting}
+
+Our complete results on short-term forecasting are presented in \shortautoref{tab:short-term-forecasting}.
+
+\shortautoref{tab:short-term-forecasting} extends the analysis to short-term time series forecasting. Evaluation metrics including SMAPE, MASE, and OWA indicate that RDTU maintains its leading position. In the weighted average analysis across all sampling intervals (Yearly, Quarterly, Monthly, Others), RDTU records the best performance (e.g., Average OWA of 0.859), and matches Time-LLM on OWA while achieving lower SMAPE (OWA 0.859), significantly surpassing traditional methods like N-HiTS and N-BEATS.
+
+\input{tables/short-term-forecasting}

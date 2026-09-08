@@ -1,0 +1,69 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=19mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[table]{xcolor}
+\definecolor{ink}{HTML}{152C45}
+\definecolor{accent}{HTML}{1D6289}
+\usepackage{amsmath,amssymb,graphicx,booktabs,multirow,xspace,threeparttable}
+\usepackage{adjustbox,float,placeins,caption,subcaption,algorithm,algorithmic}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr,titlesec,needspace}
+\usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent]{hyperref}
+\hypersetup{pdftitle={RDTU: Supplementary Materials},pdfauthor={Yuqing Wang},pdfsubject={Does LLM-based Time Series Forecasting Really Need Pre-Alignment?}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\sffamily RDTU | Supplementary Materials}\fancyhead[R]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\titleformat{\section}{\Large\sffamily\bfseries\color{ink}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{ink}}{\thesubsection}{0.7em}{}
+\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\captionsetup{font=small,labelfont=bf,skip=7pt}
+\newcommand{\method}{RDTU\xspace}
+\newcommand{\revision}[1]{#1}
+\newcommand{\boldres}[1]{\textbf{\textcolor{red!65!black}{#1}}}
+\newcommand{\secondres}[1]{\underline{\textcolor{blue!65!black}{#1}}}
+\newcommand{\thirdres}[1]{\textit{\textcolor{olive}{#1}}}
+\newcommand{\rot}[1]{\multirow{5}{*}{\rotatebox{90}{\textbf{#1}}}}
+\newcommand{\rotfour}[1]{\multirow{4}{*}{\rotatebox{90}{\textbf{#1}}}}
+\newcommand{\shortautoref}[1]{\autoref{#1}}
+\newcommand{\userbt}[1]{\textbf{User:} #1}
+\newcommand{\agentbt}[1]{\textbf{Assistant:} #1}
+\newtcolorbox{chatbox}[2][]{breakable,colback=blue!2,colframe=accent,fonttitle=\bfseries,title=#2,boxrule=.5pt,arc=1mm,#1}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thealgorithm}{S\arabic{algorithm}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\begin{document}
+\begin{center}
+{\Huge\sffamily\bfseries\color{ink} RDTU}\par\vspace{8pt}
+{\LARGE\sffamily Supplementary Materials}\par\vspace{12pt}
+{\Large Does LLM-based Time Series Forecasting\\ Really Need Pre-Alignment?}\par\vspace{10pt}
+{\large Yuqing Wang}\par
+Centre for Human-Inspired Artificial Intelligence, University of Cambridge\par\vspace{8pt}
+\url{https://github.com/L1Rin/RDTU-Supplementary}
+\end{center}
+\vspace{10pt}
+\begin{tcolorbox}[colback=blue!3,colframe=accent,boxrule=.5pt,arc=1mm]
+This companion restores the expanded explanations, experiments, figures and appendices omitted or condensed in the ICASSP manuscript. Sections 1--5 provide context and expanded analyses. Appendices A--G contain training details, complete forecasting results, statistical analyses, generalization experiments, the sample-mining algorithm, qualitative examples, prompts and societal impacts.
+\end{tcolorbox}
+Numerical table entries are transcribed from the supplied full manuscript. Wide result tables are reorganized by dataset for readability; the reported averages and missing-value markers are preserved. Source-reported ranking counts are distinguished from newly computed quantities. The ETT transfer summary follows the final manuscript's correction: lowest average MSE in seven of eight directions.
+\begingroup\small\tableofcontents\endgroup
+\clearpage
+\FloatBarrier\needspace{10\baselineskip}\input{sections/1_intro}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/2_background}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/3_methodology}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/4_experiment}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/5_conclusion}
+\appendix
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix A}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix B}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix C}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix D}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix E}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix F}
+\FloatBarrier\needspace{10\baselineskip}\input{sections/appendix/appendix G}
+\section*{Source and formatting notes}\addcontentsline{toc}{section}{Source and formatting notes}
+The full-manuscript source is the basis for all numerical values in this supplement. Existing summary averages, source-reported rank-count footers and statistical values are retained as supplied; the repository's source notes identify inconsistencies in those summaries. No experiments were rerun when preparing this material. The historical novelty wording was aligned with the final manuscript's narrower description of the method. The NeurIPS conference checklist author responses are archived in the repository separately from the research material; template instructions and placeholder author information are excluded.
+\clearpage\bibliographystyle{plainnat}\bibliography{reference}\end{document}

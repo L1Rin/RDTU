@@ -1,0 +1,73 @@
+
+
+\section{ Priority-Based Dual-Stream Hard Sample Mining}\label{appx:sample-mining}
+
+The motivation behind Dual-Stream Hard Sample Mining is driven by the STIT model's specific failure modes and the optimization dynamics of Reinforcement Learning. After the STIT stage, the model acquires basic forecasting capabilities but suffers from critical precision deficits and formatting hallucinations. To address these, we introduce a sample selection strategy tailored specifically for RL in time series forecasting.
+
+Algorithm~\ref{alg:hard_mining} details the proposed \textbf{Priority-Based Dual-Stream Hard Sample Mining} strategy used to construct the RDFR dataset $\mathcal{D}_{RDFR}$. The process consists of four phases starting with initial inference and evaluation. It then bifurcates into two distinct selection streams: a \textit{Syntactic Correction Stream} that prioritizes samples exhibiting formatting errors or low format scores ($S_{fmt}$) to ensure structural validity, and a \textit{Semantic Reinforcement Stream} that targets ``hard'' samples with high MSE loss ($L_{mse}$) using a density-based binning approach to enhance prediction accuracy. Finally, the outputs of these streams are fused to create a balanced dataset for model optimization.
+
+\begin{algorithm}[!ht]
+   \caption{Priority-Based Dual-Stream Hard Sample Mining}
+   \label{alg:hard_mining}
+\begin{algorithmic}
+   \STATE {\bfseries Input:} Training dataset $\mathcal{D} = \{(x_i, y_i)\}_{i=1}^{M}$, STIT Model $\pi_{\theta}$, Quotas $N_{syn}, N_{sem}$
+   \STATE {\bfseries Output:} RDFR Dataset $\mathcal{D}_{RDFR}$
+
+   \STATE \textbf{// Phase 1: Inference \& Evaluation}
+   \STATE Initialize candidate sets $\mathcal{P}_{error} \leftarrow \emptyset$, $\mathcal{R}_{focus} \leftarrow \emptyset$
+   \FOR{$i=1$ {\bfseries to} $M$}
+       \STATE $\hat{y}_i \leftarrow \pi_{\theta}(x_i)$ \quad \textit{// Inference}
+       \STATE Calculate Format Score $S_{fmt}^{(i)}$ and MSE Loss $L_{mse}^{(i)}$
+       \IF{detected specific patterns in $\hat{y}_i$ (e.g., missing dot)}
+           \STATE Add $(x_i, y_i)$ to $\mathcal{P}_{error}$
+       \ENDIF
+   \ENDFOR
+
+   \STATE \textbf{// Phase 2: Syntactic Correction Stream ($\mathcal{D}_{syn}$)}
+   \IF{$|\mathcal{P}_{error}| > N_{syn}$}
+       \STATE $\mathcal{D}_{syn} \leftarrow \text{Sample}(\mathcal{P}_{error}, N_{syn})$
+   \ELSE
+       \STATE $N_{remain} \leftarrow N_{syn} - |\mathcal{P}_{error}|$
+       \STATE $\mathcal{P}_{rank} \leftarrow \text{TopK}(\mathcal{D} \setminus \mathcal{P}_{error}, \text{key}=-S_{fmt}, \text{k}=N_{remain})$
+       \STATE $\mathcal{D}_{syn} \leftarrow \mathcal{P}_{error} \cup \mathcal{P}_{rank}$
+   \ENDIF
+
+   \STATE \textbf{// Phase 3: Semantic Reinforcement Stream ($\mathcal{D}_{sem}$)}
+   \STATE Calculate mean MSE $\mu_{mse}$ over $\mathcal{D}$
+   \STATE $\mathcal{R}_{focus} \leftarrow \{ (x_i, y_i) \in \mathcal{D} \mid L_{mse}^{(i)} > \mu_{mse} \}$
+   \STATE Partition $\mathcal{R}_{focus}$ into $K$ bins based on MSE density
+   \STATE $\mathcal{D}_{sem} \leftarrow \emptyset$
+   \FOR{$k=1$ {\bfseries to} $K$}
+       \STATE Calculate quota $n_k$ proportional to bin density
+       \STATE $\mathcal{D}_{sem} \leftarrow \mathcal{D}_{sem} \cup \text{Sample}(\text{Bin}_k, n_k)$
+   \ENDFOR
+
+   \STATE \textbf{// Phase 4: Fusion}
+   \STATE $\mathcal{D}_{RDFR} \leftarrow \mathcal{D}_{syn} \cup \mathcal{D}_{sem}$
+   \STATE \textbf{return} $\mathcal{D}_{RDFR}$
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+We avoid full-dataset RL training during the RDFR stage for two reasons: it introduces immense computational overhead, and more importantly, it dilutes targeted reward signals. Standard "easy" samples do not trigger structural or precision failures; thus, including them prevents the RL policy from focusing on critical errors. Our preliminary observations indicate that full-dataset RL training yields inferior performance compared to training exclusively on selected hard samples (See Table~\ref{tab:rdfr_data_construction_ablation}). By actively filtering for samples that expose structural weaknesses (via the Syntactic Correction stream) and regression boundaries (via the Semantic Reinforcement stream), Dual-Stream Hard Sample Mining ensures the RDFR phase receives highly concentrated, informative reward signals. This targeted approach efficiently resolves the STIT model's inherent flaws, directly enabling our superior forecasting performance.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Ablation study on RDFR training data construction on ETTh1 with prediction horizon $H=96$. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.}
+\label{tab:rdfr_data_construction_ablation}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{RDFR Training Data} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ & \textbf{Training Time} \\
+\midrule
+Full Dataset & 0.358 & 0.388 & $>3$h \\
+Dual-Stream Selected (Ours) & \textbf{0.351} & \textbf{0.382} & \textbf{0.3h} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To further validate the efficiency of the proposed Dual-Stream Hard Sample Mining strategy, we compare RDFR training using the full training set and the selected RDFR subset on ETTh1 with $H=96$. As shown in Table~\ref{tab:rdfr_data_construction_ablation}, training RDFR on the full dataset substantially increases the computational cost, requiring more than 3 hours, but does not bring additional performance gains. In contrast, the proposed Dual-Stream selected subset achieves lower MSE and MAE while reducing the RDFR training time to only 0.3 hours. This suggests that RDFR benefits more from targeted high-leverage samples than from simply increasing the amount of reinforcement learning data, supporting the necessity of the proposed data construction strategy.

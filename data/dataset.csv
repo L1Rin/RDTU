@@ -1,0 +1,15 @@
+Tasks,Dataset,Dim.,Series Length,Dataset Size,Frequency,Domain
+Long-term / Forecasting,ETTm1,7,"[96, 192, 336, 720]","(34465, 11521, 11521)",15 min,Temperature
+Long-term / Forecasting,ETTm2,7,"[96, 192, 336, 720]","(34465, 11521, 11521)",15 min,Temperature
+Long-term / Forecasting,ETTh1,7,"[96, 192, 336, 720]","(8545, 2881, 2881)",1 hour,Temperature
+Long-term / Forecasting,ETTh2,7,"[96, 192, 336, 720]","(8545, 2881, 2881)",1 hour,Temperature
+Long-term / Forecasting,Electricity,321,"[96, 192, 336, 720]","(18317, 2633, 5261)",1 hour,Electricity
+Long-term / Forecasting,Traffic,862,"[96, 192, 336, 720]","(12185, 1757, 3509)",1 hour,Transportation
+Long-term / Forecasting,Weather,21,"[96, 192, 336, 720]","(36792, 5271, 10540)",10 min,Weather
+Long-term / Forecasting,ILI,7,"[24, 36, 48, 60]","(617, 74, 170)",1 week,Illness
+Short-term / Forecasting,M4-Yearly,1,6,"(23000, 0, 23000)",Yearly,Demographic
+Short-term / Forecasting,M4-Quarterly,1,8,"(24000, 0, 24000)",Quarterly,Finance
+Short-term / Forecasting,M4-Monthly,1,18,"(48000, 0, 48000)",Monthly,Industry
+Short-term / Forecasting,M4-Weekly,1,13,"(359, 0, 359)",Weekly,Macro
+Short-term / Forecasting,M4-Daily,1,14,"(4227, 0, 4227)",Daily,Micro
+Short-term / Forecasting,M4-Hourly,1,48,"(414, 0, 414)",Hourly,Other

@@ -1,0 +1,4 @@
+Dataset,Metric,"RDTU Trained on H=336 w/ 5% Data, Eval on H=720",RDTU Trained on H=720 w/ 10% Data
+ETTh1,MSE / MAE,0.705 / 0.598,0.694 / 0.587
+ETTh2,MSE / MAE,0.442 / 0.456,0.425 / 0.443
+Traffic,MSE / MAE,0.478 / 0.337,0.463 / 0.325

@@ -1,0 +1,4 @@
+Method,MSE ↓,MAE ↓,MSE Gain,MAE Gain
+Qwen2.5-Instruct-STIT,0.403 ± 0.002,0.428 ± 0.002,--,--
+RDTU w/ RDFR,0.351 ± 0.002,0.382 ± 0.002,12.90%,10.75%
+p-value,0.004,0.006,--,--

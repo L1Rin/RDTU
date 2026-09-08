@@ -1,0 +1,112 @@
+\begin{table}[H]\centering\small
+\caption{Zero-shot ETT transfer: horizon averages. Each entry is MSE / MAE; lower values are better.}\label{tab:zero-shot-forecasting-brief}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh1 $\to$ ETTh2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.344 / 0.379}\\
+Time-LLM & 0.353 / 0.387\\
+LLMTime & 0.992 / 0.708\\
+GPT4TS & 0.406 / 0.422\\
+DLinear & 0.493 / 0.488\\
+PatchTST & 0.380 / 0.405\\
+TimesNet & 0.421 / 0.431\\
+Autoformer & 0.582 / 0.548\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh1 $\to$ ETTm2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.266 / 0.333}\\
+Time-LLM & 0.273 / 0.340\\
+LLMTime & 1.867 / 0.869\\
+GPT4TS & 0.325 / 0.363\\
+DLinear & 0.415 / 0.452\\
+PatchTST & 0.314 / 0.360\\
+TimesNet & 0.327 / 0.361\\
+Autoformer & 0.457 / 0.483\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S4 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh2 $\to$ ETTh1}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.480 / 0.471}\\
+Time-LLM & 0.479 / 0.474\\
+LLMTime & 1.961 / 0.981\\
+GPT4TS & 0.757 / 0.578\\
+DLinear & 0.703 / 0.574\\
+PatchTST & 0.565 / 0.513\\
+TimesNet & 0.865 / 0.621\\
+Autoformer & 0.757 / 0.608\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh2 $\to$ ETTm2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.268 / 0.329}\\
+Time-LLM & 0.272 / 0.341\\
+LLMTime & 1.867 / 0.869\\
+GPT4TS & 0.335 / 0.370\\
+DLinear & 0.328 / 0.386\\
+PatchTST & 0.325 / 0.365\\
+TimesNet & 0.342 / 0.376\\
+Autoformer & 0.366 / 0.411\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S4 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm1 $\to$ ETTh2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.378 / 0.408}\\
+Time-LLM & 0.381 / 0.412\\
+LLMTime & 0.992 / 0.708\\
+GPT4TS & 0.433 / 0.439\\
+DLinear & 0.464 / 0.475\\
+PatchTST & 0.439 / 0.438\\
+TimesNet & 0.457 / 0.454\\
+Autoformer & 0.470 / 0.479\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm1 $\to$ ETTm2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.261 / 0.316}\\
+Time-LLM & 0.268 / 0.320\\
+LLMTime & 1.867 / 0.869\\
+GPT4TS & 0.313 / 0.348\\
+DLinear & 0.335 / 0.389\\
+PatchTST & 0.296 / 0.334\\
+TimesNet & 0.322 / 0.354\\
+Autoformer & 0.469 / 0.484\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S4 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm2 $\to$ ETTh2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.351 / 0.395}\\
+Time-LLM & 0.354 / 0.400\\
+LLMTime & 0.992 / 0.708\\
+GPT4TS & 0.435 / 0.443\\
+DLinear & 0.455 / 0.471\\
+PatchTST & 0.409 / 0.425\\
+TimesNet & 0.435 / 0.443\\
+Autoformer & 0.423 / 0.439\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm2 $\to$ ETTm1}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.412 / 0.434}\\
+Time-LLM & 0.414 / 0.438\\
+LLMTime & 1.933 / 0.984\\
+GPT4TS & 0.769 / 0.567\\
+DLinear & 0.649 / 0.537\\
+PatchTST & 0.568 / 0.492\\
+TimesNet & 0.769 / 0.567\\
+Autoformer & 0.755 / 0.591\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}

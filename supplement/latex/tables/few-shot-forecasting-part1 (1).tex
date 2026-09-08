@@ -1,0 +1,136 @@
+\begin{table}[H]\centering\small
+\caption{Few-shot forecasting: 10\% horizon averages. Each entry is MSE / MAE; lower values are better.}\label{tab:few-shot-forecasting-10per-brief}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh1}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.551 / 0.513}\\
+Time-LLM & 0.556 / 0.522\\
+GPT4TS & 0.590 / 0.525\\
+DLinear & 0.691 / 0.600\\
+PatchTST & 0.633 / 0.542\\
+TimesNet & 0.869 / 0.628\\
+FEDformer & 0.639 / 0.561\\
+Autoformer & 0.702 / 0.596\\
+Stationary & 0.915 / 0.639\\
+ETSformer & 1.180 / 0.834\\
+LightTS & 1.375 / 0.877\\
+Informer & 1.199 / 0.809\\
+Reformer & 1.249 / 0.833\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTh2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.367 / 0.389}\\
+Time-LLM & 0.370 / 0.394\\
+GPT4TS & 0.397 / 0.421\\
+DLinear & 0.605 / 0.538\\
+PatchTST & 0.415 / 0.431\\
+TimesNet & 0.479 / 0.465\\
+FEDformer & 0.466 / 0.475\\
+Autoformer & 0.488 / 0.499\\
+Stationary & 0.462 / 0.455\\
+ETSformer & 0.894 / 0.713\\
+LightTS & 2.655 / 1.160\\
+Informer & 3.872 / 1.513\\
+Reformer & 3.485 / 1.486\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S3 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm1}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.402 / 0.424}\\
+Time-LLM & 0.404 / 0.427\\
+GPT4TS & 0.464 / 0.441\\
+DLinear & 0.411 / 0.429\\
+PatchTST & 0.501 / 0.466\\
+TimesNet & 0.677 / 0.537\\
+FEDformer & 0.722 / 0.605\\
+Autoformer & 0.802 / 0.628\\
+Stationary & 0.797 / 0.578\\
+ETSformer & 0.980 / 0.714\\
+LightTS & 0.971 / 0.705\\
+Informer & 1.192 / 0.821\\
+Reformer & 1.426 / 0.856\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{ETTm2}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.274 / 0.319}\\
+Time-LLM & 0.277 / 0.323\\
+GPT4TS & 0.293 / 0.335\\
+DLinear & 0.316 / 0.368\\
+PatchTST & 0.296 / 0.343\\
+TimesNet & 0.320 / 0.353\\
+FEDformer & 0.463 / 0.488\\
+Autoformer & 1.342 / 0.930\\
+Stationary & 0.332 / 0.366\\
+ETSformer & 0.447 / 0.487\\
+LightTS & 0.987 / 0.756\\
+Informer & 3.370 / 1.440\\
+Reformer & 3.978 / 1.587\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S3 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{Weather}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.232 / 0.270}\\
+Time-LLM & 0.234 / 0.273\\
+GPT4TS & 0.238 / 0.275\\
+DLinear & 0.241 / 0.283\\
+PatchTST & 0.242 / 0.279\\
+TimesNet & 0.279 / 0.301\\
+FEDformer & 0.284 / 0.324\\
+Autoformer & 0.300 / 0.342\\
+Stationary & 0.318 / 0.323\\
+ETSformer & 0.318 / 0.360\\
+LightTS & 0.289 / 0.322\\
+Informer & 0.597 / 0.495\\
+Reformer & 0.546 / 0.469\\
+\bottomrule\end{tabular}\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{Electricity}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.173 / 0.268}\\
+Time-LLM & 0.175 / 0.270\\
+GPT4TS & 0.176 / 0.269\\
+DLinear & 0.180 / 0.280\\
+PatchTST & 0.180 / 0.273\\
+TimesNet & 0.323 / 0.392\\
+FEDformer & 0.346 / 0.427\\
+Autoformer & 0.431 / 0.478\\
+Stationary & 0.444 / 0.480\\
+ETSformer & 0.660 / 0.617\\
+LightTS & 0.441 / 0.489\\
+Informer & 1.195 / 0.891\\
+Reformer & 0.965 / 0.768\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S3 (continued).}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}\centering\small
+\textbf{Traffic}\par\smallskip
+\begin{tabular}{lr}\toprule Model & MSE / MAE\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.426 / 0.303}\\
+Time-LLM & 0.429 / 0.306\\
+GPT4TS & 0.440 / 0.310\\
+DLinear & 0.447 / 0.313\\
+PatchTST & 0.430 / 0.305\\
+TimesNet & 0.951 / 0.535\\
+FEDformer & 0.663 / 0.425\\
+Autoformer & 0.749 / 0.446\\
+Stationary & 1.453 / 0.815\\
+ETSformer & 1.914 / 0.936\\
+LightTS & 1.248 / 0.684\\
+Informer & 1.534 / 0.811\\
+Reformer & 1.551 / 0.821\\
+\bottomrule\end{tabular}\end{minipage}
+\end{table}
+\noindent\textbf{Source-reported ranking counts.} RDTU: 14, Time-LLM: 0, GPT4TS: 0, DLinear: 0, PatchTST: 0, TimesNet: 0, FEDformer: 0, Autoformer: 0, Stationary: 0, ETSformer: 0, LightTS: 0, Informer: 0, Reformer: 0. The original counting convention is not specified; these values are retained without recalculation.\par

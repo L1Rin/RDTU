@@ -1,0 +1,120 @@
+\begin{table}[H]\centering\small
+\caption{Full zero-shot ETT transfer results. Each entry is MSE / MAE; lower values are better.}\label{tab:zero-shot-forecasting}
+\textbf{ETTh1 $\to$ ETTh2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.272 / 0.329} & \textbf{0.343 / 0.368} & \textbf{0.378 / 0.407} & \textbf{0.384 / 0.413} & \textbf{0.344 / 0.379}\\
+Time-LLM & 0.279 / 0.337 & 0.351 / 0.374 & 0.388 / 0.415 & 0.391 / 0.420 & 0.353 / 0.387\\
+LLMTime & 0.510 / 0.576 & 0.523 / 0.586 & 0.640 / 0.637 & 2.296 / 1.034 & 0.992 / 0.708\\
+GPT4TS & 0.335 / 0.374 & 0.412 / 0.417 & 0.441 / 0.444 & 0.438 / 0.452 & 0.406 / 0.422\\
+DLinear & 0.347 / 0.400 & 0.447 / 0.460 & 0.515 / 0.505 & 0.665 / 0.589 & 0.493 / 0.488\\
+PatchTST & 0.304 / 0.350 & 0.386 / 0.400 & 0.414 / 0.428 & 0.419 / 0.443 & 0.380 / 0.405\\
+TimesNet & 0.358 / 0.387 & 0.427 / 0.429 & 0.449 / 0.451 & 0.448 / 0.458 & 0.421 / 0.431\\
+Autoformer & 0.469 / 0.486 & 0.634 / 0.567 & 0.655 / 0.588 & 0.570 / 0.549 & 0.582 / 0.548\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTh1 $\to$ ETTm2}
+\textbf{ETTh1 $\to$ ETTm2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.178 / 0.282} & \textbf{0.231 / 0.307} & \textbf{0.287 / 0.359} & \textbf{0.367 / 0.383} & \textbf{0.266 / 0.333}\\
+Time-LLM & 0.189 / 0.293 & 0.237 / 0.312 & 0.291 / 0.365 & 0.372 / 0.390 & 0.273 / 0.340\\
+LLMTime & 0.646 / 0.563 & 0.934 / 0.654 & 1.157 / 0.728 & 4.730 / 1.531 & 1.867 / 0.869\\
+GPT4TS & 0.236 / 0.315 & 0.287 / 0.342 & 0.341 / 0.374 & 0.435 / 0.422 & 0.325 / 0.363\\
+DLinear & 0.255 / 0.357 & 0.338 / 0.413 & 0.425 / 0.465 & 0.640 / 0.573 & 0.415 / 0.452\\
+PatchTST & 0.215 / 0.304 & 0.275 / 0.339 & 0.334 / 0.373 & 0.431 / 0.424 & 0.314 / 0.360\\
+TimesNet & 0.239 / 0.313 & 0.291 / 0.342 & 0.342 / 0.371 & 0.434 / 0.419 & 0.327 / 0.361\\
+Autoformer & 0.352 / 0.432 & 0.413 / 0.460 & 0.465 / 0.489 & 0.599 / 0.551 & 0.457 / 0.483\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTh2 $\to$ ETTh1}
+\textbf{ETTh2 $\to$ ETTh1}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.446 / 0.449} & \textbf{0.462 / 0.459} & \textbf{0.503 / 0.480} & \textbf{0.509 / 0.495} & \textbf{0.480 / 0.471}\\
+Time-LLM & 0.450 / 0.452 & 0.465 / 0.461 & 0.501 / 0.482 & 0.501 / 0.502 & 0.479 / 0.474\\
+LLMTime & 1.130 / 0.777 & 1.242 / 0.820 & 1.328 / 0.864 & 4.145 / 1.461 & 1.961 / 0.981\\
+GPT4TS & 0.732 / 0.577 & 0.758 / 0.559 & 0.759 / 0.578 & 0.781 / 0.597 & 0.757 / 0.578\\
+DLinear & 0.689 / 0.555 & 0.707 / 0.568 & 0.710 / 0.577 & 0.704 / 0.596 & 0.703 / 0.574\\
+PatchTST & 0.485 / 0.465 & 0.565 / 0.509 & 0.581 / 0.515 & 0.628 / 0.561 & 0.565 / 0.513\\
+TimesNet & 0.848 / 0.601 & 0.860 / 0.610 & 0.867 / 0.626 & 0.887 / 0.648 & 0.865 / 0.621\\
+Autoformer & 0.693 / 0.569 & 0.760 / 0.601 & 0.781 / 0.619 & 0.796 / 0.644 & 0.757 / 0.608\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTh2 $\to$ ETTm2}
+\textbf{ETTh2 $\to$ ETTm2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.169 / 0.269} & \textbf{0.228 / 0.307} & \textbf{0.288 / 0.330} & \textbf{0.387 / 0.411} & \textbf{0.268 / 0.329}\\
+Time-LLM & 0.174 / 0.276 & 0.233 / 0.315 & 0.291 / 0.337 & 0.392 / 0.417 & 0.272 / 0.341\\
+LLMTime & 0.646 / 0.563 & 0.934 / 0.654 & 1.157 / 0.728 & 4.730 / 1.531 & 1.867 / 0.869\\
+GPT4TS & 0.253 / 0.329 & 0.293 / 0.346 & 0.347 / 0.376 & 0.446 / 0.429 & 0.335 / 0.370\\
+DLinear & 0.240 / 0.336 & 0.295 / 0.369 & 0.345 / 0.397 & 0.432 / 0.442 & 0.328 / 0.386\\
+PatchTST & 0.226 / 0.309 & 0.289 / 0.345 & 0.348 / 0.379 & 0.439 / 0.427 & 0.325 / 0.365\\
+TimesNet & 0.248 / 0.324 & 0.296 / 0.352 & 0.353 / 0.383 & 0.471 / 0.446 & 0.342 / 0.376\\
+Autoformer & 0.263 / 0.352 & 0.326 / 0.389 & 0.387 / 0.426 & 0.487 / 0.478 & 0.366 / 0.411\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTm1 $\to$ ETTh2}
+\textbf{ETTm1 $\to$ ETTh2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.319 / 0.363} & \textbf{0.383 / 0.406} & \textbf{0.401 / 0.428} & \textbf{0.407 / 0.433} & \textbf{0.378 / 0.408}\\
+Time-LLM & 0.321 / 0.369 & 0.389 / 0.410 & 0.408 / 0.433 & 0.406 / 0.436 & 0.381 / 0.412\\
+LLMTime & 0.510 / 0.576 & 0.523 / 0.586 & 0.640 / 0.637 & 2.296 / 1.034 & 0.992 / 0.708\\
+GPT4TS & 0.353 / 0.392 & 0.443 / 0.437 & 0.469 / 0.461 & 0.466 / 0.468 & 0.433 / 0.439\\
+DLinear & 0.365 / 0.415 & 0.454 / 0.462 & 0.496 / 0.494 & 0.541 / 0.529 & 0.464 / 0.475\\
+PatchTST & 0.354 / 0.385 & 0.447 / 0.434 & 0.481 / 0.463 & 0.474 / 0.471 & 0.439 / 0.438\\
+TimesNet & 0.377 / 0.407 & 0.471 / 0.453 & 0.472 / 0.484 & 0.495 / 0.482 & 0.457 / 0.454\\
+Autoformer & 0.435 / 0.470 & 0.495 / 0.489 & 0.470 / 0.472 & 0.480 / 0.485 & 0.470 / 0.479\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTm1 $\to$ ETTm2}
+\textbf{ETTm1 $\to$ ETTm2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.165 / 0.254} & \textbf{0.225 / 0.315} & \textbf{0.282 / 0.334} & \textbf{0.372 / 0.362} & \textbf{0.261 / 0.316}\\
+Time-LLM & 0.169 / 0.257 & 0.227 / 0.318 & 0.290 / 0.338 & 0.375 / 0.367 & 0.268 / 0.320\\
+LLMTime & 0.646 / 0.563 & 0.934 / 0.654 & 1.157 / 0.728 & 4.730 / 1.531 & 1.867 / 0.869\\
+GPT4TS & 0.217 / 0.294 & 0.277 / 0.327 & 0.331 / 0.360 & 0.429 / 0.413 & 0.313 / 0.348\\
+DLinear & 0.221 / 0.314 & 0.286 / 0.359 & 0.357 / 0.406 & 0.476 / 0.476 & 0.335 / 0.389\\
+PatchTST & 0.195 / 0.271 & 0.258 / 0.311 & 0.317 / 0.348 & 0.416 / 0.404 & 0.296 / 0.334\\
+TimesNet & 0.222 / 0.295 & 0.288 / 0.337 & 0.341 / 0.367 & 0.436 / 0.418 & 0.322 / 0.354\\
+Autoformer & 0.385 / 0.457 & 0.433 / 0.469 & 0.476 / 0.477 & 0.582 / 0.535 & 0.469 / 0.484\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTm2 $\to$ ETTh2}
+\textbf{ETTm2 $\to$ ETTh2}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.295 / 0.351} & \textbf{0.356 / 0.392} & \textbf{0.363 / 0.407} & \textbf{0.388 / 0.429} & \textbf{0.351 / 0.395}\\
+Time-LLM & 0.298 / 0.356 & 0.359 / 0.397 & 0.367 / 0.412 & 0.393 / 0.434 & 0.354 / 0.400\\
+LLMTime & 0.510 / 0.576 & 0.523 / 0.586 & 0.640 / 0.637 & 2.296 / 1.034 & 0.992 / 0.708\\
+GPT4TS & 0.360 / 0.401 & 0.434 / 0.437 & 0.460 / 0.459 & 0.485 / 0.477 & 0.435 / 0.443\\
+DLinear & 0.333 / 0.391 & 0.441 / 0.456 & 0.505 / 0.503 & 0.543 / 0.534 & 0.455 / 0.471\\
+PatchTST & 0.327 / 0.367 & 0.411 / 0.418 & 0.439 / 0.447 & 0.459 / 0.470 & 0.409 / 0.425\\
+TimesNet & 0.360 / 0.401 & 0.434 / 0.437 & 0.460 / 0.459 & 0.485 / 0.477 & 0.435 / 0.443\\
+Autoformer & 0.353 / 0.393 & 0.432 / 0.437 & 0.452 / 0.459 & 0.453 / 0.467 & 0.423 / 0.439\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\begin{table}[H]\centering\small
+\caption*{Table S15 (continued). ETTm2 $\to$ ETTm1}
+\textbf{ETTm2 $\to$ ETTm1}\par\smallskip
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{lrrrrr}\toprule
+\textbf{Model} & \textbf{96} & \textbf{192} & \textbf{336} & \textbf{720} & \textbf{Avg}\\\midrule
+\rowcolor{blue!5}
+\textbf{RDTU} & \textbf{0.356 / 0.394} & \textbf{0.386 / 0.414} & \textbf{0.419 / 0.440} & \textbf{0.485 / 0.487} & \textbf{0.412 / 0.434}\\
+Time-LLM & 0.359 / 0.397 & 0.390 / 0.420 & 0.421 / 0.445 & 0.487 / 0.488 & 0.414 / 0.438\\
+LLMTime & 1.179 / 0.781 & 1.327 / 0.846 & 1.478 / 0.902 & 3.749 / 1.408 & 1.933 / 0.984\\
+GPT4TS & 0.747 / 0.558 & 0.781 / 0.560 & 0.778 / 0.578 & 0.769 / 0.573 & 0.769 / 0.567\\
+DLinear & 0.570 / 0.490 & 0.590 / 0.506 & 0.706 / 0.567 & 0.731 / 0.584 & 0.649 / 0.537\\
+PatchTST & 0.491 / 0.437 & 0.530 / 0.470 & 0.565 / 0.497 & 0.686 / 0.565 & 0.568 / 0.492\\
+TimesNet & 0.747 / 0.558 & 0.781 / 0.560 & 0.778 / 0.578 & 0.769 / 0.573 & 0.769 / 0.567\\
+Autoformer & 0.735 / 0.576 & 0.753 / 0.586 & 0.750 / 0.593 & 0.782 / 0.609 & 0.755 / 0.591\\
+\bottomrule\end{tabular}\end{adjustbox}\end{table}

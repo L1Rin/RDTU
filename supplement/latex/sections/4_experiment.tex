@@ -1,0 +1,79 @@
+\section{Main Results}
+
+\input{tables/long-term-forecasting-brief-new}
+\input{tables/short-term-forecasting-brief}
+
+\noindent \textbf{Datasets.} We adopt 8 widely used MTS benchmarks: ETT (Electricity Transformer Temperature) \cite{zhou2021informer}, including ETTh1, ETTh2, ETTm1, ETTm2; Weather \cite{wu2021autoformer}, Illness \cite{wu2021autoformer}, Traffic \cite{wu2021autoformer}, and Electricity \cite{electricity}, which have been extensively adopted for benchmarking long-term forecasting models~\citep{wu2022timesnet}.
+The prediction horizon $H$ is set to \{24, 36, 48, 60\} for Illness, and \{96, 192, 336, 720\} for the remaining datasets.
+
+\noindent \textbf{Baselines.} We compare \method{} with SOTA methods, categorized as follows:
+(1) \textbf{VLM-based models:} \texttt{Time-VLM}~\cite{zhong2025time};
+(2) \textbf{LVM-based models:} \texttt{VisionTS}~\cite{chen2024visionts} and \texttt{DMMV-A}~\cite{shen2025dmmv};
+(3) \textbf{LLM-based models:} \texttt{Time-LLM}~\cite{jin2024timellm} and \texttt{GPT4TS}~\cite{zhou2023one};
+(4) \textbf{Transformer-based models:} \texttt{PatchTST}~\cite{nie2022time}, \texttt{FEDformer}~\cite{zhou2022fedformer}, \texttt{Autoformer}~\cite{wu2021autoformer}, \texttt{Stationary}~\cite{liu2022non}, \texttt{ETSformer}~\cite{woo2022etsformer}, and \texttt{Informer}~\cite{zhou2021informer};
+(5) \textbf{Non-Transformer models:} \texttt{DLinear}~\cite{zeng2023transformers}, \texttt{TimesNet}~\cite{wu2022timesnet}, and \texttt{CycleNet}~\cite{lin2024cyclenet}.
+In short-term forecasting, we compare our model with N-HiTS~\cite{challu2023nhits} and N-BEATS~\cite{oreshkin2019n}.
+
+\noindent \textbf{Implementation.} We implement our framework using \textbf{Qwen2.5-7B-Instruct}~\citep{qwen2.5} as the primary backbone.
+
+All experiments are conducted on 8 \textbf{NVIDIA A100 (80GB)} GPUs. More details such as specific training expenses are shown in \shortautoref{appx:implementation}.
+
+\subsection{Long-term Forecasting} \label{sec:long-term-forecasting}
+
+\noindent\textbf{Setups.} We conduct extensive evaluations on eight widely-used real-world benchmarks: ETTh1, ETTh2, ETTm1, ETTm2, Weather, Electricity (ECL), Traffic, and ILI.
+
+\noindent\textbf{Results.} \shortautoref{tab:long-term-forecasting-brief} summarizes the long-term forecasting performance. \textbf{RDTU} achieves superior accuracy, securing the highest number of best results (\textbf{9 wins}) across all benchmarks. It achieves highly competitive state-of-the-art-level performance, while remaining competitive with the strongest specialized numerical and vision-based baselines. Notably, RDTU establishes a significant lead over the strongest language-based baselines, reducing MSE by approximately \textbf{5.5\%} compared to Time-LLM on the \textit{Electricity} dataset and \textbf{4.5\%} versus GPT4TS on \textit{ETTh1}. These results confirm that our direct unification strategy, devoid of alignment bottlenecks, captures complex temporal dependencies with greater precision than competing paradigms.
+
+\subsection{Short-term Forecasting}
+
+\noindent\textbf{Setups.} We extend our evaluation to short-term forecasting using the M4 benchmark~\citep{makridakis2018m4}.
+
+We employ Symmetric Mean Absolute Percentage Error (SMAPE), Mean Absolute Scaled Error (MASE), and Overall Weighted Average (OWA) as the evaluation metrics.
+
+\noindent\textbf{Results.} As presented in \shortautoref{tab:short-term-forecasting-brief}, \textbf{RDTU} demonstrates robust short-horizon performance, achieving the lowest SMAPE of \textbf{11.979} and a state-of-the-art OWA of \textbf{0.859}. It significantly outperforms baselines like GPT4TS (OWA 0.940) and TimesNet (OWA 0.955), proving that our skip-alignment strategy effectively preserves local temporal details. Furthermore, RDTU surpasses specialized models such as N-HiTS and PatchTST (both OWA 0.869). While matching Time-LLM's competitive performance, RDTU achieves these results via a more streamlined direct unification architecture, validating the efficacy of the RDFR system in optimizing precision across varying temporal scales.
+
+\input{tables/few-shot-forecasting-part1 (1)}
+\input{tables/zero-shot-forecasting-brief (1)}
+
+\subsection{Few-shot Forecasting}
+
+\noindent\textbf{Setups.} LLMs have demonstrated remarkable few-shot learning capabilities~\citep{liu2023large}. To evaluate the data efficiency of our framework in low-resource scenarios, we conduct few-shot learning experiments by restricting the training set to only $10\%$ of the available data.
+
+\noindent\textbf{Results.} As reported in \shortautoref{tab:few-shot-forecasting-10per-brief}, \textbf{RDTU} exhibits exceptional few-shot capabilities, securing the best performance across all metrics (14 out of 14). While data scarcity severely impacts deep learning baselines like PatchTST (ETTh1 MSE 0.633), RDTU maintains a robust MSE of \textbf{0.551} on the same task. Moreover, it consistently outperforms adapter-based LLMs such as Time-LLM (0.556) and GPT4TS (0.590). This validates that our direct unification strategy effectively leverages the pre-trained backbone to mitigate overfitting, proving superior efficiency over complex auxiliary adapters in data-limited scenarios.
+
+\subsection{Zero-shot Forecasting}
+
+\noindent\textbf{Setups.} To assess the generalization capability of our framework under distribution shifts, we conduct zero-shot learning experiments using the ETT dataset family.
+
+\noindent\textbf{Results.} As reported in \shortautoref{tab:zero-shot-forecasting-brief}, \textbf{RDTU} demonstrates exceptional transferability, achieving the lowest horizon-averaged MSE in \textbf{7 of 8 transfer directions}. For $ETTh2 \to ETTh1$, RDTU obtains 0.480 MSE compared with 0.479 for Time-LLM, while its MAE is lower (0.471 versus 0.474). It highlights a fundamental advantage over supervised baselines, significantly outperforming Time-LLM in the $ETTh1 \to ETTh2$ transfer (MSE \textbf{0.344} vs. 0.353). Moreover, RDTU consistently surpasses competing LLM-based methods; in the challenging $ETTh2 \to ETTh1$ scenario, it maintains a robust MSE of \textbf{0.480}, far exceeding GPT4TS (0.757). These results support cross-dataset transfer within the evaluated ETT-family settings.
+
+\subsection{Showcases Analysis}
+
+\input{figures/showcase/showcase}
+
+To intuitively understand how our proposed \textit{Temporal Refinement Reward System} in RDFR stage refines the model's behavior, we visualize a comparison between the STIT baseline and the final \method{} model in \shortautoref{fig:showcases}. This qualitative analysis targets three representative failure modes, validating the necessity of our composite reward system.
+
+\textbf{Correction of Prediction Length}
+As observed in \shortautoref{fig:showcase01-len}, the STIT model frequently suffers from "early stopping," failing to track the generation count and terminating the sequence before reaching the required horizon. This indicates a lack of internal counting logic. In contrast, \shortautoref{fig:showcase01} demonstrates the impact of the \textbf{Sequence Length Consistency Reward ($R_{len}$)}. By imposing a soft exponential length constraint, the RDFR stage forces the model to attend to the output length, ensuring the generated sequence perfectly matches the target horizon without truncation.
+
+\textbf{Enhancement of Prediction Precision}
+\shortautoref{fig:showcase02-mse} illustrates a case where the STIT model captures the general trend direction but fits loosely to the ground truth, exhibiting high variance and failing to capture local volatility. This corresponds to the limitations of token-level tuning in forecasting tasks. \shortautoref{fig:showcase02} showcases the refinement achieved via the \textbf{Prediction Accuracy Reward ($R_{acc}$)}. With its exponential scaling, $R_{acc}$ penalizes even minor deviations in the high-precision regime, driving the model to produce a curve that hugs the ground truth tightly and significantly reducing the MSE.
+
+\textbf{Rectification of Formatting and Outliers}
+Most critically, \shortautoref{fig:showcase03-fmt} reveals a severe "Integer Projection" hallucination where the STIT model fails to generate the decimal point (e.g., splitting a value like `3.21` into two tokens `3` and `21`). This formatting error inserts an extreme outlier into the time series and causes a phase shift in all subsequent data points. \shortautoref{fig:showcase03} confirms that the \textbf{Format Compliance Reward ($R_{fmt}$)} effectively eliminates this issue. By penalizing the model step-by-step for missing floating-point structures, the RDFR system enforces strict adherence to numerical syntax, restoring the smooth, continuous trajectory of the time series and preventing catastrophic outliers.
+
+\subsection{Ablation and Sensitivity Analysis}
+In this section, we perform comprehensive ablation studies to dissect the effectiveness of each component within the \method{} framework. Followed by \cite{jin2024timellm}, all experiments reported in this section are conducted on the \textbf{ETTh1} dataset with a fixed prediction horizon of $H=96$ unless otherwise explicitly stated.
+
+\noindent\textbf{Component Analysis of the RDFR Framework.}\quad
+To validate our design, we conducted an ablation study on the ETTh1 dataset. As shown in \shortautoref{tab:ablation_02}, while the off-the-shelf Qwen2.5-Instruct failed to generate valid outputs, the STIT model alone established a robust baseline with an MSE of \textbf{0.403}. This pivotal result demonstrates that complex pre-alignment modules are unnecessary; instruction tuning alone provides sufficient modality awareness for the LLM to function as a competent forecaster. Building on this foundation, the RDFR stage proved essential for precision. By imposing strict structural constraints and accuracy-driven rewards, the final RDTU framework further reduced the MSE to \textbf{0.351} with a \textbf{12.90\%} improvement over the STIT baseline, confirming that reinforcement learning effectively bridges the gap between basic instruction following and high-precision regression.
+
+\input{tables/ablation02}
+
+\input{figures/ablation/ablation13}
+
+\noindent\textbf{Impact of Reward Weight Ratios.}\quad
+We investigate the optimal balance between structural constraints and regression precision by varying the accuracy reward weight $\lambda_{acc}$ (fixing $\lambda_{len}:\lambda_{fmt}$ at $1:1$). Results on ETTh1 identify $\mathbf{1:1:8}$ as the optimal configuration, achieving the lowest MSE of \textbf{0.351}. Deviating from this equilibrium degrades performance via two distinct failure modes: low weights ($1:1:3$) result in under-optimization of numerical values (MSE 0.377), while excessive weights ($1:1:15$) induce "structural collapse." As shown in \shortautoref{fig:ablation_01}, pushing beyond the optimal threshold causes formatting anomalies to spike from 10 to 33, demonstrating that overpowering syntax constraints with accuracy objectives ultimately corrupts prediction validity.
+
+\noindent\textbf{Impact of Model Scaling.}\quad
+We evaluate the impact of model capacity across the Qwen2.5 family (0.5B, 1.5B, 3B, 7B). Results in \shortautoref{fig:ablation_03} reveal a robust scaling law: as parameter count increases, forecasting accuracy consistently improves, with MSE on ETTh1 monotonically decreasing from 0.365 (0.5B) to 0.351 (7B). This confirms that \textbf{RDTU} effectively harnesses the stronger reasoning capabilities of larger backbones to achieve finer precision.

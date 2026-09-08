@@ -1,0 +1,5 @@
+Target Dataset,Metric,Supervised RDTU,Zero-Shot RDTU,Zero-Shot Time-LLM,Zero-Shot GPT4TS
+Electricity,MSE / MAE,0.156 / 0.246,0.182 / 0.270,0.254 / 0.312,0.328 / 0.385
+Weather,MSE / MAE,0.221 / 0.251,0.245 / 0.278,0.386 / 0.395,0.462 / 0.431
+Traffic,MSE / MAE,0.389 / 0.255,0.421 / 0.295,0.652 / 0.415,0.735 / 0.484
+Illness,MSE / MAE,1.559 / 0.812,1.645 / 0.910,2.642 / 1.753,3.215 / 2.058
