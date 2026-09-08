@@ -10,6 +10,10 @@
 
 <a id="method"></a>
 
+### Forecasting-paradigm comparison
+
+[![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
+
 ## Method and sample selection
 
 [![RDTU pipeline: supervised temporal instruction tuning followed by reinforcement-driven forecasting refinement](assets/figures/Method.png)](assets/figures/Method.pdf)
@@ -23,10 +27,6 @@ R_{total}=0.1R_{len}+0.1R_{fmt}+0.8R_{acc}.
 ```
 
 The length reward decays exponentially with the difference between predicted and requested sequence lengths. The format reward checks numeric validity, floating-point structure and precision, with weights 0.2, 0.3 and 0.5. The accuracy reward is exp(−10 × MSE). The length decay factor is 0.5.
-
-### Forecasting-paradigm comparison
-
-[![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
 
 ### Hard sample mining
 
