@@ -5,8 +5,8 @@ type: dataset
 authors:
   - family-names: Wang
     given-names: Yuqing
-repository-code: "https://github.com/L1Rin/RDTU-Supplementary"
-url: "https://github.com/L1Rin/RDTU-Supplementary"
+repository-code: "https://github.com/L1Rin/RDTU"
+url: "https://github.com/L1Rin/RDTU"
 abstract: "Supplementary text, result tables, figure assets, and manuscript sources for RDTU."
 keywords:
   - time series forecasting

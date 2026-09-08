@@ -1579,6 +1579,6 @@ The unprecedented capabilities of foundation models have catalyzed cross-modalit
   author = {Wang, Yuqing},
   title = {RDTU: Supplementary Materials for Does LLM-based Time Series Forecasting Really Need Pre-Alignment?},
   howpublished = {GitHub repository},
-  url = {https://github.com/L1Rin/RDTU-Supplementary}
+  url = {https://github.com/L1Rin/RDTU}
 }
 ```
