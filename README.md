@@ -14,6 +14,8 @@
 
 [![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
 
+Conventional approaches rely on pre-alignment modules with limitations of granularity mismatch and architectural overhead to bridge modality gaps, when our proposed framework \textbf{RDTU} adopts a direct unification strategy, bypassing pre-alignment via \textbf{Supervised Temporal Instruction Tuning (STIT)} and strictly enforcing precision through \textbf{Reinforcement-Driven Forecasting Refinement (RDFR)}.
+
 ## Method and sample selection
 
 [![RDTU pipeline: supervised temporal instruction tuning followed by reinforcement-driven forecasting refinement](assets/figures/Method.png)](assets/figures/Method.pdf)
