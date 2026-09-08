@@ -1263,9 +1263,9 @@ The same three failure modes are illustrated on two additional datasets. In the 
 
 **RDFR.** The STIT model is refined with Group Relative Policy Optimization (GRPO). The reward combines sequence length, numerical format and prediction accuracy:
 
-$$
+```math
 R_{total}=0.1R_{len}+0.1R_{fmt}+0.8R_{acc}.
-$$
+```
 
 The length reward decays exponentially with the difference between predicted and requested sequence lengths. The format reward checks numeric validity, floating-point structure and precision, with weights 0.2, 0.3 and 0.5. The accuracy reward is exp(−10 × MSE). The length decay factor is 0.5.
 
@@ -1313,57 +1313,50 @@ Output: RDFR training set D_RDFR
 </details>
 
 <details>
-<summary>Full reward equations and forecasting-paradigm comparison</summary>
+<summary>Forecasting-paradigm comparison</summary>
 
 [![Comparison of pre-alignment forecasting pipelines with direct temporal unification](assets/figures/Intro.png)](assets/figures/Intro.pdf)
 
+</details>
+
+### Reward equations
+
 #### Temporal refinement rewards
 
-To align the model’s policy with the standards of time-series forecasting, we employ Group Relative Policy Optimization (GRPO)  [DeepSeek-AI et al., 2025](docs/references.md#deepseekai2025deepseekr1) as our Reinforcement Forecasting Refinement framework. Therefore, we design a forecasting refinement reward function $R_{total}$ comprising three distinct components, each targeting a specific failure mode observed in STIT models.
+To align the model’s policy with the standards of time-series forecasting, we employ Group Relative Policy Optimization (GRPO)  [DeepSeek-AI et al., 2025](docs/references.md#deepseekai2025deepseekr1) as our Reinforcement Forecasting Refinement framework. Therefore, we design a forecasting refinement reward function $`R_{total}`$ comprising three distinct components, each targeting a specific failure mode observed in STIT models.
 
-#### Sequence Length Consistency Reward ($R_{len}$).
+#### Sequence Length Consistency Reward ($`R_{len}`$).
 
-To mitigate "counting failures" where models drift from the required horizon, we replace standard linear penalties, which often lack sensitivity to "off-by-one" errors, with a non-linear exponential penalty. This acts as a soft constraint, imposing sharp penalties for minimal deviations to enforce rapid convergence to the target length $L_{target}$:
+To mitigate "counting failures" where models drift from the required horizon, we replace standard linear penalties, which often lack sensitivity to "off-by-one" errors, with a non-linear exponential penalty. This acts as a soft constraint, imposing sharp penalties for minimal deviations to enforce rapid convergence to the target length $`L_{target}`$:
 
-$$
-
+```math
 R_{len} = \exp(-\alpha \cdot |L_{pred} - L_{target}|)
+```
 
-$$
+where $`\alpha`$ controls reward sensitivity, ensuring exact length adherence for high scores.
 
-where $\alpha$ controls reward sensitivity, ensuring exact length adherence for high scores.
-
-#### Format Compliance Reward ($R_{fmt}$).
+#### Format Compliance Reward ($`R_{fmt}`$).
 
 To overcome the "sparse signal" problem where binary validity checks fail to distinguish between total hallucination and minor formatting errors, we employ *reward shaping*. We decompose structural compliance into progressive sub-goals to provide dense gradient feedback:
 
 
-$$
+```math
+\begin{aligned} R_{fmt} = \frac{1}{N} \sum_{i=1}^{N} \Big(&w_1 \cdot \mathbb{I}(\texttt{is\_number}_i) \\ &+w_2 \cdot \mathbb{I}(\texttt{is\_float}_i)+w_3 \cdot \mathbb{I}(\texttt{precision}_i)\Big) \end{aligned}
+```
 
-\begin{aligned}
- R_{fmt} = \frac{1}{N} \sum_{i=1}^{N} \Big(&w_1 \cdot \mathbb{I}(\texttt{is\_number}_i) \\
- &+w_2 \cdot \mathbb{I}(\texttt{is\_float}_i)+w_3 \cdot \mathbb{I}(\texttt{precision}_i)\Big)
- \end{aligned}
+where $`N`$ represents the total number of predicted numerical values, and the indicator functions $`\mathbb{I}(\cdot)`$ verify token-level adherence to numeric character usage, decimal presence, and strict decimal precision as specified by the task, respectively, weighted by $`w_{\{1,2,3\}}`$.
 
-$$
+#### Prediction Accuracy Reward ($`R_{acc}`$).
 
-where $N$ represents the total number of predicted numerical values, and the indicator functions $\mathbb{I}(\cdot)$ verify token-level adherence to numeric character usage, decimal presence, and strict decimal precision as specified by the task, respectively, weighted by $w_{\{1,2,3\}}$.
+Since unbounded MSE loss can destabilize reward distributions and lacks sensitivity in high-precision regimes, we map the error to a bounded $`(0, 1]`$ interval via exponential decay. This ensures distinct feedback even as the model approaches saturation:
 
-#### Prediction Accuracy Reward ($R_{acc}$).
-
-Since unbounded MSE loss can destabilize reward distributions and lacks sensitivity in high-precision regimes, we map the error to a bounded $(0, 1]$ interval via exponential decay. This ensures distinct feedback even as the model approaches saturation:
-
-$$
-
+```math
 R_{acc} = \exp(-\beta \cdot \text{MSE}(Y_{pred}, Y_{gt}))
+```
 
-$$
+where $`\beta`$ regulates the strictness of the accuracy requirement, preventing outlier dominance while maintaining significant gradient magnitude for small improvements.
 
-where $\beta$ regulates the strictness of the accuracy requirement, preventing outlier dominance while maintaining significant gradient magnitude for small improvements.
-
-The final reward is computed as a weighted sum $R_{total} = \lambda_{len} R_{len} + \lambda_{fmt} R_{fmt} + \lambda_{acc} R_{acc}$, balancing structural validity with regression precision.
-
-</details>
+The final reward is computed as a weighted sum $`R_{total} = \lambda_{len} R_{len} + \lambda_{fmt} R_{fmt} + \lambda_{acc} R_{acc}`$, balancing structural validity with regression precision.
 
 <a id="training"></a>
 

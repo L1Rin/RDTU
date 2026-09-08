@@ -338,7 +338,7 @@ The following footer is transcribed from the original table. See [source notes](
 | Reformer | 0 |
 
 
-[Table S14](C-generalization.md#tab-few-shot-forecasting-5per-full) further investigates model robustness under extreme data scarcity by reducing the training data to 5%. Despite the limited information, RDTU maintains a strong lead over baseline methods, achieving the lowest error rates in 39 instances (“1st Count”). In comparison, the closest competitor, Time-LLM, records 10 wins, while DLinear achieves 8. Although certain long-horizon forecasts (e.g., $H=720$) could not be computed for some datasets due to insufficient training samples, RDTU consistently outperforms peer models on the available horizons, demonstrating superior few-shot adaptability.
+[Table S14](C-generalization.md#tab-few-shot-forecasting-5per-full) further investigates model robustness under extreme data scarcity by reducing the training data to 5%. Despite the limited information, RDTU maintains a strong lead over baseline methods, achieving the lowest error rates in 39 instances (“1st Count”). In comparison, the closest competitor, Time-LLM, records 10 wins, while DLinear achieves 8. Although certain long-horizon forecasts (e.g., $`H=720`$) could not be computed for some datasets due to insufficient training samples, RDTU consistently outperforms peer models on the available horizons, demonstrating superior few-shot adaptability.
 
 ## Zero-Shot Forecasting
 
@@ -465,7 +465,7 @@ Each cell is **MSE / MAE**. `Avg` denotes the source-reported average over horiz
 | Autoformer | 0.735 / 0.576 | 0.753 / 0.586 | 0.750 / 0.593 | 0.782 / 0.609 | 0.755 / 0.591 |
 
 
-[Table S15](C-generalization.md#tab-zero-shot-forecasting) presents the zero-shot learning results on ETT datasets, evaluating the transferability of models between different domains (e.g., $ETTh1 \to ETTh2$). RDTU demonstrates exceptional cross-domain generalization, achieving the best performance (highlighted in red) across the vast majority of transfer scenarios and horizons. While Time-LLM frequently secures the second-best position (blue) and PatchTST consistently ranks third (green), RDTU significantly outperforms both, particularly in challenging transfer tasks such as $ETTm1 \to ETTh2$ and $ETTm2 \to ETTh1$, validating the efficacy of its language-based representations for zero-shot forecasting.
+[Table S15](C-generalization.md#tab-zero-shot-forecasting) presents the zero-shot learning results on ETT datasets, evaluating the transferability of models between different domains (e.g., $`ETTh1 \to ETTh2`$). RDTU demonstrates exceptional cross-domain generalization, achieving the best performance (highlighted in red) across the vast majority of transfer scenarios and horizons. While Time-LLM frequently secures the second-best position (blue) and PatchTST consistently ranks third (green), RDTU significantly outperforms both, particularly in challenging transfer tasks such as $`ETTm1 \to ETTh2`$ and $`ETTm2 \to ETTh1`$, validating the efficacy of its language-based representations for zero-shot forecasting.
 
 ## Zero-shot Length Generalization
 
@@ -475,7 +475,7 @@ Each cell is **MSE / MAE**. `Avg` denotes the source-reported average over horiz
 
 ### Table S16
 
-Zero-shot length generalization of RDTU. Models trained only up to $H=336$ under the 5% data regime are directly evaluated on $H=720$ without additional training, and are compared with RDTU trained on $H=720$ using 10% data.
+Zero-shot length generalization of RDTU. Models trained only up to $`H=336`$ under the 5% data regime are directly evaluated on $`H=720`$ without additional training, and are compared with RDTU trained on $`H=720`$ using 10% data.
 
 | Dataset | Metric | RDTU Trained on H=336 w/ 5% Data, Eval on H=720 | RDTU Trained on H=720 w/ 10% Data |
 | --- | ---: | ---: | ---: |
@@ -488,7 +488,7 @@ Zero-shot length generalization of RDTU. Models trained only up to $H=336$ under
 
 A core advantage of RDTU is its zero-shot length generalization ability. Unlike conventional forecasting models whose output heads are often tied to a fixed prediction horizon, RDTU formulates forecasting as an autoregressive token generation task. This formulation naturally relaxes fixed output-dimensional constraints and allows the model to generate longer horizons at inference time without modifying the architecture or conducting additional horizon-specific training.
 
-As shown in [Table S16](C-generalization.md#tab-length_generalization), RDTU trained only up to $H=336$ under the 5% data regime can be directly evaluated on $H=720$. Although a moderate performance gap is expected due to longer-horizon error accumulation, the extrapolated model remains highly competitive compared with the model trained directly on $H=720$ using 10% data. For example, on ETTh1, the zero-shot length extrapolation setting obtains 0.705 MSE and 0.598 MAE, which is close to the 0.694 MSE and 0.587 MAE achieved by the stronger 10% $H=720$ training setting. Similar trends are observed on ETTh2 and Traffic, where the performance degradation remains small despite the absence of any $H=720$ training samples. These results demonstrate that RDTU does not merely memorize a fixed output length, but learns a flexible generation policy that can extrapolate to unseen prediction horizons.
+As shown in [Table S16](C-generalization.md#tab-length_generalization), RDTU trained only up to $`H=336`$ under the 5% data regime can be directly evaluated on $`H=720`$. Although a moderate performance gap is expected due to longer-horizon error accumulation, the extrapolated model remains highly competitive compared with the model trained directly on $`H=720`$ using 10% data. For example, on ETTh1, the zero-shot length extrapolation setting obtains 0.705 MSE and 0.598 MAE, which is close to the 0.694 MSE and 0.587 MAE achieved by the stronger 10% $`H=720`$ training setting. Similar trends are observed on ETTh2 and Traffic, where the performance degradation remains small despite the absence of any $`H=720`$ training samples. These results demonstrate that RDTU does not merely memorize a fixed output length, but learns a flexible generation policy that can extrapolate to unseen prediction horizons.
 
 <a id="tab-cross_domain_zero_shot"></a>
 

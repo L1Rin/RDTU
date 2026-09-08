@@ -6,7 +6,7 @@
 
 The motivation behind Dual-Stream Hard Sample Mining is driven by the STIT model’s specific failure modes and the optimization dynamics of Reinforcement Learning. After the STIT stage, the model acquires basic forecasting capabilities but suffers from critical precision deficits and formatting hallucinations. To address these, we introduce a sample selection strategy tailored specifically for RL in time series forecasting.
 
-[Algorithm S1](D-sample-mining.md#alg-hard_mining) details the proposed **Priority-Based Dual-Stream Hard Sample Mining** strategy used to construct the RDFR dataset $\mathcal{D}_{RDFR}$. The process consists of four phases starting with initial inference and evaluation. It then bifurcates into two distinct selection streams: a *Syntactic Correction Stream* that prioritizes samples exhibiting formatting errors or low format scores ($S_{fmt}$) to ensure structural validity, and a *Semantic Reinforcement Stream* that targets “hard” samples with high MSE loss ($L_{mse}$) using a density-based binning approach to enhance prediction accuracy. Finally, the outputs of these streams are fused to create a balanced dataset for model optimization.
+[Algorithm S1](D-sample-mining.md#alg-hard_mining) details the proposed **Priority-Based Dual-Stream Hard Sample Mining** strategy used to construct the RDFR dataset $`\mathcal{D}_{RDFR}`$. The process consists of four phases starting with initial inference and evaluation. It then bifurcates into two distinct selection streams: a *Syntactic Correction Stream* that prioritizes samples exhibiting formatting errors or low format scores ($`S_{fmt}`$) to ensure structural validity, and a *Semantic Reinforcement Stream* that targets “hard” samples with high MSE loss ($`L_{mse}`$) using a density-based binning approach to enhance prediction accuracy. Finally, the outputs of these streams are fused to create a balanced dataset for model optimization.
 
 <a id="alg-hard_mining"></a>
 
@@ -54,7 +54,7 @@ We avoid full-dataset RL training during the RDFR stage for two reasons: it intr
 
 ### Table S18
 
-Ablation study on RDFR training data construction on ETTh1 with prediction horizon $H=96$. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.
+Ablation study on RDFR training data construction on ETTh1 with prediction horizon $`H=96`$. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.
 
 | RDFR Training Data | MSE ↓ | MAE ↓ | Training Time |
 | --- | ---: | ---: | ---: |
@@ -64,7 +64,7 @@ Ablation study on RDFR training data construction on ETTh1 with prediction horiz
 [Download table (CSV)](../data/rdfr_data_construction_ablation.csv).
 
 
-To further validate the efficiency of the proposed Dual-Stream Hard Sample Mining strategy, we compare RDFR training using the full training set and the selected RDFR subset on ETTh1 with $H=96$. As shown in [Table S18](D-sample-mining.md#tab-rdfr_data_construction_ablation), training RDFR on the full dataset substantially increases the computational cost, requiring more than 3 hours, but does not bring additional performance gains. In contrast, the proposed Dual-Stream selected subset achieves lower MSE and MAE while reducing the RDFR training time to only 0.3 hours. This suggests that RDFR benefits more from targeted high-leverage samples than from simply increasing the amount of reinforcement learning data, supporting the necessity of the proposed data construction strategy.
+To further validate the efficiency of the proposed Dual-Stream Hard Sample Mining strategy, we compare RDFR training using the full training set and the selected RDFR subset on ETTh1 with $`H=96`$. As shown in [Table S18](D-sample-mining.md#tab-rdfr_data_construction_ablation), training RDFR on the full dataset substantially increases the computational cost, requiring more than 3 hours, but does not bring additional performance gains. In contrast, the proposed Dual-Stream selected subset achieves lower MSE and MAE while reducing the RDFR training time to only 0.3 hours. This suggests that RDFR benefits more from targeted high-leverage samples than from simply increasing the amount of reinforcement learning data, supporting the necessity of the proposed data construction strategy.
 
 ---
 Source: full manuscript Appendix D. See the [coverage map](coverage.md) and [source notes](source-notes.md).
