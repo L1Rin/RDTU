@@ -1,0 +1,43 @@
+\begin{table*}[t!]
+% \captionsetup{font=small}
+\caption{Average few-shot learning results on 10\% training data. \boldres{Red}: the best, \secondres{Blue}: the second best. More results are in \shortautoref{appx:few-zero-shot}.}
+\vspace{-2mm}
+\label{tab:few-shot-forecasting-10per-brief}
+
+\centering
+
+\renewcommand{\arraystretch}{1.3}
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method{}}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c|}{FEDformer}&\multicolumn{2}{c|}{Autoformer}&\multicolumn{2}{c|}{Stationary}&\multicolumn{2}{c|}{ETSformer}&\multicolumn{2}{c|}{LightTS}&\multicolumn{2}{c|}{Informer}&\multicolumn{2}{c}{Reformer} \\
+
+    \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{\scalebox{0.99}{(\textbf{Ours})}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{jin2024timellm}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2023one}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zeng2023transformers}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{nie2022time}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{wu2022timesnet}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2022fedformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{wu2021autoformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{liu2022non}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{woo2022etsformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhang2022less}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2021informer}}}&\multicolumn{2}{c}{\scalebox{0.99}{\citeyearpar{kitaev2020reformer}}} \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{Metric} & MSE  & MAE & MSE  & MAE & MSE & MAE& MSE & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE\\
+    \midrule
+
+    \multicolumn{2}{c|}{$ETTh1$} &\boldres{0.551} &\boldres{0.513} &\secondres{0.556} &\secondres{0.522} &0.590 &0.525 &0.691 &0.600 &0.633 &0.542 &0.869 &0.628 &0.639 &0.561 &0.702 &0.596 &0.915 &0.639 &1.180 &0.834 &1.375 &0.877 &1.199 &0.809 &1.249 &0.833\\
+    \multicolumn{2}{c|}{$ETTh2$} &\boldres{0.367} &\boldres{0.389} &\secondres{0.370} &\secondres{0.394} &0.397 &0.421 &0.605 &0.538 &0.415 &0.431 &0.479 &0.465 &0.466 &0.475 &0.488 &0.499 &0.462 &0.455 &0.894 &0.713 &2.655 &1.160 &3.872 &1.513 &3.485 &1.486\\
+    \multicolumn{2}{c|}{$ETTm1$} &\boldres{0.402} &\boldres{0.424} &\secondres{0.404} &\secondres{0.427} &0.464 &0.441 &0.411 &0.429 &0.501 &0.466 &0.677 &0.537 &0.722 &0.605 &0.802 &0.628 &0.797 &0.578 &0.980 &0.714 &0.971 &0.705 &1.192 &0.821 &1.426 &0.856\\
+    \multicolumn{2}{c|}{$ETTm2$} &\boldres{0.274} &\boldres{0.319} &\secondres{0.277} &\secondres{0.323} &0.293 &0.335 &0.316 &0.368 &0.296 &0.343 &0.320 &0.353 &0.463 &0.488 &1.342 &0.930 &0.332 &0.366 &0.447 &0.487 &0.987 &0.756 &3.370 &1.440 &3.978 &1.587\\
+    \multicolumn{2}{c|}{\revision{Weather}}  &\boldres{0.232} &\boldres{0.270} &\secondres{0.234} &\secondres{0.273} &0.238 &0.275 &0.241 &0.283 &0.242 &0.279 &0.279 &0.301 &0.284 &0.324 &0.300 &0.342 &0.318 &0.323 &0.318 &0.360 &0.289 &0.322 &0.597 &0.495 &0.546 &0.469 \\
+    \multicolumn{2}{c|}{\revision{Electricity}}  &\boldres{0.173} &\boldres{0.268} &\secondres{0.175} &0.270 &0.176 &\secondres{0.269} &0.180 &0.280 &0.180 &0.273 &0.323 &0.392 &0.346 &0.427 &0.431 &0.478 &0.444 &0.480 &0.660 &0.617 &0.441 &0.489 &1.195 &0.891 &0.965 &0.768 \\
+    \multicolumn{2}{c|}{\revision{Traffic}}  &\boldres{0.426} &\boldres{0.303} &\secondres{0.429} &0.306 &0.440 &0.310 &0.447 &0.313 &0.430 &\secondres{0.305} &0.951 &0.535 &0.663 &0.425 &0.749 &0.446 &1.453 &0.815 &1.914 &0.936 &1.248 &0.684 &1.534 &0.811 &1.551 &0.821 \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{\textbf{\# Wins}}&\multicolumn{2}{c|}{\boldres{14}}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c}{0}\\
+    \bottomrule
+    \end{tabular}
+    \end{small}
+}
+% \vskip -0.1in
+\vspace{-4mm}
+\end{table*}

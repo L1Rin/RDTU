@@ -1,0 +1,42 @@
+\begin{table}[h]
+  \caption{Dataset statistics are from \citep{wu2022timesnet}. The dimension indicates the number of time series (i.e., channels), and the dataset size is organized in (training, validation, testing).}
+  \label{tab:dataset}
+  \centering
+
+  % 将 1.3 改为 1.5 可以让空间更大，默认是 1.0
+  \renewcommand{\arraystretch}{1.5}
+  % ====================
+
+  \resizebox{0.95\columnwidth}{!}{
+    \begin{threeparttable}
+      \begin{tabular}{c|l|c|c|c|c|c}
+        \hline
+        Tasks & Dataset & Dim. & Series Length & Dataset Size & Frequency & \revision{Domain} \\
+        \hline
+
+        % Long-term 部分
+        \multirow{8}{*}{\shortstack{Long-term\\Forecasting}}
+          & ETTm1 & 7 & \{96, 192, 336, 720\} & (34465, 11521, 11521) & 15 min & Temperature \\ \cline{2-7}
+          & ETTm2 & 7 & \{96, 192, 336, 720\} & (34465, 11521, 11521) & 15 min & Temperature \\ \cline{2-7}
+          & ETTh1 & 7 & \{96, 192, 336, 720\} & (8545, 2881, 2881) & 1 hour & Temperature \\ \cline{2-7}
+          & ETTh2 & 7 & \{96, 192, 336, 720\} & (8545, 2881, 2881) & 1 hour & Temperature \\ \cline{2-7}
+          & \revision{Electricity} & \revision{321} & \revision{\{96, 192, 336, 720\}} & \revision{(18317, 2633, 5261)} & \revision{1 hour} & \revision{Electricity} \\ \cline{2-7}
+          & \revision{Traffic} & \revision{862} & \revision{\{96, 192, 336, 720\}} & \revision{(12185, 1757, 3509)} & \revision{1 hour} & \revision{Transportation} \\ \cline{2-7}
+          & \revision{Weather} & \revision{21} & \revision{\{96, 192, 336, 720\}} & \revision{(36792, 5271, 10540)} & \revision{10 min} & \revision{Weather} \\ \cline{2-7}
+          & \revision{ILI} & \revision{7} & \revision{\{24, 36, 48, 60\}} & \revision{(617, 74, 170)} & \revision{1 week} & \revision{Illness} \\
+        \hline
+
+        % Short-term 部分
+        \multirow{7}{*}{\shortstack{Short-term\\Forecasting}}
+          % & \revision{M3-Quarterly} & \revision{1}& \revision{8}& \revision{(756, 0, 756)}&\revision{Quarterly} & \revision{Multiple} \\ \cline{2-7}
+          & M4-Yearly & 1 & 6 & (23000, 0, 23000) & Yearly & Demographic \\ \cline{2-7}
+          & M4-Quarterly & 1 & 8 & (24000, 0, 24000) & Quarterly & Finance \\ \cline{2-7}
+          & M4-Monthly & 1 & 18 & (48000, 0, 48000) & Monthly & Industry \\ \cline{2-7}
+          & M4-Weekly & 1 & 13 & (359, 0, 359) & Weekly & Macro \\ \cline{2-7}
+          & M4-Daily & 1 & 14 & (4227, 0, 4227) & Daily & Micro \\ \cline{2-7}
+          & M4-Hourly & 1 & 48 & (414, 0, 414) & Hourly & Other \\
+        \hline
+      \end{tabular}
+    \end{threeparttable}
+  }
+\end{table}

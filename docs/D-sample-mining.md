@@ -56,13 +56,11 @@ We avoid full-dataset RL training during the RDFR stage for two reasons: it intr
 
 Ablation study on RDFR training data construction on ETTh1 with prediction horizon $`H=96`$. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.
 
-| RDFR Training Data | MSE ↓ | MAE ↓ | Training Time |
-| --- | ---: | ---: | ---: |
-| Full Dataset | 0.358 | 0.388 | >3h |
-| Dual-Stream Selected (Ours) | 0.351 | 0.382 | 0.3h |
+[![Ablation study on RDFR training data construction on ETTh1 with prediction horizon H=96](../assets/tables/s18.png)](../assets/tables/s18.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s18.pdf)
 
 [Download table (CSV)](../data/rdfr_data_construction_ablation.csv).
-
 
 To further validate the efficiency of the proposed Dual-Stream Hard Sample Mining strategy, we compare RDFR training using the full training set and the selected RDFR subset on ETTh1 with $`H=96`$. As shown in [Table S18](D-sample-mining.md#tab-rdfr_data_construction_ablation), training RDFR on the full dataset substantially increases the computational cost, requiring more than 3 hours, but does not bring additional performance gains. In contrast, the proposed Dual-Stream selected subset achieves lower MSE and MAE while reducing the RDFR training time to only 0.3 hours. This suggests that RDFR benefits more from targeted high-leverage samples than from simply increasing the amount of reinforcement learning data, supporting the necessity of the proposed data construction strategy.
 

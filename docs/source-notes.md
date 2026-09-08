@@ -6,7 +6,7 @@
 
 The supplementary tables and CSV files use the numerical strings in the supplied full manuscript. Reported averages, decimal precision, missing entries and approximate training-cost values are preserved. The preparation of this repository did not rerun experiments or reconstruct predictions from the plotted curves.
 
-The main PDF and online chapters reorganize wide tables by dataset. RDTU's row is emphasized for navigation; that emphasis does not mean it is the best result in every cell. Original first/second/third-place styling is replaced with this consistent row emphasis because some source styling and ranking summaries are inconsistent with the displayed numbers.
+Online tables are now rendered directly from the original manuscript LaTeX, preserving the original row and column layout, color annotations and ranking footers. The final ICASSP tables are labeled separately from the expanded full-manuscript tables. Some original color annotations and ranking summaries are inconsistent with the displayed numbers; the checks below document these differences. The complete supplementary reading PDF retains its dataset-by-dataset layout and RDTU row emphasis.
 
 ## Zero-shot interpretation in the final manuscript
 
@@ -31,7 +31,7 @@ For **Weather, H = 720** in the additional-baseline table, the source lists RDTU
 
 - The related-work opening follows the final manuscript's description of direct generation with two-stage training, rather than restoring the original broad “first attempt” claim.
 - Training costs marked as approximate in the source remain approximate. Reported means, standard deviations, test descriptions and p-values are transcribed; seed-level logs were not included in the supplied manuscript folders.
-- M4 “Others” is retained as the source's aggregate category. Missing full-result entries retain the original `/` or `--` marker and are not filled from another table. A paired MSE / MAE cell displays a single missing-value marker when both metrics are unavailable; the CSV keeps both original entries.
+- M4 “Others” is retained as the source's aggregate category. Missing full-result entries retain the original `/` or `--` marker and are not filled from another table. The original table images retain the manuscript markers; the CSV keeps both metric entries.
 - The prompt example deliberately includes ellipses from the source. Only the displayed timestamp and numerical rows are available in that example; no omitted observations or outputs were invented.
 - The historical checklist records the original manuscript's author responses. Its code-release statements are historical plans and do not describe files in this supplementary-material release.
 

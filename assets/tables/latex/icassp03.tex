@@ -1,0 +1,40 @@
+\begin{table}[t]
+    \centering
+    \caption{Ablation study of different reward components in the RDFR
+    training stage. Improvements are computed relative to STIT model.}
+    \label{tab:ablation_02}
+
+    \vspace{-5pt}
+
+    \newcommand{\imp}[1]{{\textcolor{red}{(#1)}}}
+    \newcommand{\bimp}[1]{{\textbf{\textcolor{red}{(#1)}}}}
+
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Method}
+        & \textbf{MSE} $\downarrow$
+        & \textbf{MAE} $\downarrow$ \\
+        \midrule
+        \shortstack[l]{Qwen2.5-Instruct-\\STIT}
+        & 0.403 & 0.428 \\
+        \midrule
+        + $R_{len}$
+        & 0.401 \imp{-0.50\%}
+        & 0.425 \imp{-0.70\%} \\
+        + $R_{fmt}$
+        & 0.395 \imp{-1.99\%}
+        & 0.419 \imp{-2.10\%} \\
+        + $R_{acc}$
+        & 0.367 \imp{-8.93\%}
+        & 0.398 \imp{-7.01\%} \\
+        + $R_{len} + R_{fmt}$
+        & 0.388 \imp{-3.72\%}
+        & 0.412 \imp{-3.74\%} \\
+        \midrule
+        \textbf{RDTU ($R_{total}$)}
+        & \textbf{0.351} \bimp{-12.90\%}
+        & \textbf{0.382} \bimp{-10.75\%} \\
+        \bottomrule
+    \end{tabular}
+    \vspace{-12pt}
+\end{table}

@@ -18,18 +18,11 @@ To further clarify the practical cost of the proposed two-stage training pipelin
 
 Training settings and resource usage on different datasets.
 
-| Dataset | Stage | Training Size | Epochs | Time (Hours) | Peak VRAM per GPU |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| ETTh1 | STIT / RDFR | 8,545 / 425 | 15 / 3 | ≈2.5 / ≈0.3 | ≈24 GB / ≈32 GB |
-| ETTh2 | STIT / RDFR | 8,545 / 425 | 15 / 3 | ≈2.5 / ≈0.3 | ≈24 GB / ≈32 GB |
-| ETTm1 | STIT / RDFR | 34,465 / 1,713 | 5 / 2 | ≈4.3 / ≈0.5 | ≈24 GB / ≈32 GB |
-| ETTm2 | STIT / RDFR | 34,465 / 1,713 | 5 / 2 | ≈4.3 / ≈0.5 | ≈24 GB / ≈32 GB |
-| Electricity | STIT / RDFR | 18,317 / 911 | 8 / 3 | ≈3.7 / ≈0.5 | ≈24 GB / ≈32 GB |
-| Traffic | STIT / RDFR | 12,185 / 606 | 10 / 3 | ≈3.0 / ≈0.3 | ≈24 GB / ≈32 GB |
-| Weather | STIT / RDFR | 36,792 / 1,830 | 4 / 2 | ≈3.7 / ≈0.5 | ≈24 GB / ≈32 GB |
+[![Training settings and resource usage on different datasets](../assets/tables/s06.png)](../assets/tables/s06.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s06.pdf)
 
 [Download table (CSV)](../data/training_resource.csv).
-
 
 ## Evaluation Metrics
 
@@ -53,25 +46,11 @@ LLMs are a core methodological component of this work. Specifically, we use Qwen
 
 Dataset statistics are from [Wu et al., 2023](references.md#wu2022timesnet). The dimension indicates the number of time series (i.e., channels), and the dataset size is organized in (training, validation, testing).
 
-| Tasks | Dataset | Dim. | Series Length | Dataset Size | Frequency | Domain |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Long-term / Forecasting | ETTm1 | 7 | [96, 192, 336, 720] | (34465, 11521, 11521) | 15 min | Temperature |
-| Long-term / Forecasting | ETTm2 | 7 | [96, 192, 336, 720] | (34465, 11521, 11521) | 15 min | Temperature |
-| Long-term / Forecasting | ETTh1 | 7 | [96, 192, 336, 720] | (8545, 2881, 2881) | 1 hour | Temperature |
-| Long-term / Forecasting | ETTh2 | 7 | [96, 192, 336, 720] | (8545, 2881, 2881) | 1 hour | Temperature |
-| Long-term / Forecasting | Electricity | 321 | [96, 192, 336, 720] | (18317, 2633, 5261) | 1 hour | Electricity |
-| Long-term / Forecasting | Traffic | 862 | [96, 192, 336, 720] | (12185, 1757, 3509) | 1 hour | Transportation |
-| Long-term / Forecasting | Weather | 21 | [96, 192, 336, 720] | (36792, 5271, 10540) | 10 min | Weather |
-| Long-term / Forecasting | ILI | 7 | [24, 36, 48, 60] | (617, 74, 170) | 1 week | Illness |
-| Short-term / Forecasting | M4-Yearly | 1 | 6 | (23000, 0, 23000) | Yearly | Demographic |
-| Short-term / Forecasting | M4-Quarterly | 1 | 8 | (24000, 0, 24000) | Quarterly | Finance |
-| Short-term / Forecasting | M4-Monthly | 1 | 18 | (48000, 0, 48000) | Monthly | Industry |
-| Short-term / Forecasting | M4-Weekly | 1 | 13 | (359, 0, 359) | Weekly | Macro |
-| Short-term / Forecasting | M4-Daily | 1 | 14 | (4227, 0, 4227) | Daily | Micro |
-| Short-term / Forecasting | M4-Hourly | 1 | 48 | (414, 0, 414) | Hourly | Other |
+[![Dataset statistics](../assets/tables/s07.png)](../assets/tables/s07.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s07.pdf)
 
 [Download table (CSV)](../data/dataset.csv).
-
 
 ## Statistical Significance Analysis
 
@@ -83,15 +62,11 @@ Dataset statistics are from [Wu et al., 2023](references.md#wu2022timesnet). The
 
 Statistical significance analysis on representative long-term forecasting settings with $`H=96`$. We report mean and standard deviation over three independent runs with different random seeds. $`p`$-values are computed using a paired two-sided $`t`$-test between RDTU and Time-LLM over matched dataset-seed pairs.
 
-| Dataset | Metric | RDTU | Time-LLM | Relative Gain | p-value |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| ETTh1 | MSE / MAE | 0.352 ± 0.003 / 0.383 ± 0.002 | 0.376 ± 0.004 / 0.403 ± 0.003 | 6.38% / 4.96% | 0.018 / 0.021 |
-| Electricity | MSE / MAE | 0.125 ± 0.002 / 0.211 ± 0.002 | 0.137 ± 0.002 / 0.233 ± 0.003 | 8.76% / 9.44% | 0.014 / 0.012 |
-| Traffic | MSE / MAE | 0.359 ± 0.004 / 0.236 ± 0.003 | 0.393 ± 0.005 / 0.268 ± 0.004 | 8.65% / 11.94% | 0.011 / 0.009 |
-| Average | MSE / MAE | 0.279 ± 0.003 / 0.277 ± 0.002 | 0.302 ± 0.004 / 0.301 ± 0.003 | 7.62% / 7.97% | 0.013 / 0.015 |
+[![Statistical significance analysis on representative long-term forecasting settings with H=96](../assets/tables/s08.png)](../assets/tables/s08.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s08.pdf)
 
 [Download table (CSV)](../data/significance_main.csv).
-
 
 To examine whether the main performance gains are statistically reliable, we repeat RDTU and the strongest language-based baseline, Time-LLM, under three independent random seeds on representative long-term forecasting settings. We select ETTh1, Electricity, and Traffic because they cover different data scales and domains, including temperature, electricity consumption, and transportation. As shown in [Table S8](A-experimental-details.md#tab-significance_main), RDTU consistently achieves lower MSE and MAE across all selected datasets. The paired two-sided $`t`$-test over matched dataset-seed pairs yields statistically significant improvements, with average $`p`$-values of $`0.013`$ for MSE and $`0.015`$ for MAE. These results indicate that the observed superiority of RDTU over language-based baselines is stable across random seeds rather than being caused by incidental initialization effects.
 
@@ -101,14 +76,11 @@ To examine whether the main performance gains are statistically reliable, we rep
 
 Statistical significance analysis of the RDFR stage on ETTh1 with $`H=96`$. We report mean and standard deviation over three independent runs. $`p`$-values are computed using a paired two-sided $`t`$-test between STIT and RDTU.
 
-| Method | MSE ↓ | MAE ↓ | MSE Gain | MAE Gain |
-| --- | ---: | ---: | ---: | ---: |
-| Qwen2.5-Instruct-STIT | 0.403 ± 0.002 | 0.428 ± 0.002 | -- | -- |
-| RDTU w/ RDFR | 0.351 ± 0.002 | 0.382 ± 0.002 | 12.90% | 10.75% |
-| p-value | 0.004 | 0.006 | -- | -- |
+[![Statistical significance analysis of the RDFR stage on ETTh1 with H=96](../assets/tables/s09.png)](../assets/tables/s09.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s09.pdf)
 
 [Download table (CSV)](../data/significance_rdfr.csv).
-
 
 We further evaluate the statistical reliability of the RDFR stage, which is the key refinement component of RDTU. Specifically, we repeat both the STIT baseline and the final RDTU model under three independent random seeds on ETTh1 with $`H=96`$. As shown in [Table S9](A-experimental-details.md#tab-significance_rdfr), RDFR consistently improves the STIT baseline across all runs, reducing MSE from $`0.403 \pm 0.002`$ to $`0.351 \pm 0.002`$ and MAE from $`0.428 \pm 0.002`$ to $`0.382 \pm 0.002`$. The paired two-sided $`t`$-test gives $`p=0.004`$ for MSE and $`p=0.006`$ for MAE, confirming that the performance gain introduced by RDFR is statistically significant. This supports our claim that RDFR reliably bridges the gap between basic instruction-following ability and high-precision numerical forecasting.
 

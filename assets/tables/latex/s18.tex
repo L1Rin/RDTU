@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Ablation study on RDFR training data construction on ETTh1 with prediction horizon $H=96$.
+We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.}
+\label{tab:rdfr_data_construction_ablation}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{RDFR Training Data} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ & \textbf{Training Time} \\
+\midrule
+Full Dataset & 0.358 & 0.388 & $>3$h \\
+Dual-Stream Selected (Ours) & \textbf{0.351} & \textbf{0.382} & \textbf{0.3h} \\
+\bottomrule
+\end{tabular}
+\end{table}

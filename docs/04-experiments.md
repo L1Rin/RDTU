@@ -8,165 +8,11 @@
 
 **Long-term forecasting: horizon averages.** Lower values are better. Cells retain the numerical precision of the manuscript.
 
-Each cell is **MSE / MAE**. `Avg` denotes the source-reported average over horizons. A single `/` or `--` indicates that both metrics are unavailable in the source.
-
 [Download all values (CSV)](../data/long-term-forecasting-brief-new.csv).
 
+[![Long-term forecasting: horizon averages](../assets/tables/s01.png)](../assets/tables/s01.pdf)
 
-#### ETTh1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.399 / 0.413 |
-| GPT4TS | 0.418 / 0.421 |
-| Time-LLM | 0.418 / 0.432 |
-| DMMV-A | 0.395 / 0.414 |
-| Time-VLM | 0.405 / 0.420 |
-| VisionTS | 0.407 / 0.419 |
-| PatchTST | 0.413 / 0.431 |
-| CycleNet | 0.415 / 0.426 |
-| TimesNet | 0.458 / 0.450 |
-| DLinear | 0.423 / 0.430 |
-| FEDformer | 0.440 / 0.460 |
-
-
-#### ETTh2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.337 / 0.377 |
-| GPT4TS | 0.354 / 0.389 |
-| Time-LLM | 0.361 / 0.396 |
-| DMMV-A | 0.337 / 0.388 |
-| Time-VLM | 0.341 / 0.391 |
-| VisionTS | 0.351 / 0.386 |
-| PatchTST | 0.330 / 0.379 |
-| CycleNet | 0.355 / 0.398 |
-| TimesNet | 0.414 / 0.427 |
-| DLinear | 0.431 / 0.447 |
-| FEDformer | 0.437 / 0.449 |
-
-
-#### ETTm1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.340 / 0.367 |
-| GPT4TS | 0.363 / 0.378 |
-| Time-LLM | 0.356 / 0.377 |
-| DMMV-A | 0.340 / 0.371 |
-| Time-VLM | 0.351 / 0.376 |
-| VisionTS | 0.344 / 0.373 |
-| PatchTST | 0.351 / 0.381 |
-| CycleNet | 0.355 / 0.379 |
-| TimesNet | 0.400 / 0.406 |
-| DLinear | 0.357 / 0.379 |
-| FEDformer | 0.448 / 0.452 |
-
-
-#### ETTm2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.250 / 0.309 |
-| GPT4TS | 0.254 / 0.311 |
-| Time-LLM | 0.261 / 0.316 |
-| DMMV-A | 0.256 / 0.317 |
-| Time-VLM | 0.248 / 0.311 |
-| VisionTS | 0.267 / 0.327 |
-| PatchTST | 0.255 / 0.315 |
-| CycleNet | 0.251 / 0.309 |
-| TimesNet | 0.291 / 0.333 |
-| DLinear | 0.267 / 0.332 |
-| FEDformer | 0.305 / 0.349 |
-
-
-#### Illness
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 1.559 / 0.812 |
-| GPT4TS | 1.871 / 0.852 |
-| Time-LLM | 2.018 / 0.894 |
-| DMMV-A | 1.407 / 0.771 |
-| Time-VLM | -- |
-| VisionTS | 1.482 / 0.796 |
-| PatchTST | 1.443 / 0.798 |
-| CycleNet | 2.187 / 0.992 |
-| TimesNet | 2.139 / 0.931 |
-| DLinear | 2.169 / 1.041 |
-| FEDformer | 2.847 / 1.144 |
-
-
-#### Electricity
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.156 / 0.246 |
-| GPT4TS | 0.170 / 0.263 |
-| Time-LLM | 0.165 / 0.259 |
-| DMMV-A | 0.158 / 0.248 |
-| Time-VLM | 0.172 / 0.272 |
-| VisionTS | 0.159 / 0.250 |
-| PatchTST | 0.162 / 0.253 |
-| CycleNet | 0.158 / 0.250 |
-| TimesNet | 0.193 / 0.295 |
-| DLinear | 0.166 / 0.264 |
-| FEDformer | 0.214 / 0.327 |
-
-
-#### Weather
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.221 / 0.251 |
-| GPT4TS | 0.227 / 0.255 |
-| Time-LLM | 0.244 / 0.270 |
-| DMMV-A | 0.217 / 0.256 |
-| Time-VLM | 0.224 / 0.263 |
-| VisionTS | 0.225 / 0.258 |
-| PatchTST | 0.226 / 0.264 |
-| CycleNet | 0.242 / 0.278 |
-| TimesNet | 0.259 / 0.287 |
-| DLinear | 0.249 / 0.300 |
-| FEDformer | 0.309 / 0.360 |
-
-
-#### Traffic
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.389 / 0.255 |
-| GPT4TS | 0.421 / 0.274 |
-| Time-LLM | 0.422 / 0.281 |
-| DMMV-A | 0.389 / 0.257 |
-| Time-VLM | 0.419 / 0.304 |
-| VisionTS | 0.386 / 0.256 |
-| PatchTST | 0.391 / 0.264 |
-| CycleNet | 0.421 / 0.289 |
-| TimesNet | 0.620 / 0.336 |
-| DLinear | 0.434 / 0.295 |
-| FEDformer | 0.610 / 0.376 |
-
-
-#### Source-reported ranking summary
-
-The following footer is transcribed from the original table. See [source notes](source-notes.md) for the counting convention and known source inconsistencies.
-
-| Model | Reported count |
-| --- | ---: |
-| RDTU | 9 |
-| GPT4TS | 0 |
-| Time-LLM | 0 |
-| DMMV-A | 5 |
-| Time-VLM | 1 |
-| VisionTS | 1 |
-| PatchTST | 1 |
-| CycleNet | 1 |
-| TimesNet | 0 |
-| DLinear | 0 |
-| FEDformer | 0 |
-
+[Original LaTeX table PDF](../assets/tables/s01.pdf)
 
 <a id="tab-short-term-forecasting-brief"></a>
 
@@ -176,27 +22,9 @@ The following footer is transcribed from the original table. See [source notes](
 
 [Download all values (CSV)](../data/short-term-forecasting-brief.csv).
 
+[![M4 forecasting: weighted averages](../assets/tables/s02.png)](../assets/tables/s02.pdf)
 
-#### Average
-
-| Model | SMAPE | MASE | OWA |
-| --- | ---: | ---: | ---: |
-| **RDTU** | 11.979 | 1.599 | 0.859 |
-| Time-LLM | 11.983 | 1.595 | 0.859 |
-| GPT4TS | 12.69 | 1.808 | 0.94 |
-| TimesNet | 12.88 | 1.836 | 0.955 |
-| PatchTST | 12.059 | 1.623 | 0.869 |
-| N-HiTS | 12.035 | 1.625 | 0.869 |
-| N-BEATS | 12.25 | 1.698 | 0.896 |
-| ETSformer | 14.718 | 2.408 | 1.172 |
-| LightTS | 13.525 | 2.111 | 1.051 |
-| DLinear | 13.639 | 2.095 | 1.051 |
-| FEDformer | 13.16 | 1.775 | 0.949 |
-| Stationary | 12.780 | 1.756 | 0.930 |
-| Autoformer | 12.909 | 1.771 | 0.939 |
-| Informer | 14.086 | 2.718 | 1.230 |
-| Reformer | 18.200 | 4.223 | 1.775 |
-
+[Original LaTeX table PDF](../assets/tables/s02.pdf)
 
 **Datasets.** We adopt 8 widely used MTS benchmarks: ETT (Electricity Transformer Temperature) [Zhou et al., 2021](references.md#zhou2021informer), including ETTh1, ETTh2, ETTm1, ETTm2; Weather [Wu et al., 2021](references.md#wu2021autoformer), Illness [Wu et al., 2021](references.md#wu2021autoformer), Traffic [Wu et al., 2021](references.md#wu2021autoformer), and Electricity [Trindade, 2015](references.md#electricity), which have been extensively adopted for benchmarking long-term forecasting models  [Wu et al., 2023](references.md#wu2022timesnet). The prediction horizon $`H`$ is set to {24, 36, 48, 60} for Illness, and {96, 192, 336, 720} for the remaining datasets.
 
@@ -228,164 +56,11 @@ We employ Symmetric Mean Absolute Percentage Error (SMAPE), Mean Absolute Scaled
 
 **Few-shot forecasting: 10% horizon averages.** Lower values are better. Cells retain the numerical precision of the manuscript.
 
-Each cell is **MSE / MAE**. `Avg` denotes the source-reported average over horizons. A single `/` or `--` indicates that both metrics are unavailable in the source.
-
 [Download all values (CSV)](../data/few-shot-forecasting-part1-summary.csv).
 
+[![Few-shot forecasting: 10% horizon averages](../assets/tables/s03.png)](../assets/tables/s03.pdf)
 
-#### ETTh1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.551 / 0.513 |
-| Time-LLM | 0.556 / 0.522 |
-| GPT4TS | 0.590 / 0.525 |
-| DLinear | 0.691 / 0.600 |
-| PatchTST | 0.633 / 0.542 |
-| TimesNet | 0.869 / 0.628 |
-| FEDformer | 0.639 / 0.561 |
-| Autoformer | 0.702 / 0.596 |
-| Stationary | 0.915 / 0.639 |
-| ETSformer | 1.180 / 0.834 |
-| LightTS | 1.375 / 0.877 |
-| Informer | 1.199 / 0.809 |
-| Reformer | 1.249 / 0.833 |
-
-
-#### ETTh2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.367 / 0.389 |
-| Time-LLM | 0.370 / 0.394 |
-| GPT4TS | 0.397 / 0.421 |
-| DLinear | 0.605 / 0.538 |
-| PatchTST | 0.415 / 0.431 |
-| TimesNet | 0.479 / 0.465 |
-| FEDformer | 0.466 / 0.475 |
-| Autoformer | 0.488 / 0.499 |
-| Stationary | 0.462 / 0.455 |
-| ETSformer | 0.894 / 0.713 |
-| LightTS | 2.655 / 1.160 |
-| Informer | 3.872 / 1.513 |
-| Reformer | 3.485 / 1.486 |
-
-
-#### ETTm1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.402 / 0.424 |
-| Time-LLM | 0.404 / 0.427 |
-| GPT4TS | 0.464 / 0.441 |
-| DLinear | 0.411 / 0.429 |
-| PatchTST | 0.501 / 0.466 |
-| TimesNet | 0.677 / 0.537 |
-| FEDformer | 0.722 / 0.605 |
-| Autoformer | 0.802 / 0.628 |
-| Stationary | 0.797 / 0.578 |
-| ETSformer | 0.980 / 0.714 |
-| LightTS | 0.971 / 0.705 |
-| Informer | 1.192 / 0.821 |
-| Reformer | 1.426 / 0.856 |
-
-
-#### ETTm2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.274 / 0.319 |
-| Time-LLM | 0.277 / 0.323 |
-| GPT4TS | 0.293 / 0.335 |
-| DLinear | 0.316 / 0.368 |
-| PatchTST | 0.296 / 0.343 |
-| TimesNet | 0.320 / 0.353 |
-| FEDformer | 0.463 / 0.488 |
-| Autoformer | 1.342 / 0.930 |
-| Stationary | 0.332 / 0.366 |
-| ETSformer | 0.447 / 0.487 |
-| LightTS | 0.987 / 0.756 |
-| Informer | 3.370 / 1.440 |
-| Reformer | 3.978 / 1.587 |
-
-
-#### Weather
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.232 / 0.270 |
-| Time-LLM | 0.234 / 0.273 |
-| GPT4TS | 0.238 / 0.275 |
-| DLinear | 0.241 / 0.283 |
-| PatchTST | 0.242 / 0.279 |
-| TimesNet | 0.279 / 0.301 |
-| FEDformer | 0.284 / 0.324 |
-| Autoformer | 0.300 / 0.342 |
-| Stationary | 0.318 / 0.323 |
-| ETSformer | 0.318 / 0.360 |
-| LightTS | 0.289 / 0.322 |
-| Informer | 0.597 / 0.495 |
-| Reformer | 0.546 / 0.469 |
-
-
-#### Electricity
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.173 / 0.268 |
-| Time-LLM | 0.175 / 0.270 |
-| GPT4TS | 0.176 / 0.269 |
-| DLinear | 0.180 / 0.280 |
-| PatchTST | 0.180 / 0.273 |
-| TimesNet | 0.323 / 0.392 |
-| FEDformer | 0.346 / 0.427 |
-| Autoformer | 0.431 / 0.478 |
-| Stationary | 0.444 / 0.480 |
-| ETSformer | 0.660 / 0.617 |
-| LightTS | 0.441 / 0.489 |
-| Informer | 1.195 / 0.891 |
-| Reformer | 0.965 / 0.768 |
-
-
-#### Traffic
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.426 / 0.303 |
-| Time-LLM | 0.429 / 0.306 |
-| GPT4TS | 0.440 / 0.310 |
-| DLinear | 0.447 / 0.313 |
-| PatchTST | 0.430 / 0.305 |
-| TimesNet | 0.951 / 0.535 |
-| FEDformer | 0.663 / 0.425 |
-| Autoformer | 0.749 / 0.446 |
-| Stationary | 1.453 / 0.815 |
-| ETSformer | 1.914 / 0.936 |
-| LightTS | 1.248 / 0.684 |
-| Informer | 1.534 / 0.811 |
-| Reformer | 1.551 / 0.821 |
-
-
-#### Source-reported ranking summary
-
-The following footer is transcribed from the original table. See [source notes](source-notes.md) for the counting convention and known source inconsistencies.
-
-| Model | Reported count |
-| --- | ---: |
-| RDTU | 14 |
-| Time-LLM | 0 |
-| GPT4TS | 0 |
-| DLinear | 0 |
-| PatchTST | 0 |
-| TimesNet | 0 |
-| FEDformer | 0 |
-| Autoformer | 0 |
-| Stationary | 0 |
-| ETSformer | 0 |
-| LightTS | 0 |
-| Informer | 0 |
-| Reformer | 0 |
-
+[Original LaTeX table PDF](../assets/tables/s03.pdf)
 
 <a id="tab-zero-shot-forecasting-brief"></a>
 
@@ -393,122 +68,11 @@ The following footer is transcribed from the original table. See [source notes](
 
 **Zero-shot ETT transfer: horizon averages.** Lower values are better. Cells retain the numerical precision of the manuscript.
 
-Each cell is **MSE / MAE**. `Avg` denotes the source-reported average over horizons. A single `/` or `--` indicates that both metrics are unavailable in the source.
-
 [Download all values (CSV)](../data/zero-shot-forecasting-brief-summary.csv).
 
+[![Zero-shot ETT transfer: horizon averages](../assets/tables/s04.png)](../assets/tables/s04.pdf)
 
-#### ETTh1 → ETTh2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.344 / 0.379 |
-| Time-LLM | 0.353 / 0.387 |
-| LLMTime | 0.992 / 0.708 |
-| GPT4TS | 0.406 / 0.422 |
-| DLinear | 0.493 / 0.488 |
-| PatchTST | 0.380 / 0.405 |
-| TimesNet | 0.421 / 0.431 |
-| Autoformer | 0.582 / 0.548 |
-
-
-#### ETTh1 → ETTm2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.266 / 0.333 |
-| Time-LLM | 0.273 / 0.340 |
-| LLMTime | 1.867 / 0.869 |
-| GPT4TS | 0.325 / 0.363 |
-| DLinear | 0.415 / 0.452 |
-| PatchTST | 0.314 / 0.360 |
-| TimesNet | 0.327 / 0.361 |
-| Autoformer | 0.457 / 0.483 |
-
-
-#### ETTh2 → ETTh1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.480 / 0.471 |
-| Time-LLM | 0.479 / 0.474 |
-| LLMTime | 1.961 / 0.981 |
-| GPT4TS | 0.757 / 0.578 |
-| DLinear | 0.703 / 0.574 |
-| PatchTST | 0.565 / 0.513 |
-| TimesNet | 0.865 / 0.621 |
-| Autoformer | 0.757 / 0.608 |
-
-
-#### ETTh2 → ETTm2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.268 / 0.329 |
-| Time-LLM | 0.272 / 0.341 |
-| LLMTime | 1.867 / 0.869 |
-| GPT4TS | 0.335 / 0.370 |
-| DLinear | 0.328 / 0.386 |
-| PatchTST | 0.325 / 0.365 |
-| TimesNet | 0.342 / 0.376 |
-| Autoformer | 0.366 / 0.411 |
-
-
-#### ETTm1 → ETTh2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.378 / 0.408 |
-| Time-LLM | 0.381 / 0.412 |
-| LLMTime | 0.992 / 0.708 |
-| GPT4TS | 0.433 / 0.439 |
-| DLinear | 0.464 / 0.475 |
-| PatchTST | 0.439 / 0.438 |
-| TimesNet | 0.457 / 0.454 |
-| Autoformer | 0.470 / 0.479 |
-
-
-#### ETTm1 → ETTm2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.261 / 0.316 |
-| Time-LLM | 0.268 / 0.320 |
-| LLMTime | 1.867 / 0.869 |
-| GPT4TS | 0.313 / 0.348 |
-| DLinear | 0.335 / 0.389 |
-| PatchTST | 0.296 / 0.334 |
-| TimesNet | 0.322 / 0.354 |
-| Autoformer | 0.469 / 0.484 |
-
-
-#### ETTm2 → ETTh2
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.351 / 0.395 |
-| Time-LLM | 0.354 / 0.400 |
-| LLMTime | 0.992 / 0.708 |
-| GPT4TS | 0.435 / 0.443 |
-| DLinear | 0.455 / 0.471 |
-| PatchTST | 0.409 / 0.425 |
-| TimesNet | 0.435 / 0.443 |
-| Autoformer | 0.423 / 0.439 |
-
-
-#### ETTm2 → ETTm1
-
-| Model | Avg |
-| --- | ---: |
-| **RDTU** | 0.412 / 0.434 |
-| Time-LLM | 0.414 / 0.438 |
-| LLMTime | 1.933 / 0.984 |
-| GPT4TS | 0.769 / 0.567 |
-| DLinear | 0.649 / 0.537 |
-| PatchTST | 0.568 / 0.492 |
-| TimesNet | 0.769 / 0.567 |
-| Autoformer | 0.755 / 0.591 |
-
+[Original LaTeX table PDF](../assets/tables/s04.pdf)
 
 ## Few-shot Forecasting
 
@@ -581,18 +145,11 @@ In this section, we perform comprehensive ablation studies to dissect the effect
 
 Ablation study of different reward components in the RDFR training stage. Improvements are computed relative to Qwen2.5-Instruct-STIT.
 
-| Method | MSE ↓ | MAE ↓ |
-| --- | ---: | ---: |
-| Qwen2.5-Instruct (Zero-shot) | -- | -- |
-| Qwen2.5-Instruct-STIT | 0.403 | 0.428 |
-| + R_len | 0.401 (-0.50%) | 0.425 (-0.70%) |
-| + R_fmt | 0.395 (-1.99%) | 0.419 (-2.10%) |
-| + R_acc | 0.367 (-8.93%) | 0.398 (-7.01%) |
-| + R_len + R_fmt | 0.388 (-3.72%) | 0.412 (-3.74%) |
-| RDTU (R_total) | 0.351 (-12.90%) | 0.382 (-10.75%) |
+[![Ablation study of different reward components in the RDFR training stage](../assets/tables/s05.png)](../assets/tables/s05.pdf)
+
+[Original LaTeX table PDF](../assets/tables/s05.pdf)
 
 [Download table (CSV)](../data/ablation_02.csv).
-
 
 <a id="fig-ablation_01"></a>
 

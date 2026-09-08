@@ -1,0 +1,90 @@
+\begin{table*}[t]
+\centering
+\begingroup
+
+% Local colors and ranking styles
+\definecolor{fzBest}{HTML}{B13A3A}
+\definecolor{fzSecond}{HTML}{326A9D}
+\renewcommand{\boldres}[1]{\textcolor{fzBest}{\textbf{#1}}}
+\renewcommand{\secondres}[1]{\textcolor{fzSecond}{\underline{#1}}}
+
+% Spacing and rule weights
+\setlength{\tabcolsep}{4pt}
+\setlength{\heavyrulewidth}{0.7pt}
+\setlength{\lightrulewidth}{0.35pt}
+\renewcommand{\arraystretch}{1.12}
+
+\caption{Few-shot and zero-shot forecasting results, averaged over prediction horizons.
+\boldres{Bold red}: the best; \secondres{Blue}: the second best.}
+\label{tab:few-zero-shot-combined}
+\label{tab:few-shot-forecasting-10per-brief}
+\label{tab:zero-shot-forecasting-brief}
+
+\small
+\vspace{-9pt}
+
+% (a) Few-shot forecasting
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
+\noindent\strut\textbf{(a) Few-shot}\hfill
+\textcolor{black!65}{10\% training data}\par
+\vspace{4pt}
+
+\centering
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+\textbf{Dataset}
+  & \textbf{RDTU}
+  & \textbf{Time-LLM}
+  & \textbf{GPT4TS} \\
+\midrule
+ETTh1       & \boldres{0.551} & \secondres{0.556} & 0.590 \\
+ETTh2       & \boldres{0.367} & \secondres{0.370} & 0.397 \\
+ETTm1       & \boldres{0.402} & \secondres{0.404} & 0.464 \\
+ETTm2       & \boldres{0.274} & \secondres{0.277} & 0.293 \\
+\addlinespace[2pt]
+Weather     & \boldres{0.232} & \secondres{0.234} & 0.238 \\
+Electricity & \boldres{0.173} & \secondres{0.175} & 0.176 \\
+Traffic     & \boldres{0.426} & \secondres{0.429} & 0.440 \\
+\bottomrule
+\end{tabular*}
+\end{minipage}%
+\hfill
+% (b) Zero-shot forecasting
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
+\noindent\strut\textbf{(b) Zero-shot}\hfill
+\textcolor{black!65}{ETT transfer}\par
+\vspace{4pt}
+
+\centering
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+\textbf{Source $\to$ Target}
+  & \textbf{RDTU}
+  & \textbf{Time-LLM}
+  & \textbf{LLMTime} \\
+\midrule
+ETTh1 $\to$ ETTh2
+  & \boldres{0.344} & \secondres{0.353} & 0.992 \\
+ETTh1 $\to$ ETTm2
+  & \boldres{0.266} & \secondres{0.273} & 1.867 \\
+ETTh2 $\to$ ETTh1
+  & \secondres{0.480} & \boldres{0.479} & 1.961 \\
+ETTh2 $\to$ ETTm2
+  & \boldres{0.268} & \secondres{0.272} & 1.867 \\
+\addlinespace[2pt]
+ETTm1 $\to$ ETTh2
+  & \boldres{0.378} & \secondres{0.381} & 0.992 \\
+ETTm1 $\to$ ETTm2
+  & \boldres{0.261} & \secondres{0.268} & 1.867 \\
+ETTm2 $\to$ ETTh2
+  & \boldres{0.351} & \secondres{0.354} & 0.992 \\
+\bottomrule
+\end{tabular*}
+\end{minipage}
+
+\endgroup
+
+\vspace{-12pt}
+\end{table*}

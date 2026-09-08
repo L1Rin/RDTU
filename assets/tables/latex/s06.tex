@@ -1,0 +1,21 @@
+\begin{table}[h]
+\centering
+\caption{Training settings and resource usage on different datasets.}
+\label{tab:training_resource}
+\resizebox{0.75\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Dataset} & \textbf{Stage} & \textbf{Training Size} & \textbf{Epochs} & \textbf{Time (Hours)} & \textbf{Peak VRAM per GPU} \\
+\midrule
+ETTh1       & STIT / RDFR & 8,545 / 425    & 15 / 3 & $\sim$2.5 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+ETTh2       & STIT / RDFR & 8,545 / 425    & 15 / 3 & $\sim$2.5 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+ETTm1       & STIT / RDFR & 34,465 / 1,713 & 5 / 2  & $\sim$4.3 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+ETTm2       & STIT / RDFR & 34,465 / 1,713 & 5 / 2  & $\sim$4.3 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+Electricity & STIT / RDFR & 18,317 / 911   & 8 / 3  & $\sim$3.7 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+Traffic     & STIT / RDFR & 12,185 / 606   & 10 / 3 & $\sim$3.0 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+Weather     & STIT / RDFR & 36,792 / 1,830 & 4 / 2  & $\sim$3.7 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{-3mm}
+\end{table}

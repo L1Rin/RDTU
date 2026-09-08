@@ -1,0 +1,156 @@
+\begin{table*}[htbp]
+\caption{Average long-term forecasting results on the benchmark datasets.
+We followed the same setting in DMMV~\citep{shen2025dmmv}.
+% Lower MSE and MAE indicate better performance.
+We set the forecasting horizons $H \in \{24, 36, 48, 60\}$ for Illness
+and $\{96, 192, 336, 720\}$ for the others.
+{\boldres{Red}}: the best, \secondres{Blue}: the second best.}
+\label{tab:long-term-forecasting-brief}
+
+\vspace{-5pt}
+
+\centering
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{cc|cc|cc|cc|cc|cc|cc|cc|cc}
+\toprule
+\textbf{View} & &
+\multicolumn{6}{c|}{\textbf{Language}} &
+\multicolumn{4}{c|}{\textbf{Multi-Modal}} &
+\multicolumn{2}{c|}{\textbf{Visual}} &
+\multicolumn{4}{c}{\textbf{Numerical}} \\
+\cmidrule(lr){3-8}
+\cmidrule(lr){9-12}
+\cmidrule(lr){13-14}
+\cmidrule(lr){15-18}
+
+\multicolumn{2}{c|}{\textbf{Methods}} &
+\multicolumn{2}{c|}{\method{} (\textbf{Ours})} &
+\multicolumn{2}{c|}{GPT4TS} &
+\multicolumn{2}{c|}{Time-LLM} &
+\multicolumn{2}{c|}{DMMV-A} &
+\multicolumn{2}{c|}{Time-VLM} &
+\multicolumn{2}{c|}{VisionTS} &
+\multicolumn{2}{c|}{PatchTST} &
+\multicolumn{2}{c}{TimesNet} \\
+\cmidrule(lr){3-4}
+\cmidrule(lr){5-6}
+\cmidrule(lr){7-8}
+\cmidrule(lr){9-10}
+\cmidrule(lr){11-12}
+\cmidrule(lr){13-14}
+\cmidrule(lr){15-16}
+\cmidrule(lr){17-18}
+
+\textbf{Metric} & &
+MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE &
+MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE \\
+\midrule
+\midrule
+
+\textbf{ETTh1} & &
+\secondres{0.399} & \boldres{0.413} &
+0.418 & 0.421 &
+0.418 & 0.432 &
+\boldres{0.395} & \secondres{0.414} &
+0.405 & 0.420 &
+0.407 & 0.419 &
+0.413 & 0.431 &
+0.458 & 0.450 \\
+\hline
+
+\textbf{ETTh2} & &
+\secondres{0.337} & \boldres{0.377} &
+0.354 & 0.389 &
+0.361 & 0.396 &
+\secondres{0.337} & 0.388 &
+0.341 & 0.391 &
+0.351 & 0.386 &
+\boldres{0.330} & \secondres{0.379} &
+0.414 & 0.427 \\
+\hline
+
+\textbf{ETTm1} & &
+\boldres{0.340} & \boldres{0.367} &
+0.363 & 0.378 &
+0.356 & 0.377 &
+\boldres{0.340} & \secondres{0.371} &
+0.351 & 0.376 &
+\secondres{0.344} & 0.373 &
+0.351 & 0.381 &
+0.400 & 0.406 \\
+\hline
+
+\textbf{ETTm2} & &
+\secondres{0.250} & \boldres{0.309} &
+0.254 & \secondres{0.311} &
+0.261 & 0.316 &
+0.256 & 0.317 &
+\boldres{0.248} & \secondres{0.311} &
+0.267 & 0.327 &
+0.255 & 0.315 &
+0.291 & 0.333 \\
+\hline
+
+\textbf{Illness} & &
+1.559 & 0.812 &
+1.871 & 0.852 &
+2.018 & 0.894 &
+\boldres{1.407} & \boldres{0.771} &
+-- & -- &
+1.482 & \secondres{0.796} &
+\secondres{1.443} & 0.798 &
+2.139 & 0.931 \\
+\hline
+
+\textbf{Electricity} & &
+\boldres{0.156} & \boldres{0.246} &
+0.170 & 0.263 &
+0.165 & 0.259 &
+\secondres{0.158} & \secondres{0.248} &
+0.172 & 0.272 &
+0.159 & 0.250 &
+0.162 & 0.253 &
+0.193 & 0.295 \\
+\hline
+
+\textbf{Weather} & &
+\secondres{0.221} & \boldres{0.251} &
+0.227 & \secondres{0.255} &
+0.244 & 0.270 &
+\boldres{0.217} & 0.256 &
+0.224 & 0.263 &
+0.225 & 0.258 &
+0.226 & 0.264 &
+0.259 & 0.287 \\
+\hline
+
+\textbf{Traffic} & &
+\secondres{0.389} & \boldres{0.255} &
+0.421 & 0.274 &
+0.422 & 0.281 &
+\secondres{0.389} & 0.257 &
+0.419 & 0.304 &
+\boldres{0.386} & \secondres{0.256} &
+0.391 & 0.264 &
+0.620 & 0.336 \\
+\bottomrule
+
+% Each tied best result counts as one win.
+% Missing values are excluded from ranking.
+\multicolumn{2}{l|}{\textbf{\# Wins}} &
+\multicolumn{2}{c|}{\boldres{9}} &
+\multicolumn{2}{c|}{0} &
+\multicolumn{2}{c|}{0} &
+\multicolumn{2}{c|}{\secondres{5}} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c}{0} \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{-2pt}
+
+\end{table*}

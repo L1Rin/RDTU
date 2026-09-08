@@ -1,0 +1,20 @@
+\begin{table}[h]
+\centering
+\caption{Statistical significance analysis of the RDFR stage on ETTh1 with $H=96$.
+We report mean and standard deviation over three independent runs.
+$p$-values are computed using a paired two-sided $t$-test between STIT and RDTU.}
+\label{tab:significance_rdfr}
+\centering
+\resizebox{0.75\textwidth}{!}{
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ & \textbf{MSE Gain} & \textbf{MAE Gain} \\
+\midrule
+Qwen2.5-Instruct-STIT & $0.403 \pm 0.002$ & $0.428 \pm 0.002$ & -- & -- \\
+RDTU w/ RDFR          & $\textbf{0.351} \pm \textbf{0.002}$ & $\textbf{0.382} \pm \textbf{0.002}$ & 12.90\% & 10.75\% \\
+\midrule
+$p$-value             & $0.004$ & $0.006$ & -- & -- \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

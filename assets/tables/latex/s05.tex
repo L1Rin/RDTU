@@ -1,0 +1,43 @@
+\begin{table}[t]
+    % \vspace{-2mm}
+    \centering
+    \small
+    \caption{Ablation study of different reward components in the RDFR training stage. Improvements are computed relative to Qwen2.5-Instruct-STIT.}
+    \label{tab:ablation_02}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.05}
+
+    \newcommand{\imp}[1]{\hspace{1.5mm}{\scriptsize\textcolor{red}{(#1)}}}
+    \newcommand{\bimp}[1]{\hspace{1.5mm}{\scriptsize\textbf{\textcolor{red}{(#1)}}}}
+
+    \begin{tabular*}{0.65\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+        \toprule
+        \textbf{Method} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ \\
+        \midrule
+        Qwen2.5-Instruct (Zero-shot) & -- & -- \\
+        Qwen2.5-Instruct-STIT & 0.403 & 0.428 \\
+        \midrule
+        \quad + $R_{len}$
+        & 0.401 \imp{-0.50\%}
+        & 0.425 \imp{-0.70\%} \\
+
+        \quad + $R_{fmt}$
+        & 0.395 \imp{-1.99\%}
+        & 0.419 \imp{-2.10\%} \\
+
+        \quad + $R_{acc}$
+        & 0.367 \imp{-8.93\%}
+        & 0.398 \imp{-7.01\%} \\
+
+        \quad + $R_{len} + R_{fmt}$
+        & 0.388 \imp{-3.72\%}
+        & 0.412 \imp{-3.74\%} \\
+
+        \midrule
+        \textbf{RDTU ($R_{total}$)}
+        & \textbf{0.351} \bimp{-12.90\%}
+        & \textbf{0.382} \bimp{-10.75\%} \\
+        \bottomrule
+    \end{tabular*}
+    \vspace{-0.8em}
+\end{table}

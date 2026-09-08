@@ -1,0 +1,237 @@
+[
+  {
+    "key": "s01",
+    "number": 1,
+    "label": "tab:long-term-forecasting-brief",
+    "title": "Long-term forecasting: horizon averages",
+    "version": "Full manuscript",
+    "source": "tables/long-term-forecasting-brief-new.tex",
+    "csv": "long-term-forecasting-brief-new",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s02",
+    "number": 2,
+    "label": "tab:short-term-forecasting-brief",
+    "title": "M4 forecasting: weighted averages",
+    "version": "Full manuscript",
+    "source": "tables/short-term-forecasting-brief.tex",
+    "csv": "short-term-forecasting-brief",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s03",
+    "number": 3,
+    "label": "tab:few-shot-forecasting-10per-brief",
+    "title": "Few-shot forecasting: 10% horizon averages",
+    "version": "Full manuscript",
+    "source": "tables/few-shot-forecasting-part1 (1).tex",
+    "csv": "few-shot-forecasting-part1-summary",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s04",
+    "number": 4,
+    "label": "tab:zero-shot-forecasting-brief",
+    "title": "Zero-shot ETT transfer: horizon averages",
+    "version": "Full manuscript",
+    "source": "tables/zero-shot-forecasting-brief (1).tex",
+    "csv": "zero-shot-forecasting-brief-summary",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s05",
+    "number": 5,
+    "label": "tab:ablation_02",
+    "title": "Ablation study of different reward components in the RDFR training stage. Improvements are computed relative to Qwen2.5-Instruct-STIT.",
+    "version": "Full manuscript",
+    "source": "tables/ablation02.tex",
+    "csv": "ablation_02",
+    "width": "5.5in",
+    "export_adjustments": [
+      "Expand the original tabular* width to fit its contents."
+    ]
+  },
+  {
+    "key": "s06",
+    "number": 6,
+    "label": "tab:training_resource",
+    "title": "Training settings and resource usage on different datasets.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix A.tex",
+    "csv": "training_resource",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s07",
+    "number": 7,
+    "label": "tab:dataset",
+    "title": "Dataset statistics",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix A.tex",
+    "csv": "dataset",
+    "width": "5.5in",
+    "export_adjustments": [
+      "Correct the short-term group row span from seven to the six supplied rows."
+    ]
+  },
+  {
+    "key": "s08",
+    "number": 8,
+    "label": "tab:significance_main",
+    "title": "Statistical significance analysis on representative long-term forecasting settings with H=96. We report mean and standard deviation over three independent runs with different random seeds. p-values are computed using a paired two-sided t-test between RDTU and Time-LLM over matched dataset-seed pairs.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix A.tex",
+    "csv": "significance_main",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s09",
+    "number": 9,
+    "label": "tab:significance_rdfr",
+    "title": "Statistical significance analysis of the RDFR stage on ETTh1 with H=96. We report mean and standard deviation over three independent runs. p-values are computed using a paired two-sided t-test between STIT and RDTU.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix A.tex",
+    "csv": "significance_rdfr",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s10",
+    "number": 10,
+    "label": "tab:long-term-forecasting-full",
+    "title": "Full long-term forecasting results",
+    "version": "Full manuscript",
+    "source": "tables/long-term-forecasting-full-new.tex",
+    "csv": "long-term-forecasting-full-new",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s11",
+    "number": 11,
+    "label": "tab:long-term-forecasting-additional",
+    "title": "Long-term forecasting: additional baselines",
+    "version": "Full manuscript",
+    "source": "tables/long-term-forecasting-additional.tex",
+    "csv": "long-term-forecasting-additional",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s12",
+    "number": 12,
+    "label": "tab:short-term-forecasting",
+    "title": "Full M4 short-term forecasting results",
+    "version": "Full manuscript",
+    "source": "tables/short-term-forecasting.tex",
+    "csv": "short-term-forecasting",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s13",
+    "number": 13,
+    "label": "tab:few-shot-forecasting-10per-full",
+    "title": "Full few-shot forecasting results: 10% training data",
+    "version": "Full manuscript",
+    "source": "tables/few-shot-forecasting-part1-full.tex",
+    "csv": "few-shot-forecasting-part1-full",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s14",
+    "number": 14,
+    "label": "tab:few-shot-forecasting-5per-full",
+    "title": "Full few-shot forecasting results: 5% training data",
+    "version": "Full manuscript",
+    "source": "tables/few-shot-forecasting-part2-full-new.tex",
+    "csv": "few-shot-forecasting-part2-full-new",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s15",
+    "number": 15,
+    "label": "tab:zero-shot-forecasting",
+    "title": "Full zero-shot ETT transfer results",
+    "version": "Full manuscript",
+    "source": "tables/zero-shot-forecasting.tex",
+    "csv": "zero-shot-forecasting",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s16",
+    "number": 16,
+    "label": "tab:length_generalization",
+    "title": "Zero-shot length generalization of RDTU. Models trained only up to H=336 under the 5% data regime are directly evaluated on H=720 without additional training, and are compared with RDTU trained on H=720 using 10% data.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix C.tex",
+    "csv": "length_generalization",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s17",
+    "number": 17,
+    "label": "tab:cross_domain_zero_shot",
+    "title": "Cross-domain zero-shot generalization results. All zero-shot models are trained on ETTh1 and directly evaluated on target datasets from different domains without target-domain training. Lower MSE and MAE indicate better performance.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix C.tex",
+    "csv": "cross_domain_zero_shot",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "s18",
+    "number": 18,
+    "label": "tab:rdfr_data_construction_ablation",
+    "title": "Ablation study on RDFR training data construction on ETTh1 with prediction horizon H=96. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.",
+    "version": "Full manuscript",
+    "source": "sections/appendix/appendix D.tex",
+    "csv": "rdfr_data_construction_ablation",
+    "width": "5.5in",
+    "export_adjustments": []
+  },
+  {
+    "key": "icassp01",
+    "number": 1,
+    "label": "tab:long-term-forecasting-brief",
+    "title": "ICASSP long-term forecasting summary",
+    "version": "ICASSP final",
+    "source": "tables/long-term-new.tex",
+    "csv": null,
+    "width": "7.1in",
+    "export_adjustments": []
+  },
+  {
+    "key": "icassp02",
+    "number": 2,
+    "label": "tab:few-zero-shot-combined",
+    "title": "ICASSP compact few-shot and zero-shot comparison",
+    "version": "ICASSP final",
+    "source": "tables/few-zero shot.tex",
+    "csv": null,
+    "width": "7.1in",
+    "export_adjustments": []
+  },
+  {
+    "key": "icassp03",
+    "number": 3,
+    "label": "tab:ablation_02",
+    "title": "ICASSP reward-component ablation",
+    "version": "ICASSP final",
+    "source": "tables/ablation02.tex",
+    "csv": null,
+    "width": "3.4in",
+    "export_adjustments": []
+  }
+]

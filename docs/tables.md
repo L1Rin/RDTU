@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Reading guide](index.md)
 
-All 18 tables from the active scientific content of the full manuscript are available below. Table numbers match the supplementary PDF.
+All 18 tables from the active scientific content of the full manuscript are available below. The S-numbers match the supplementary reading PDF; each linked image retains the original manuscript table number. [Original table PDF exports](../assets/tables/README.md).
 
 | Table | Content | Read |
 | :--- | :--- | :--- |
@@ -12,7 +12,7 @@ All 18 tables from the active scientific content of the full manuscript are avai
 | S4 | Zero-shot ETT transfer: horizon averages | [Open](04-experiments.md#tab-zero-shot-forecasting-brief) |
 | S5 | Ablation study of different reward components in the RDFR training stage | [Open](04-experiments.md#tab-ablation_02) |
 | S6 | Training settings and resource usage on different datasets. | [Open](A-experimental-details.md#tab-training_resource) |
-| S7 | Dataset statistics are from \citepwu2022timesnet | [Open](A-experimental-details.md#tab-dataset) |
+| S7 | Dataset statistics | [Open](A-experimental-details.md#tab-dataset) |
 | S8 | Statistical significance analysis on representative long-term forecasting settings with H=96 | [Open](A-experimental-details.md#tab-significance_main) |
 | S9 | Statistical significance analysis of the RDFR stage on ETTh1 with H=96 | [Open](A-experimental-details.md#tab-significance_rdfr) |
 | S10 | Full long-term forecasting results | [Open](B-forecasting-results.md#tab-long-term-forecasting-full) |

@@ -1,0 +1,1423 @@
+\documentclass[10pt]{article}
+\usepackage[paperwidth=9in,paperheight=20in,margin=0.6in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,booktabs,multirow,xspace,threeparttable,caption}
+\usepackage[table]{xcolor}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\method}{\textsc{RDTU}\xspace}
+\newcommand{\boldres}[1]{{\textbf{\textcolor{red}{#1}}}}
+\newcommand{\secondres}[1]{{\underline{\textcolor{blue}{#1}}}}
+\newcommand{\thirdres}[1]{{\textit{\textcolor{olive}{#1}}}}
+\newcommand{\revision}[1]{#1}
+\newcommand{\rot}[1]{\multirow{5}{*}{\rotatebox{90}{\textbf{#1}}}}
+\newcommand{\rotfour}[1]{\multirow{4}{*}{\rotatebox{90}{\textbf{#1}}}}
+\newcommand{\shortautoref}[1]{Appendix~\ref{#1}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\makeatletter
+\newlabel{appx:long-short-term}{{B}{1}{}{}{}}
+\newlabel{appx:few-zero-shot}{{C}{1}{}{}{}}
+\makeatother
+\begin{document}
+
+
+\clearpage\begingroup
+
+\setcounter{table}{0}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\caption{Average long-term forecasting results on the benchmark datasets. We followed the same setting in DMMV~\citep{shen2025dmmv}. Lower MSE and MAE indicate better performance. We set the forecasting horizons $H \in \{24, 36, 48, 60\}$ for Illness and $\{96, 192, 336, 720\}$ for the others. {\boldres{Red}}: the best, \secondres{Blue}: the second best. More results are in \shortautoref{appx:long-short-term}.}
+\label{tab:long-term-forecasting-brief}
+
+\centering
+\renewcommand{\arraystretch}{1.4}
+\setlength{\tabcolsep}{3pt}
+
+\resizebox{\textwidth}{!}{\begin{tabular}{cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+\toprule
+\textbf{View} & & \multicolumn{6}{c|}{\textbf{Language}} & \multicolumn{4}{c|}{\textbf{Multi-Modal}} & \multicolumn{2}{c|}{\textbf{Visual}} & \multicolumn{10}{c}{\textbf{Numerical}} \\
+\cmidrule(lr){3-8} \cmidrule(lr){9-12} \cmidrule(lr){13-14} \cmidrule(lr){15-24}
+
+\multicolumn{2}{c|}{\multirow{2}{*}{\textbf{Methods}}} & \multicolumn{2}{c|}{\method{}} & \multicolumn{2}{c|}{GPT4TS} & \multicolumn{2}{c|}{Time-LLM} & \multicolumn{2}{c|}{DMMV-A} & \multicolumn{2}{c|}{Time-VLM} & \multicolumn{2}{c|}{VisionTS} & \multicolumn{2}{c|}{PatchTST} & \multicolumn{2}{c|}{CycleNet} & \multicolumn{2}{c|}{TimesNet} & \multicolumn{2}{c|}{DLinear} & \multicolumn{2}{c}{FEDformer} \\
+
+& & \multicolumn{2}{c|}{\scalebox{0.9}{(\textbf{Ours})}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{zhou2023one}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{jin2024timellm}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{shen2025dmmv}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{zhong2025time}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{chen2024visionts}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{nie2022time}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{lin2024cyclenet}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{wu2022timesnet}}} & \multicolumn{2}{c|}{\scalebox{0.9}{\citeyearpar{zeng2023transformers}}} & \multicolumn{2}{c}{\scalebox{0.9}{\citeyearpar{zhou2022fedformer}}} \\
+
+\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12} \cmidrule(lr){13-14} \cmidrule(lr){15-16} \cmidrule(lr){17-18} \cmidrule(lr){19-20} \cmidrule(lr){21-22} \cmidrule(lr){23-24}
+
+\textbf{Metric} & & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE \\
+\midrule
+\midrule
+
+\textbf{ETTh1}
+& & \secondres{0.399} & \boldres{0.413} & 0.418 & 0.421 & 0.418 & 0.432 & \boldres{0.395} & \secondres{0.414} & 0.405 & 0.420 & 0.407 & 0.419 & 0.413 & 0.431 & 0.415 & 0.426 & 0.458 & 0.450 & 0.423 & 0.430 & 0.440 & 0.460 \\
+\hline
+
+\textbf{ETTh2}
+& & \secondres{0.337} & \boldres{0.377} & 0.354 & 0.389 & 0.361 & 0.396 & \secondres{0.337} & 0.388 & 0.341 & 0.391 & 0.351 & 0.386 & \boldres{0.330} & \secondres{0.379} & 0.355 & 0.398 & 0.414 & 0.427 & 0.431 & 0.447 & 0.437 & 0.449 \\
+\hline
+
+\textbf{ETTm1}
+& & \boldres{0.340} & \boldres{0.367} & 0.363 & 0.378 & 0.356 & 0.377 & \boldres{0.340} & \secondres{0.371} & 0.351 & 0.376 & \secondres{0.344} & 0.373 & 0.351 & 0.381 & 0.355 & 0.379 & 0.400 & 0.406 & 0.357 & 0.379 & 0.448 & 0.452 \\
+\hline
+
+\textbf{ETTm2}
+& & \secondres{0.250} & \boldres{0.309} & 0.254 & \secondres{0.311} & 0.261 & 0.316 & 0.256 & 0.317 & \boldres{0.248} & \secondres{0.311} & 0.267 & 0.327 & 0.255 & 0.315 & 0.251 & \boldres{0.309} & 0.291 & 0.333 & 0.267 & 0.332 & 0.305 & 0.349 \\
+\hline
+
+\textbf{Illness}
+& & 1.559 & 0.812 & 1.871 & 0.852 & 2.018 & 0.894 & \boldres{1.407} & \boldres{0.771} & -- & -- & 1.482 & \secondres{0.796} & \secondres{1.443} & 0.798 & 2.187 & 0.992 & 2.139 & 0.931 & 2.169 & 1.041 & 2.847 & 1.144 \\
+\hline
+
+\textbf{Electricity}
+& & \boldres{0.156} & \boldres{0.246} & 0.170 & 0.263 & 0.165 & 0.259 & \secondres{0.158} & \secondres{0.248} & 0.172 & 0.272 & 0.159 & 0.250 & 0.162 & 0.253 & \secondres{0.158} & 0.250 & 0.193 & 0.295 & 0.166 & 0.264 & 0.214 & 0.327 \\
+\hline
+
+\textbf{Weather}
+& & \secondres{0.221} & \boldres{0.251} & 0.227 & \secondres{0.255} & 0.244 & 0.270 & \boldres{0.217} & 0.256 & 0.224 & 0.263 & 0.225 & 0.258 & 0.226 & 0.264 & 0.242 & 0.278 & 0.259 & 0.287 & 0.249 & 0.300 & 0.309 & 0.360 \\
+\hline
+
+\textbf{Traffic}
+& & \secondres{0.389} & \boldres{0.255} & 0.421 & 0.274 & 0.422 & 0.281 & \secondres{0.389} & 0.257 & 0.419 & 0.304 & \boldres{0.386} & \secondres{0.256} & 0.391 & 0.264 & 0.421 & 0.289 & 0.620 & 0.336 & 0.434 & 0.295 & 0.610 & 0.376 \\
+\bottomrule
+\multicolumn{2}{l|}{\textbf{\# Wins}} & \multicolumn{2}{c|}{\boldres{9}} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c|}{\secondres{5}} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{1} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c}{0} \\
+\bottomrule
+\end{tabular}
+}
+\vspace{-3mm}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{1}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\renewcommand\arraystretch{1.2}
+\caption{Brief short-term time series forecasting results on M4. The forecasting horizons are in [6, 48] and the three rows provided are weighted averaged from all datasets under different sampling intervals. We followed the same setting in \cite{jin2024timellm}.A lower value indicates better performance. \boldres{Red}: the best, \secondres{Blue}: the second best. More results are in \shortautoref{appx:long-short-term}.}
+\vspace{-1mm}
+\label{tab:short-term-forecasting-brief}
+
+\centering
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.65}{
+    \setlength\tabcolsep{2.5pt}
+    \begin{tabular}{cc|ccccccccccccccc}
+    \toprule
+
+    \multicolumn{2}{c|}{\multirow{2}{*}{Methods}}
+    & \multicolumn{1}{c|}{\method{}} &\multicolumn{1}{c|}{Time-LLM}&\multicolumn{1}{c|}{GPT4TS}&\multicolumn{1}{c|}{TimesNet}&\multicolumn{1}{c|}{PatchTST}&\multicolumn{1}{c|}{N-HiTS}&\multicolumn{1}{c|}{N-BEATS}& \multicolumn{1}{c|}{ETSformer}& \multicolumn{1}{c|}{LightTS}& \multicolumn{1}{c|}{DLinear} &\multicolumn{1}{c|}{FEDformer} &\multicolumn{1}{c|}{Stationary} &\multicolumn{1}{c|}{Autoformer}  &\multicolumn{1}{c|}{Informer} &\multicolumn{1}{c}{Reformer} \\
+
+    \multicolumn{2}{c|}{} & \multicolumn{1}{c}{\scalebox{0.99}{(\textbf{Ours})}} &
+    \multicolumn{1}{|c|}{\scalebox{0.99}{\citeyearpar{jin2024timellm}}} &
+    \multicolumn{1}{|c|}{\scalebox{0.99}{\citeyearpar{zhou2023one}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{wu2022timesnet}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{nie2022time}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{challu2023nhits}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{oreshkin2019n}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{woo2022etsformer}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{zhang2022less}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{zeng2023transformers}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{zhou2022fedformer}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{liu2022non}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{wu2021autoformer}}} &
+    \multicolumn{1}{c|}{\scalebox{0.99}{\citeyearpar{zhou2021informer}}} &
+    \multicolumn{1}{c}{\scalebox{0.99}{\citeyearpar{kitaev2020reformer}}} \\
+
+    \midrule
+
+    \multirow{3}{*}{\rotatebox{90}{Average}}
+    &SMAPE &\boldres{11.979}&\secondres{11.983}&12.69 & 12.88&12.059& 12.035& 12.25& 14.718& 13.525& 13.639 &13.16 &12.780 &12.909 &14.086 &18.200 \\
+    &MASE &\secondres{1.599}&\boldres{1.595}& 1.808 & 1.836&1.623 & 1.625 & 1.698 &2.408 &2.111 &2.095 &1.775 &1.756 &1.771  &2.718 &4.223\\
+    &OWA &\boldres{0.859}&\boldres{0.859}&0.94 & 0.955&\secondres{0.869} &\secondres{0.869} &0.896 &1.172 &1.051 &1.051 &0.949 &0.930 &0.939 & 1.230 & 1.775\\
+
+    \bottomrule
+
+    \end{tabular}
+    }
+    \end{small}
+}
+
+\vspace{-5mm}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{2}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\caption{Average few-shot learning results on 10\% training data. \boldres{Red}: the best, \secondres{Blue}: the second best. More results are in \shortautoref{appx:few-zero-shot}.}
+\vspace{-2mm}
+\label{tab:few-shot-forecasting-10per-brief}
+
+\centering
+
+\renewcommand{\arraystretch}{1.3}
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method{}}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c|}{FEDformer}&\multicolumn{2}{c|}{Autoformer}&\multicolumn{2}{c|}{Stationary}&\multicolumn{2}{c|}{ETSformer}&\multicolumn{2}{c|}{LightTS}&\multicolumn{2}{c|}{Informer}&\multicolumn{2}{c}{Reformer} \\
+
+    \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{\scalebox{0.99}{(\textbf{Ours})}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{jin2024timellm}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2023one}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zeng2023transformers}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{nie2022time}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{wu2022timesnet}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2022fedformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{wu2021autoformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{liu2022non}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{woo2022etsformer}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhang2022less}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2021informer}}}&\multicolumn{2}{c}{\scalebox{0.99}{\citeyearpar{kitaev2020reformer}}} \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{Metric} & MSE  & MAE & MSE  & MAE & MSE & MAE& MSE & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE\\
+    \midrule
+
+    \multicolumn{2}{c|}{$ETTh1$} &\boldres{0.551} &\boldres{0.513} &\secondres{0.556} &\secondres{0.522} &0.590 &0.525 &0.691 &0.600 &0.633 &0.542 &0.869 &0.628 &0.639 &0.561 &0.702 &0.596 &0.915 &0.639 &1.180 &0.834 &1.375 &0.877 &1.199 &0.809 &1.249 &0.833\\
+    \multicolumn{2}{c|}{$ETTh2$} &\boldres{0.367} &\boldres{0.389} &\secondres{0.370} &\secondres{0.394} &0.397 &0.421 &0.605 &0.538 &0.415 &0.431 &0.479 &0.465 &0.466 &0.475 &0.488 &0.499 &0.462 &0.455 &0.894 &0.713 &2.655 &1.160 &3.872 &1.513 &3.485 &1.486\\
+    \multicolumn{2}{c|}{$ETTm1$} &\boldres{0.402} &\boldres{0.424} &\secondres{0.404} &\secondres{0.427} &0.464 &0.441 &0.411 &0.429 &0.501 &0.466 &0.677 &0.537 &0.722 &0.605 &0.802 &0.628 &0.797 &0.578 &0.980 &0.714 &0.971 &0.705 &1.192 &0.821 &1.426 &0.856\\
+    \multicolumn{2}{c|}{$ETTm2$} &\boldres{0.274} &\boldres{0.319} &\secondres{0.277} &\secondres{0.323} &0.293 &0.335 &0.316 &0.368 &0.296 &0.343 &0.320 &0.353 &0.463 &0.488 &1.342 &0.930 &0.332 &0.366 &0.447 &0.487 &0.987 &0.756 &3.370 &1.440 &3.978 &1.587\\
+    \multicolumn{2}{c|}{\revision{Weather}}  &\boldres{0.232} &\boldres{0.270} &\secondres{0.234} &\secondres{0.273} &0.238 &0.275 &0.241 &0.283 &0.242 &0.279 &0.279 &0.301 &0.284 &0.324 &0.300 &0.342 &0.318 &0.323 &0.318 &0.360 &0.289 &0.322 &0.597 &0.495 &0.546 &0.469 \\
+    \multicolumn{2}{c|}{\revision{Electricity}}  &\boldres{0.173} &\boldres{0.268} &\secondres{0.175} &0.270 &0.176 &\secondres{0.269} &0.180 &0.280 &0.180 &0.273 &0.323 &0.392 &0.346 &0.427 &0.431 &0.478 &0.444 &0.480 &0.660 &0.617 &0.441 &0.489 &1.195 &0.891 &0.965 &0.768 \\
+    \multicolumn{2}{c|}{\revision{Traffic}}  &\boldres{0.426} &\boldres{0.303} &\secondres{0.429} &0.306 &0.440 &0.310 &0.447 &0.313 &0.430 &\secondres{0.305} &0.951 &0.535 &0.663 &0.425 &0.749 &0.446 &1.453 &0.815 &1.914 &0.936 &1.248 &0.684 &1.534 &0.811 &1.551 &0.821 \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{\textbf{\# Wins}}&\multicolumn{2}{c|}{\boldres{14}}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c}{0}\\
+    \bottomrule
+    \end{tabular}
+    \end{small}
+}
+\vspace{-4mm}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{3}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Average zero-shot learning results on ETT datasets. A lower value indicates better performance. \boldres{Red}: the best, \secondres{Blue}: the second best, \thirdres{Green}: the third best. Full results are shown in \shortautoref{appx:few-zero-shot}.}
+\vspace{-1.5mm}
+\label{tab:zero-shot-forecasting-brief}
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.75}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{LLMTime}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c}{Autoformer}\\
+
+    \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{\scalebox{0.99}{(\textbf{Ours})}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{jin2024timellm}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{gruver2023llmtime}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zhou2023one}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{zeng2023transformers}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{nie2022time}}}&\multicolumn{2}{c|}{\scalebox{0.99}{\citeyearpar{wu2022timesnet}}}&\multicolumn{2}{c}{\scalebox{0.99}{\citeyearpar{wu2021autoformer}}} \\
+
+    \midrule
+    \multicolumn{2}{c|}{Metric} & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE& MSE & MAE & MSE & MAE \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTh1$} $\rightarrow$ \rotatebox{0}{$ETTh2$}}
+    & \boldres{0.344} & \boldres{0.379} & \secondres{0.353} & \secondres{0.387} &0.992 &0.708 & 0.406 & 0.422 & 0.493 & 0.488 & \thirdres{0.380} & \thirdres{0.405} & 0.421 & 0.431 & 0.582 & 0.548 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTh1 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & \boldres{0.266} & \boldres{0.333} & \secondres{0.273} & \secondres{0.340} &1.867 &0.869 & 0.325 & 0.363 & 0.415 & 0.452 & \thirdres{0.314} & \thirdres{0.360} & 0.327 & 0.361 & 0.457 & 0.483 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTh2 $} $\rightarrow$ \rotatebox{0}{$ETTh1 $}}
+    & \secondres{0.480} & \boldres{0.471} & \boldres{0.479} & \secondres{0.474} &1.961 &0.981 & 0.757 & 0.578 & 0.703 & 0.574 & \thirdres{0.565} & \thirdres{0.513} & 0.865 & 0.621 & 0.757 & 0.608 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTh2 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & \boldres{0.268} & \boldres{0.329} & \secondres{0.272} & \secondres{0.341} &1.867 &0.869 & 0.335 & 0.370 & 0.328 & 0.386 & \thirdres{0.325} & \thirdres{0.365} & 0.342 & 0.376 & 0.366 & 0.411 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTm1 $} $\rightarrow$ \rotatebox{0}{$ETTh2 $}}
+    & \boldres{0.378} & \boldres{0.408} & \secondres{0.381} & \secondres{0.412} &0.992 &0.708 & \thirdres{0.433} & 0.439 & 0.464 & 0.475 & 0.439 & \thirdres{0.438} & 0.457 & 0.454 & 0.470 & 0.479 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTm1 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & \boldres{0.261} & \boldres{0.316} & \secondres{0.268} & \secondres{0.320} &1.867 &0.869 & 0.313 & 0.348 & 0.335 & 0.389 & \thirdres{0.296} & \thirdres{0.334} & 0.322 & 0.354 & 0.469 & 0.484 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTm2 $} $\rightarrow$ \rotatebox{0}{$ETTh2 $}}
+    & \boldres{0.351} & \boldres{0.395} & \secondres{0.354} & \secondres{0.400} &0.992 &0.708 & 0.435 & 0.443 & 0.455 & 0.471 & \thirdres{0.409} & \thirdres{0.425} & 0.435 & 0.443 & 0.423 & 0.439 \\
+    \midrule
+    \multicolumn{2}{c|}{\rotatebox{0}{$ETTm2 $} $\rightarrow$ \rotatebox{0}{$ETTm1 $}}
+    & \boldres{0.412} & \boldres{0.434} & \secondres{0.414} & \secondres{0.438} &1.933 &0.984 & 0.769 & 0.567 & 0.649 & 0.537 & \thirdres{0.568} & \thirdres{0.492} & 0.769 & 0.567 & 0.755 & 0.591 \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{small}
+}
+\vspace{-5mm}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{4}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+    \small
+    \caption{Ablation study of different reward components in the RDFR training stage. Improvements are computed relative to Qwen2.5-Instruct-STIT.}
+    \label{tab:ablation_02}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.05}
+
+    \newcommand{\imp}[1]{\hspace{1.5mm}{\scriptsize\textcolor{red}{(#1)}}}
+    \newcommand{\bimp}[1]{\hspace{1.5mm}{\scriptsize\textbf{\textcolor{red}{(#1)}}}}
+
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+        \toprule
+        \textbf{Method} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ \\
+        \midrule
+        Qwen2.5-Instruct (Zero-shot) & -- & -- \\
+        Qwen2.5-Instruct-STIT & 0.403 & 0.428 \\
+        \midrule
+        \quad + $R_{len}$
+        & 0.401 \imp{-0.50\%}
+        & 0.425 \imp{-0.70\%} \\
+
+        \quad + $R_{fmt}$
+        & 0.395 \imp{-1.99\%}
+        & 0.419 \imp{-2.10\%} \\
+
+        \quad + $R_{acc}$
+        & 0.367 \imp{-8.93\%}
+        & 0.398 \imp{-7.01\%} \\
+
+        \quad + $R_{len} + R_{fmt}$
+        & 0.388 \imp{-3.72\%}
+        & 0.412 \imp{-3.74\%} \\
+
+        \midrule
+        \textbf{RDTU ($R_{total}$)}
+        & \textbf{0.351} \bimp{-12.90\%}
+        & \textbf{0.382} \bimp{-10.75\%} \\
+        \bottomrule
+    \end{tabular*}
+    \vspace{-0.8em}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{5}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Training settings and resource usage on different datasets.}
+\label{tab:training_resource}
+\resizebox{0.75\textwidth}{!}{\begin{tabular}{lccccc}
+\toprule
+\textbf{Dataset} & \textbf{Stage} & \textbf{Training Size} & \textbf{Epochs} & \textbf{Time (Hours)} & \textbf{Peak VRAM per GPU} \\
+\midrule
+ETTh1       & STIT / RDFR & 8,545 / 425    & 15 / 3 & $\sim$2.5 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+ETTh2       & STIT / RDFR & 8,545 / 425    & 15 / 3 & $\sim$2.5 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+ETTm1       & STIT / RDFR & 34,465 / 1,713 & 5 / 2  & $\sim$4.3 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+ETTm2       & STIT / RDFR & 34,465 / 1,713 & 5 / 2  & $\sim$4.3 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+Electricity & STIT / RDFR & 18,317 / 911   & 8 / 3  & $\sim$3.7 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+Traffic     & STIT / RDFR & 12,185 / 606   & 10 / 3 & $\sim$3.0 / $\sim$0.3 & $\sim$24 GB / $\sim$32 GB \\
+Weather     & STIT / RDFR & 36,792 / 1,830 & 4 / 2  & $\sim$3.7 / $\sim$0.5 & $\sim$24 GB / $\sim$32 GB \\
+\bottomrule
+\end{tabular}}
+\vspace{-3mm}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{6}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\caption{Dataset statistics are from \citep{wu2022timesnet}. The dimension indicates the number of time series (i.e., channels), and the dataset size is organized in (training, validation, testing).}
+  \label{tab:dataset}
+  \centering
+
+    \renewcommand{\arraystretch}{1.5}
+
+  \resizebox{0.95\columnwidth}{!}{
+    \begin{threeparttable}
+      \begin{tabular}{c|l|c|c|c|c|c}
+        \hline
+        Tasks & Dataset & Dim. & Series Length & Dataset Size & Frequency & \revision{Domain} \\
+        \hline
+
+                \multirow{8}{*}{\shortstack{Long-term\\Forecasting}}
+          & ETTm1 & 7 & \{96, 192, 336, 720\} & (34465, 11521, 11521) & 15 min & Temperature \\ \cline{2-7}
+          & ETTm2 & 7 & \{96, 192, 336, 720\} & (34465, 11521, 11521) & 15 min & Temperature \\ \cline{2-7}
+          & ETTh1 & 7 & \{96, 192, 336, 720\} & (8545, 2881, 2881) & 1 hour & Temperature \\ \cline{2-7}
+          & ETTh2 & 7 & \{96, 192, 336, 720\} & (8545, 2881, 2881) & 1 hour & Temperature \\ \cline{2-7}
+          & \revision{Electricity} & \revision{321} & \revision{\{96, 192, 336, 720\}} & \revision{(18317, 2633, 5261)} & \revision{1 hour} & \revision{Electricity} \\ \cline{2-7}
+          & \revision{Traffic} & \revision{862} & \revision{\{96, 192, 336, 720\}} & \revision{(12185, 1757, 3509)} & \revision{1 hour} & \revision{Transportation} \\ \cline{2-7}
+          & \revision{Weather} & \revision{21} & \revision{\{96, 192, 336, 720\}} & \revision{(36792, 5271, 10540)} & \revision{10 min} & \revision{Weather} \\ \cline{2-7}
+          & \revision{ILI} & \revision{7} & \revision{\{24, 36, 48, 60\}} & \revision{(617, 74, 170)} & \revision{1 week} & \revision{Illness} \\
+        \hline
+
+                \multirow{6}{*}{\shortstack{Short-term\\Forecasting}}
+                    & M4-Yearly & 1 & 6 & (23000, 0, 23000) & Yearly & Demographic \\ \cline{2-7}
+          & M4-Quarterly & 1 & 8 & (24000, 0, 24000) & Quarterly & Finance \\ \cline{2-7}
+          & M4-Monthly & 1 & 18 & (48000, 0, 48000) & Monthly & Industry \\ \cline{2-7}
+          & M4-Weekly & 1 & 13 & (359, 0, 359) & Weekly & Macro \\ \cline{2-7}
+          & M4-Daily & 1 & 14 & (4227, 0, 4227) & Daily & Micro \\ \cline{2-7}
+          & M4-Hourly & 1 & 48 & (414, 0, 414) & Hourly & Other \\
+        \hline
+      \end{tabular}
+    \end{threeparttable}
+  }
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{7}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Statistical significance analysis on representative long-term forecasting settings with $H=96$. We report mean and standard deviation over three independent runs with different random seeds. $p$-values are computed using a paired two-sided $t$-test between RDTU and Time-LLM over matched dataset-seed pairs.}
+\label{tab:significance_main}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Dataset} & \textbf{Metric}
+& \textbf{RDTU}
+& \textbf{Time-LLM}
+& \textbf{Relative Gain}
+& \textbf{$p$-value} \\
+\midrule
+ETTh1       & MSE / MAE & $0.352 \pm 0.003$ / $0.383 \pm 0.002$ & $0.376 \pm 0.004$ / $0.403 \pm 0.003$ & 6.38\% / 4.96\% & $0.018$ / $0.021$ \\
+Electricity & MSE / MAE & $0.125 \pm 0.002$ / $0.211 \pm 0.002$ & $0.137 \pm 0.002$ / $0.233 \pm 0.003$ & 8.76\% / 9.44\% & $0.014$ / $0.012$ \\
+Traffic     & MSE / MAE & $0.359 \pm 0.004$ / $0.236 \pm 0.003$ & $0.393 \pm 0.005$ / $0.268 \pm 0.004$ & 8.65\% / 11.94\% & $0.011$ / $0.009$ \\
+\midrule
+Average     & MSE / MAE & $0.279 \pm 0.003$ / $0.277 \pm 0.002$ & $0.302 \pm 0.004$ / $0.301 \pm 0.003$ & 7.62\% / 7.97\% & $0.013$ / $0.015$ \\
+\bottomrule
+\end{tabular}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{8}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Statistical significance analysis of the RDFR stage on ETTh1 with $H=96$. We report mean and standard deviation over three independent runs. $p$-values are computed using a paired two-sided $t$-test between STIT and RDTU.}
+\label{tab:significance_rdfr}
+\centering
+\resizebox{0.75\textwidth}{!}{
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ & \textbf{MSE Gain} & \textbf{MAE Gain} \\
+\midrule
+Qwen2.5-Instruct-STIT & $0.403 \pm 0.002$ & $0.428 \pm 0.002$ & -- & -- \\
+RDTU w/ RDFR          & $\textbf{0.351} \pm \textbf{0.002}$ & $\textbf{0.382} \pm \textbf{0.002}$ & 12.90\% & 10.75\% \\
+\midrule
+$p$-value             & $0.004$ & $0.006$ & -- & -- \\
+\bottomrule
+\end{tabular}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{9}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\captionsetup{font=small}
+\caption{Full long-term forecasting results on the benchmark datasets. We followed the same setting in DMMV~\citep{shen2025dmmv}. Lower MSE and MAE indicate better performance. We set the forecasting horizons $H \in \{24, 36, 48, 60\}$ for Illness and $\{96, 192, 336, 720\}$ for the others. {\boldres{Red}}: the best, \secondres{Blue}: the second best.}
+\vspace{2mm}
+\label{tab:long-term-forecasting-full}
+
+\centering
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{3pt}
+
+\resizebox{\linewidth}{!}{\begin{tabular}{cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+\toprule
+\textbf{View} & & \multicolumn{6}{c|}{\textbf{Language}} & \multicolumn{4}{c|}{\textbf{Multi-Modal}} & \multicolumn{2}{c|}{\textbf{Visual}} & \multicolumn{10}{c}{\textbf{Numerical}} \\
+\cmidrule(lr){3-8} \cmidrule(lr){9-12} \cmidrule(lr){13-14} \cmidrule(lr){15-24}
+
+\textbf{Model} & & \multicolumn{2}{c}{\method{}} & \multicolumn{2}{c}{GPT4TS} & \multicolumn{2}{c|}{Time-LLM} & \multicolumn{2}{c}{DMMV-A} & \multicolumn{2}{c|}{Time-VLM} & \multicolumn{2}{c|}{VisionTS} & \multicolumn{2}{c}{PatchTST} & \multicolumn{2}{c|}{CycleNet} & \multicolumn{2}{c|}{TimesNet} & \multicolumn{2}{c|}{DLinear} & \multicolumn{2}{c}{FEDformer} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10} \cmidrule(lr){11-12} \cmidrule(lr){13-14} \cmidrule(lr){15-16} \cmidrule(lr){17-18} \cmidrule(lr){19-20} \cmidrule(lr){21-22} \cmidrule(lr){23-24}
+
+\textbf{Metric} & & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE \\
+\midrule
+\midrule
+
+\rot{ETTh1}
+& 96  & \boldres{0.351} & \boldres{0.382} & 0.370 & 0.389 & 0.376 & 0.402 & \secondres{0.354} & 0.389 & 0.361 & \secondres{0.386} & 0.355 & \secondres{0.386} & 0.370 & 0.399 & 0.374 & 0.396 & 0.384 & 0.402 & 0.375 & 0.399 & 0.376 & 0.419 \\
+& 192 & \boldres{0.389} & \boldres{0.403} & 0.412 & 0.413 & 0.407 & 0.421 & \secondres{0.393} & \secondres{0.405} & 0.397 & 0.415 & 0.395 & 0.407 & 0.413 & 0.421 & 0.406 & 0.415 & 0.436 & 0.429 & 0.405 & 0.416 & 0.420 & 0.448 \\
+& 336 & \secondres{0.412} & \secondres{0.419} & 0.448 & 0.431 & 0.430 & 0.438 & \boldres{0.387} & \boldres{0.413} & 0.420 & 0.421 & 0.419 & 0.421 & 0.422 & 0.436 & 0.431 & 0.430 & 0.491 & 0.469 & 0.439 & 0.416 & 0.459 & 0.465 \\
+& 720 & \secondres{0.442} & \boldres{0.446} & \boldres{0.441} & \secondres{0.449} & 0.457 & 0.468 & 0.445 & 0.450 & \boldres{0.441} & 0.458 & 0.458 & 0.460 & 0.447 & 0.466 & 0.450 & 0.464 & 0.521 & 0.500 & 0.472 & 0.490 & 0.506 & 0.507 \\
+& Avg.& \secondres{0.399} & \boldres{0.413} & 0.418 & 0.421 & 0.418 & 0.432 & \boldres{0.395} & \secondres{0.414} & 0.405 & 0.420 & 0.407 & 0.419 & 0.413 & 0.431 & 0.415 & 0.426 & 0.458 & 0.450 & 0.423 & 0.430 & 0.440 & 0.460 \\
+\hline
+
+\rot{ETTh2}
+& 96  & \boldres{0.263} & \boldres{0.329} & 0.280 & 0.335 & 0.286 & 0.346 & 0.294 & 0.349 & \secondres{0.267} & 0.335 & 0.288 & \secondres{0.334} & 0.274 & 0.336 & 0.279 & 0.341 & 0.340 & 0.374 & 0.289 & 0.353 & 0.358 & 0.397 \\
+& 192 & \secondres{0.334} & \boldres{0.372} & 0.348 & 0.380 & 0.361 & 0.391 & 0.339 & 0.395 & \boldres{0.326} & \secondres{0.373} & 0.349 & 0.380 & 0.339 & 0.379 & 0.342 & 0.385 & 0.402 & 0.414 & 0.383 & 0.418 & 0.429 & 0.439 \\
+& 336 & \secondres{0.355} & \secondres{0.381} & 0.380 & 0.405 & 0.390 & 0.414 & \boldres{0.322} & 0.384 & 0.357 & 0.406 & 0.364 & 0.398 & 0.329 & \boldres{0.380} & 0.371 & 0.413 & 0.452 & 0.452 & 0.448 & 0.465 & 0.496 & 0.487 \\
+& 720 & \secondres{0.395} & \secondres{0.425} & 0.406 & 0.436 & 0.405 & 0.434 & 0.392 & \secondres{0.425} & 0.412 & 0.449 & 0.403 & 0.431 & \boldres{0.379} & \boldres{0.422} & 0.426 & 0.451 & 0.462 & 0.468 & 0.605 & 0.551 & 0.463 & 0.474 \\
+& Avg.& \secondres{0.337} & \boldres{0.377} & 0.354 & 0.389 & 0.361 & 0.396 & \secondres{0.337} & 0.388 & 0.341 & 0.391 & 0.351 & 0.386 & \boldres{0.330} & \secondres{0.379} & 0.355 & 0.398 & 0.414 & 0.427 & 0.431 & 0.447 & 0.437 & 0.449 \\
+\hline
+
+\rot{ETTm1}
+& 96  & \boldres{0.272} & \boldres{0.326} & 0.300 & 0.340 & 0.291 & 0.341 & \secondres{0.279} & \secondres{0.329} & 0.304 & 0.346 & 0.284 & 0.332 & 0.290 & 0.342 & 0.299 & 0.348 & 0.338 & 0.375 & 0.299 & 0.343 & 0.379 & 0.419 \\
+& 192 & \secondres{0.327} & \boldres{0.354} & 0.343 & 0.368 & 0.341 & 0.369 & \boldres{0.317} & \secondres{0.357} & 0.332 & 0.366 & \secondres{0.327} & 0.362 & 0.332 & 0.369 & 0.334 & 0.367 & 0.374 & 0.387 & 0.335 & 0.365 & 0.426 & 0.441 \\
+& 336 & \boldres{0.350} & \boldres{0.375} & 0.376 & 0.386 & 0.359 & \secondres{0.379} & \secondres{0.351} & 0.381 & 0.364 & 0.383 & 0.354 & 0.382 & 0.366 & 0.392 & 0.368 & 0.386 & 0.410 & 0.411 & 0.369 & 0.386 & 0.445 & 0.459 \\
+& 720 & \secondres{0.410} & \secondres{0.412} & 0.431 & 0.416 & 0.433 & 0.419 & 0.411 & 0.415 & \boldres{0.402} & \boldres{0.410} & 0.411 & 0.415 & 0.416 & 0.420 & 0.417 & 0.414 & 0.478 & 0.450 & 0.425 & 0.421 & 0.543 & 0.490 \\
+& Avg.& \boldres{0.340} & \boldres{0.367} & 0.363 & 0.378 & 0.356 & 0.377 & \boldres{0.340} & \secondres{0.371} & 0.351 & 0.376 & \secondres{0.344} & 0.373 & 0.351 & 0.381 & 0.355 & 0.379 & 0.400 & 0.406 & 0.357 & 0.379 & 0.448 & 0.452 \\
+\hline
+
+\rot{ETTm2}
+& 96  & \boldres{0.157} & \boldres{0.244} & 0.163 & 0.249 & 0.162 & 0.248 & 0.172 & 0.260 & 0.160 & 0.250 & 0.174 & 0.262 & 0.165 & 0.255 & \secondres{0.159} & \secondres{0.247} & 0.187 & 0.267 & 0.167 & 0.260 & 0.203 & 0.287 \\
+& 192 & 0.219 & \secondres{0.288} & 0.222 & 0.291 & 0.235 & 0.304 & 0.227 & 0.298 & \secondres{0.215} & 0.291 & 0.228 & 0.297 & 0.220 & 0.292 & \boldres{0.214} & \boldres{0.286} & 0.249 & 0.309 & 0.224 & 0.303 & 0.269 & 0.328 \\
+& 336 & \secondres{0.270} & \secondres{0.323} & 0.273 & 0.327 & 0.280 & 0.329 & 0.272 & 0.327 & \secondres{0.270} & 0.325 & 0.281 & 0.337 & 0.274 & 0.329 & \boldres{0.269} & \boldres{0.322} & 0.321 & 0.351 & 0.281 & 0.342 & 0.325 & 0.366 \\
+& 720 & 0.354 & 0.379 & 0.357 & \boldres{0.376} & 0.366 & 0.382 & \secondres{0.351} & 0.381 & \boldres{0.348} & \secondres{0.378} & 0.384 & 0.410 & 0.362 & 0.385 & 0.363 & 0.382 & 0.408 & 0.403 & 0.397 & 0.421 & 0.421 & 0.415 \\
+& Avg.& \secondres{0.250} & \boldres{0.309} & 0.254 & \secondres{0.311} & 0.261 & 0.316 & 0.256 & 0.317 & \boldres{0.248} & \secondres{0.311} & 0.267 & 0.327 & 0.255 & 0.315 & 0.251 & \boldres{0.309} & 0.291 & 0.333 & 0.267 & 0.332 & 0.305 & 0.349 \\
+\hline
+
+\rot{Illness}
+& 24 & 1.609 & \secondres{0.771} & 1.869 & 0.823 & 1.792 & 0.807 & \secondres{1.409} & \boldres{0.754} & -- & -- & 1.613 & 0.834 & \boldres{1.319} & \boldres{0.754} & 2.255 & 1.017 & 2.317 & 0.934 & 2.215 & 1.081 & 3.228 & 1.260 \\
+& 36 & 1.453 & 0.835 & 1.853 & 0.854 & 1.833 & \secondres{0.833} & \boldres{1.290} & \boldres{0.745} & -- & -- & \secondres{1.316} & 0.750 & 1.430 & 0.834 & 2.121 & 0.950 & 1.972 & 0.920 & 1.963 & 0.963 & 2.679 & 1.080 \\
+& 48 & \secondres{1.545} & 0.841 & 1.886 & 0.855 & 2.269 & 1.012 & \boldres{1.499} & \boldres{0.810} & -- & -- & 1.548 & 0.818 & 1.553 & \secondres{0.815} & 2.187 & 1.007 & 2.238 & 0.940 & 2.130 & 1.024 & 2.622 & 1.078 \\
+& 60 & 1.630 & 0.802 & 1.877 & 0.877 & 2.177 & 0.925 & \boldres{1.428} & \boldres{0.773} & -- & -- & \secondres{1.450} & \secondres{0.783} & 1.470 & 0.788 & 2.185 & 0.997 & 2.027 & 0.928 & 2.368 & 1.096 & 2.857 & 1.157 \\
+& Avg.& 1.559 & 0.812 & 1.871 & 0.852 & 2.018 & 0.894 & \boldres{1.407} & \boldres{0.771} & -- & -- & 1.482 & \secondres{0.796} & \secondres{1.443} & 0.798 & 2.187 & 0.992 & 2.139 & 0.931 & 2.169 & 1.041 & 2.847 & 1.144 \\
+\hline
+
+\rot{Electricity}
+& 96  & \boldres{0.124} & \boldres{0.210} & 0.141 & 0.239 & 0.137 & 0.233 & \secondres{0.126} & \secondres{0.213} & 0.142 & 0.245 & 0.127 & 0.217 & 0.129 & 0.222 & 0.128 & 0.223 & 0.168 & 0.272 & 0.140 & 0.237 & 0.193 & 0.308 \\
+& 192 & \boldres{0.144} & \boldres{0.235} & 0.158 & 0.253 & 0.152 & 0.247 & 0.145 & \secondres{0.237} & 0.157 & 0.260 & 0.148 & \secondres{0.237} & 0.157 & 0.240 & \boldres{0.144} & \secondres{0.237} & 0.184 & 0.289 & 0.153 & 0.249 & 0.201 & 0.315 \\
+& 336 & \secondres{0.162} & 0.257 & 0.172 & 0.266 & 0.169 & 0.267 & 0.162 & \secondres{0.254} & 0.174 & 0.276 & 0.163 & \boldres{0.253} & 0.163 & 0.259 & \secondres{0.160} & \secondres{0.254} & 0.198 & 0.300 & 0.169 & 0.267 & 0.214 & 0.329 \\
+& 720 & \boldres{0.193} & \boldres{0.281} & 0.207 & 0.293 & 0.200 & 0.290 & \secondres{0.197} & \secondres{0.286} & 0.214 & 0.308 & 0.199 & 0.293 & \secondres{0.197} & 0.290 & 0.198 & 0.287 & 0.220 & 0.320 & 0.203 & 0.301 & 0.246 & 0.355 \\
+& Avg.& \boldres{0.156} & \boldres{0.246} & 0.170 & 0.263 & 0.165 & 0.259 & \secondres{0.158} & \secondres{0.248} & 0.172 & 0.272 & 0.159 & 0.250 & 0.162 & 0.253 & \secondres{0.158} & 0.250 & 0.193 & 0.295 & 0.166 & 0.264 & 0.214 & 0.327 \\
+\hline
+
+\rot{Weather}
+& 96  & \boldres{0.141} & \boldres{0.184} & 0.148 & \secondres{0.188} & 0.155 & 0.199 & \secondres{0.143} & 0.195 & 0.148 & 0.200 & 0.146 & 0.191 & 0.149 & 0.198 & 0.167 & 0.221 & 0.172 & 0.220 & 0.176 & 0.237 & 0.217 & 0.296 \\
+& 192 & \secondres{0.189} & \boldres{0.227} & 0.192 & \secondres{0.230} & 0.223 & 0.261 & \boldres{0.187} & 0.242 & 0.193 & 0.240 & 0.194 & 0.238 & 0.194 & 0.241 & 0.212 & 0.258 & 0.219 & 0.261 & 0.220 & 0.282 & 0.276 & 0.336 \\
+& 336 & \secondres{0.239} & \boldres{0.272} & 0.246 & \secondres{0.273} & 0.251 & 0.279 & \boldres{0.237} & \secondres{0.273} & 0.243 & 0.281 & 0.243 & 0.275 & 0.245 & 0.282 & 0.260 & 0.293 & 0.280 & 0.306 & 0.265 & 0.319 & 0.339 & 0.380 \\
+& 720 & 0.314 & \secondres{0.322} & 0.320 & 0.328 & 0.345 & 0.342 & \boldres{0.302} & \boldres{0.315} & \secondres{0.312} & 0.332 & 0.318 & 0.328 & 0.314 & 0.334 & 0.328 & 0.339 & 0.365 & 0.359 & 0.333 & 0.362 & 0.403 & 0.428 \\
+& Avg.& \secondres{0.221} & \boldres{0.251} & 0.227 & \secondres{0.255} & 0.244 & 0.270 & \boldres{0.217} & 0.256 & 0.224 & 0.263 & 0.225 & 0.258 & 0.226 & 0.264 & 0.242 & 0.278 & 0.259 & 0.287 & 0.249 & 0.300 & 0.309 & 0.360 \\
+\hline
+
+\rot{Traffic}
+& 96  & 0.358 & \secondres{0.235} & 0.396 & 0.264 & 0.392 & 0.267 & \boldres{0.344} & 0.237 & 0.393 & 0.290 & \secondres{0.346} & \boldres{0.232} & 0.360 & 0.249 & 0.397 & 0.278 & 0.593 & 0.321 & 0.410 & 0.282 & 0.587 & 0.366 \\
+& 192 & \secondres{0.375} & \secondres{0.248} & 0.412 & 0.268 & 0.409 & 0.271 & \boldres{0.363} & 0.249 & 0.405 & 0.296 & 0.376 & \boldres{0.245} & 0.379 & 0.256 & 0.411 & 0.283 & 0.617 & 0.336 & 0.423 & 0.287 & 0.604 & 0.373 \\
+& 336 & \secondres{0.388} & \secondres{0.256} & 0.421 & 0.273 & 0.434 & 0.296 & \boldres{0.387} & \secondres{0.256} & 0.420 & 0.305 & 0.389 & \boldres{0.252} & 0.392 & 0.264 & 0.424 & 0.289 & 0.629 & 0.336 & 0.436 & 0.296 & 0.621 & 0.383 \\
+& 720 & 0.435 & \boldres{0.280} & 0.455 & 0.291 & 0.451 & 0.291 & \secondres{0.433} & \secondres{0.284} & 0.459 & 0.323 & \boldres{0.432} & 0.293 & \boldres{0.432} & 0.286 & 0.450 & 0.305 & 0.640 & 0.350 & 0.466 & 0.315 & 0.626 & 0.382 \\
+& Avg.& \secondres{0.389} & \boldres{0.255} & 0.421 & 0.274 & 0.422 & 0.281 & \secondres{0.389} & 0.257 & 0.419 & 0.304 & \boldres{0.386} & \secondres{0.256} & 0.391 & 0.264 & 0.421 & 0.289 & 0.620 & 0.336 & 0.434 & 0.295 & 0.610 & 0.376 \\
+\bottomrule
+\multicolumn{2}{l|}{\textbf{\# Wins}} & \multicolumn{2}{c|}{\boldres{35}} & \multicolumn{2}{c|}{2} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c|}{23} & \multicolumn{2}{c|}{6} & \multicolumn{2}{c|}{6} & \multicolumn{2}{c|}{7} & \multicolumn{2}{c|}{6} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c|}{0} & \multicolumn{2}{c}{0} \\
+\bottomrule
+\end{tabular}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{10}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\captionsetup{font=small}
+\caption{Additional long-term forecasting results. We set the forecasting horizons $H \in \{24, 36, 48, 60\}$ for ILI and $\{96, 192, 336, 720\}$ for the others. A lower value indicates better performance. {\boldres{Red}}: the best, \secondres{Blue}: the second best.}
+\vspace{-2mm}
+\label{tab:long-term-forecasting-additional}
+\begin{center}
+
+\resizebox{0.8\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.60}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method{}}&\multicolumn{2}{c|}{Autoformer}&\multicolumn{2}{c|}{Stationary}&\multicolumn{2}{c|}{ETSformer}&\multicolumn{2}{c|}{LightTS}&\multicolumn{2}{c|}{Informer}&\multicolumn{2}{c}{Reformer} \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{Metric} & MSE  & MAE & MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh1$}}
+    & 96  &\boldres{0.351} &\boldres{0.382} &0.449&0.459&0.513&0.491&0.494&0.479&\secondres{0.424}&\secondres{0.432}&0.865&0.713&0.837&0.728\\
+    & 192 &\boldres{0.389} &\boldres{0.403} &0.500&0.482&0.534&0.504&0.538&0.504&\secondres{0.475}&\secondres{0.462}&1.008&0.792&0.923&0.766\\
+    & 336 &\boldres{0.412} &\boldres{0.419} &0.521&0.496&0.588&0.535&0.574&0.521&\secondres{0.518}&\secondres{0.488}&1.107&0.809&1.097&0.835\\
+    & 720 &\boldres{0.442} &\boldres{0.446} &0.514&0.512&0.643&0.616&0.562&0.535&\secondres{0.547}&\secondres{0.533}&1.181&0.865&1.257&0.889\\
+    & Avg &\boldres{0.399} &\boldres{0.413} &0.496&0.487&0.570&0.537&0.542&0.510&\secondres{0.491}&\secondres{0.479}&1.040&0.795&1.029&0.805\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh2$}}
+    & 96  &\boldres{0.263} &\boldres{0.329} &0.346&0.388&0.476&0.458&0.340&0.391&0.397&0.437&3.755&1.525&\secondres{2.626}&\secondres{1.317} \\
+    & 192 &\boldres{0.334} &\boldres{0.372} &0.456&0.452&0.512&0.493&\secondres{0.430}&\secondres{0.439}&0.520&0.504&5.602&1.931&11.12&2.979\\
+    & 336 &\boldres{0.355} &\boldres{0.381} &0.482&0.486&0.552&0.551&0.485&0.479&0.626&0.559&4.721&1.835&\secondres{9.323}&\secondres{2.769} \\
+    & 720 &\boldres{0.395} &\boldres{0.425} &0.515&0.511&0.562&0.560&0.500&0.497&0.863&0.672&\secondres{3.647}&\secondres{1.625}&3.874&1.697\\
+    & Avg &\boldres{0.337}&\boldres{0.377}&0.450&0.459&0.526&0.516&\secondres{0.439}&\secondres{0.452}&0.602&0.543&4.431&1.729&6.736&2.191\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm1$}}
+    & 96  &\boldres{0.272} &\boldres{0.326} &0.505&0.475&0.386&0.398&0.375&0.398&\secondres{0.374}&\secondres{0.400}&0.672&0.571&0.538&0.528 \\
+    & 192 &\boldres{0.327} &\boldres{0.354} &0.553&0.496&0.459&0.444&0.408&0.410&\secondres{0.400}&\secondres{0.407}&0.795&0.669&0.658&0.592\\
+    & 336 &\boldres{0.350} &\boldres{0.375} &0.621&0.537&0.495&0.464&0.435&0.428&\secondres{0.438}&\secondres{0.438}&1.212&0.871&0.898&0.721\\
+    & 720 &\boldres{0.410} &\boldres{0.412} &0.671&0.561&0.585&0.516&0.499&0.462&\secondres{0.527}&\secondres{0.502}&1.166&0.823&1.102&0.841\\
+    & Avg&\boldres{0.340}&\boldres{0.367}&0.588&0.517&0.481&0.456&0.429&0.425&\secondres{0.435}&\secondres{0.437}&0.961&0.734&0.799&0.671 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm2$}}
+    & 96  &\boldres{0.157} &\boldres{0.244} &0.255&0.339&0.192&0.274&0.189&0.280&\secondres{0.209}&\secondres{0.308}&0.365&0.453&0.658&0.619\\
+    & 192 &\boldres{0.219} &\boldres{0.288} &0.281&0.340&0.280&0.339&0.253&0.319&0.311&0.382&0.533&0.563&\secondres{1.078}&\secondres{0.827}\\
+    & 336 &\boldres{0.270} &\boldres{0.323} &0.339&0.372&0.334&0.361&\secondres{0.314}&\secondres{0.357}&0.442&0.466&1.363&0.887&1.549&0.972\\
+    & 720 &\boldres{0.354} &\boldres{0.379} &0.433&0.432&0.417&0.413&0.414&0.413&0.675&0.587&3.379&1.338&\secondres{2.631}&\secondres{1.242} \\
+    & Avg&\boldres{0.250}&\boldres{0.309}&0.327&0.371&0.306&0.347&\secondres{0.293}&\secondres{0.342}&0.409&0.436&1.410&0.810&1.479&0.915 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Weather}$}}
+    & \revision{96}  &\boldres{0.141} &\boldres{0.184} &0.266 &0.336 &\secondres{0.173} &\secondres{0.223} &0.197 &0.281 &0.182 &0.242 &0.300 &0.384 &0.689 &0.596 \\
+    & \revision{192}  &\boldres{0.189} &\boldres{0.227} &0.307 &0.367 &\secondres{0.245} &\secondres{0.285} &0.237 &0.312 &0.227 &0.287 &0.598 &0.544 &0.752 &0.638 \\
+    & \revision{336}  &\boldres{0.239} &\boldres{0.272} &0.359 &0.395 &0.321 &0.338 &0.298 &0.353 &\secondres{0.282} &\secondres{0.334} &0.578 &0.523 &0.639 &0.596 \\
+    & \revision{720}  &\boldres{0.314} &\boldres{0.322} &0.419 &0.428 &0.414 &0.410 &\secondres{0.352} &\secondres{0.288} &0.352 &0.386 &1.059 &0.741 &1.130 &0.792 \\
+    & \revision{Avg}  &\boldres{0.221} &\boldres{0.251} &0.338 &0.382 &0.288 &0.314 &\secondres{0.271} &\secondres{0.334} &0.261 &0.312 &0.634 &0.548 &0.803 &0.656 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Electricity}$}}
+    & \revision{96}  &\boldres{0.124} &\boldres{0.210} &0.201 &0.317 &0.169 &0.273 &0.187 &0.304 &0.207 &0.307 &0.274 &0.368 &\secondres{0.312} &\secondres{0.402} \\
+    & \revision{192}  &\boldres{0.144} &\boldres{0.235} &0.222 &0.334 &0.182 &0.286 &0.199 &0.315 &0.213 &0.316 &0.296 &0.386 &\secondres{0.348} &\secondres{0.433} \\
+    & \revision{336}  &\boldres{0.162} &\boldres{0.257} &0.231 &0.338 &\secondres{0.200} &\secondres{0.304} &0.212 &0.329 &0.230 &0.333 &0.300 &0.394 &0.350 &0.433 \\
+    & \revision{720}  &\boldres{0.193} &\boldres{0.281} &0.254 &0.361 &\secondres{0.222} &\secondres{0.321} &0.233 &0.345 &0.265 &0.360 &0.373 &0.439 &0.340 &0.420 \\
+    & \revision{Avg}  &\boldres{0.156} &\boldres{0.246} &0.227 &0.338 &\secondres{0.193} &\secondres{0.296} &0.208 &0.323 &0.229 &0.329 &0.311 &0.397 &0.338 &0.422 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Traffic}$}}
+    & \revision{96}  &\boldres{0.358} &\boldres{0.235} &0.613 &0.388 &0.612 &0.338 &0.607 &0.392 &0.615 &0.391 &0.719 &0.391 &\secondres{0.732} &\secondres{0.423} \\
+    & \revision{192}  &\boldres{0.375} &\boldres{0.248} &0.616 &0.382 &0.613 &0.340 &0.621 &0.399 &\secondres{0.601} &\secondres{0.382} &0.696 &0.379 &0.733 &0.420 \\
+    & \revision{336}  &\boldres{0.388} &\boldres{0.256} &0.622 &0.337 &0.618 &0.328 &0.622 &0.396 &\secondres{0.613} &\secondres{0.386} &0.777 &0.420 &0.742 &0.420 \\
+    & \revision{720}  &\boldres{0.435} &\boldres{0.280} &0.660 &0.408 &0.653 &0.355 &0.632 &0.396 &0.658 &0.407 &0.864 &0.472 &\secondres{0.755} &\secondres{0.423} \\
+    & \revision{Avg}  &\boldres{0.389} &\boldres{0.255} &0.628 &0.379 &0.624 &0.340 &0.621 &0.396 &0.622 &0.392 &0.764 &0.416 &\secondres{0.741} &\secondres{0.422} \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{ILI}$}}
+    & \revision{24}  &\boldres{1.609} &\boldres{0.771} &3.483 &1.287 &2.294 &0.945 &2.527 &1.020 &8.313 &2.144 &5.764 &1.677 &\secondres{4.400} &\secondres{1.382} \\
+    & \revision{36}  &\boldres{1.453} &\boldres{0.835} &3.103 &1.148 &\secondres{1.825} &\secondres{0.848} &2.615 &1.007 &6.631 &1.902 &4.755 &1.467 &4.783 &1.448 \\
+    & \revision{48}  &\boldres{1.545} &\boldres{0.841} &2.669 &1.085 &\secondres{2.010} &\secondres{0.900} &2.359 &0.972 &7.299 &1.982 &4.763 &1.469 &4.832 &1.465 \\
+    & \revision{60}  &\boldres{1.630} &\boldres{0.802} &2.770 &1.125 &\secondres{2.178} &\secondres{0.963} &2.487 &1.016 &7.283 &1.985 &5.264 &1.564 &4.882 &1.483 \\
+    & \revision{Avg}  &\boldres{1.559} &\boldres{0.812} &3.006 &1.161 &\secondres{2.077} &\secondres{0.914} &2.497 &1.004 &7.382 &2.003 &5.137 &1.544 &4.724 &1.445 \\
+    \midrule
+
+    \multicolumn{2}{c|}{$1^{\text{st}}$Count}&\multicolumn{2}{c|}{\boldres{40}}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c}{0}\\
+
+    \bottomrule
+    \end{tabular}
+    }
+    \end{small}
+}
+
+\end{center}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{11}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\renewcommand\arraystretch{1.2}
+\captionsetup{font=small}
+\caption{Full short-term time series forecasting results. The forecasting horizons are in [6, 48] and the last three rows are weighted averaged from all datasets under different sampling intervals. A lower value indicates better performance. \boldres{Red}: the best, \secondres{Blue}: the second best.}
+\label{tab:short-term-forecasting}
+\vspace{2mm}
+\centering
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.65}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{cc|ccccccccccccccc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}& \method &Time-LLM&GPT4TS&TimesNet&PatchTST&N-HiTS&N-BEATS& ETSformer& LightTS& DLinear &FEDformer &Stationary &Autoformer  &Informer&Reformer \\
+
+    \midrule
+    \multirow{3}{*}{\rotatebox{90}{Yearly}}
+    &SMAPE&\boldres{13.408}&\secondres{13.419}&15.11&15.378&13.477&13.422&13.487&18.009&14.247&16.965&14.021&13.717&13.974&14.727&16.169\\
+    &MASE&\secondres{3.014}&\boldres{3.005}&3.565&3.554&3.019&3.056&3.036&4.487&3.109&4.283&3.036&3.078&3.134&3.418&3.800\\
+    &OWA&\boldres{0.788}&\secondres{0.789}&0.911&0.918&0.792&0.795&0.795&1.115&0.827&1.058&0.811&0.807&0.822&0.881&0.973\\
+    \bottomrule
+
+    \multirow{3}{*}{\rotatebox{90}{Quarterly}}
+    &SMAPE&\boldres{10.094}&\secondres{10.110}&10.597&10.465&10.38&10.185&10.564&13.376&11.364&12.145&11.1&10.958&11.338&11.360&13.313\\
+    &MASE&\boldres{1.176}&\secondres{1.178}&1.253&1.227&1.233&1.18&1.252&1.906&1.328&1.520&1.35&1.325&1.365&1.401&1.775\\
+    &OWA&\boldres{0.888}&\secondres{0.889}&0.938&0.923&0.921&0.893&0.936&1.302&1.000&1.106&0.996&0.981&1.012&1.027&1.252\\
+    \bottomrule
+
+    \multirow{3}{*}{\rotatebox{90}{Monthly}}
+    &SMAPE&\secondres{12.977}&12.980&13.258&13.513&\boldres{12.959}&13.059&13.089&14.588&14.014&13.514&14.403&13.917&13.958&14.062&20.128\\
+    &MASE&\secondres{0.968}&\boldres{0.963}&1.003&1.039&0.97&1.013&0.996&1.368&1.053&1.037&1.147&1.097&1.103&1.141&2.614\\
+    &OWA&\boldres{0.903}&\boldres{0.903}&0.931&0.957&\secondres{0.905}&0.929&0.922&1.149&0.981&0.956&1.038&0.998&1.002&1.024&1.927\\
+    \bottomrule
+
+    \multirow{3}{*}{\rotatebox{90}{Others}}
+    &SMAPE&\secondres{4.730}&4.795&6.124&6.913&4.952&\boldres{4.711}&6.599&7.267&15.880&6.709&7.148&6.302&5.485&24.460&32.491\\
+    &MASE&\secondres{3.086}&3.178&4.116&4.507&3.347&\boldres {3.054}&4.43&5.240&11.434&4.953&4.041&4.064&3.865&20.960&33.355\\
+    &OWA&\secondres{0.985}&1.006&1.259&1.438&1.049&\boldres{0.977}&1.393&1.591&3.474&1.487&1.389&1.304&1.187&5.879&8.679\\
+    \bottomrule
+
+    \multirow{3}{*}{\rotatebox{90}{Average}}
+    &SMAPE&\boldres{11.979}&\secondres{11.983}&12.69 & 12.88&12.059& 12.035& 12.25& 14.718& 13.525& 13.639 &13.16 &12.780 &12.909 &14.086 &18.200 \\
+    &MASE&\secondres{1.599}&\boldres{1.595}& 1.808 & 1.836&1.623 & 1.625 & 1.698 &2.408 &2.111 &2.095 &1.775 &1.756 &1.771  &2.718 &4.223\\
+    &OWA&\boldres{0.859}&\boldres{0.859}&0.94 & 0.955&\secondres{0.869} &\secondres{0.869} &0.896 &1.172 &1.051 &1.051 &0.949 &0.930 &0.939 & 1.230 & 1.775\\
+
+    \bottomrule
+
+    \end{tabular}
+    }
+    \end{small}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{12}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\captionsetup{font=small}
+\caption{Full few-shot learning results on 10\% training data.}
+\label{tab:few-shot-forecasting-10per-full}
+
+\centering
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.60}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method{}}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c|}{FEDformer}&\multicolumn{2}{c|}{Autoformer}&\multicolumn{2}{c|}{Stationary}&\multicolumn{2}{c|}{ETSformer}&\multicolumn{2}{c|}{LightTS}&\multicolumn{2}{c|}{Informer}&\multicolumn{2}{c}{Reformer} \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{Metric} & MSE  & MAE & MSE  & MAE & MSE & MAE& MSE & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh1$}}
+    & 96  &\boldres{0.443} &\boldres{0.451} &\secondres{0.448} &0.460 & 0.458 & \secondres{0.456} & 0.492 & 0.495 & 0.516 & 0.485 & 0.861& 0.628& 0.512 & 0.499 & 0.613 & 0.552 &0.918&0.639& 1.112 & 0.806 & 1.298 & 0.838 & 1.179 & 0.792 &1.184&0.790\\
+    & 192 &\boldres{0.482} &\boldres{0.479} &\secondres{0.484} &\secondres{0.483} & 0.570 & 0.516 & 0.565 & 0.538 & 0.598 & 0.524 & 0.797& 0.593& 0.624 & 0.555 & 0.722 & 0.598 &0.915&0.629& 1.155 & 0.823 & 1.322 & 0.854 & 1.199 & 0.806 &1.295&0.850\\
+    & 336 & \boldres{0.585} & \secondres{0.536} & \secondres{0.589} & 0.540 & \secondres{0.608} & \boldres{0.535} & 0.721 & 0.622 & 0.657 & 0.550 & 0.941& 0.648& 0.691 & 0.574 & 0.750 & 0.619 &0.939&0.644& 1.179 & 0.832 & 1.347 & 0.870 & 1.202 & 0.811 &1.294&0.854\\
+    & 720 &\boldres{0.694} &\boldres{0.587} &\secondres{0.700} &0.604 & 0.725 &\secondres{0.591} & 0.986 & 0.743 & 0.762 & 0.610 &0.877 &0.641 & 0.728 & 0.614 & 0.721 & 0.616 &0.887&0.645& 1.273 & 0.874 & 1.534 & 0.947 & 1.217 & 0.825 &1.223&0.838\\
+    &Avg &\boldres{0.551} &\boldres{0.513} &\secondres{0.556} &\secondres{0.522} &0.590 &0.525 &0.691 &0.600 &0.633 &0.542 &0.869 &0.628 &0.639 &0.561 &0.702 &0.596 &0.915 &0.639 &1.180 &0.834 &1.375 &0.877 &1.199 &0.809 &1.249 &0.833\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh2$}}
+    & 96  &\boldres{0.271} &\boldres{0.322} &\secondres{0.275} &\secondres{0.326} & 0.331 & 0.374 & 0.357 & 0.411 & 0.353 & 0.389 & 0.378& 0.409& 0.382 & 0.416 & 0.413 & 0.451 &0.389&0.411& 0.678 & 0.619 & 2.022 & 1.006 & 3.837 & 1.508&3.788&1.533\\
+    & 192 &\boldres{0.369} &\boldres{0.367} &\secondres{0.374} &\secondres{0.373} &0.402 & 0.411 & 0.569 & 0.519 & 0.403 & 0.414 & 0.490& 0.467& 0.478 & 0.474 & 0.474 & 0.477 &0.473&0.455& 0.785 & 0.666 & 2.329 & 1.104 & 3.856 & 1.513 &3.552&1.483\\
+    & 336 &\boldres{0.402} &\boldres{0.423} &\secondres{0.406} &\secondres{0.429} & \secondres{0.406} &0.433 & 0.671 & 0.572 & 0.426 & 0.441 & 0.537& 0.494& 0.504 & 0.501 & 0.547 & 0.543 &0.507&0.480& 0.839 & 0.694 & 2.453 & 1.122 & 3.952 & 1.526 &3.395&1.526\\
+    & 720 &\boldres{0.425} &\boldres{0.443} &\secondres{0.427} &\secondres{0.449} & 0.449 & 0.464 & 0.824 & 0.648 & 0.477 & 0.480 & 0.510& 0.491& 0.499 & 0.509 & 0.516 & 0.523 &0.477&0.472& 1.273 & 0.874 & 3.816 & 1.407 & 3.842 & 1.503 &3.205&1.401\\
+    &Avg &\boldres{0.367} &\boldres{0.389} &\secondres{0.370} &\secondres{0.394} &0.397 &0.421 &0.605 &0.538 &0.415 &0.431 &0.479 &0.465 &0.466 &0.475 &0.488 &0.499 &0.462 &0.455 &0.894 &0.713 &2.655 &1.160 &3.872 &1.513 &3.485 &1.486\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm1$}}
+    & 96  & \boldres{0.343} &\boldres{0.386} & \secondres{0.346} &\secondres{0.388} & 0.390 & 0.404 & 0.352 & 0.392 & 0.410 & 0.419 & 0.583& 0.501& 0.578 & 0.518 & 0.774 & 0.614 &0.761&0.568& 0.911 & 0.688 & 0.921 & 0.682 & 1.162 & 0.785&1.442&0.847\\
+    & 192 &\secondres{0.375} &\boldres{0.411} &\boldres{0.373} &0.416 & 0.429 & 0.423 & 0.382 & \secondres{0.412} & 0.437 & 0.434 & 0.630& 0.528& 0.617 & 0.546 & 0.754 & 0.592 &0.781&0.574& 0.955 & 0.703 & 0.957 & 0.701 & 1.172 & 0.793 &1.444&0.862\\
+    & 336 &\boldres{0.410} &\boldres{0.424} &\secondres{0.413} &\secondres{0.426} & 0.469 & 0.439 &0.419 &0.434 & 0.476 & 0.454 & 0.725& 0.568& 0.998 & 0.775 & 0.869 & 0.677 &0.803&0.587& 0.991 & 0.719 & 0.998 & 0.716 & 1.227 & 0.908&1.450&0.866 \\
+    & 720 &\boldres{0.478} &\boldres{0.473} &\secondres{0.485} &\secondres{0.476} & 0.569 & 0.498 & 0.490 & 0.477 & 0.681 & 0.556 & 0.769& 0.549& 0.693 & 0.579 & 0.810 & 0.630 &0.844&0.581& 1.062 & 0.747 & 1.007 & 0.719 & 1.207 & 0.797&1.366&0.850 \\
+    &Avg &\boldres{0.402} &\boldres{0.424} &\secondres{0.404} &\secondres{0.427} &0.464 &0.441 &0.411 &0.429 &0.501 &0.466 &0.677 &0.537 &0.722 &0.605 &0.802 &0.628 &0.797 &0.578 &0.980 &0.714 &0.971 &0.705 &1.192 &0.821 &1.426 &0.856\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm2$}}
+    & 96  &\boldres{0.174} &\boldres{0.260} &\secondres{0.177} &\secondres{0.261} &0.188 & 0.269 & 0.213 & 0.303 & 0.191 & 0.274 & 0.212& 0.285& 0.291 & 0.399 & 0.352 & 0.454 &0.229&0.308& 0.331 & 0.430 & 0.813 & 0.688 & 3.203 & 1.407 &4.195&1.628\\
+    & 192 &\boldres{0.236} &\boldres{0.308} &\secondres{0.241} &0.314 & 0.251 & \secondres{0.309} & 0.278 & 0.345 & 0.252 & 0.317 & 0.270& 0.323& 0.307 & 0.379 & 0.694 & 0.691 &0.291&0.343& 0.400 & 0.464 & 1.008 & 0.768 & 3.112 & 1.387&4.042&1.601 \\
+    & 336 &\boldres{0.272} &\boldres{0.323} &\secondres{0.274} &\secondres{0.327}& 0.307 &0.346 & 0.338 & 0.385 & 0.306 & 0.353 & 0.323& 0.353& 0.543 & 0.559 & 2.408 & 1.407 &0.348&0.376& 0.469 & 0.498 & 1.031 & 0.775 & 3.255 & 1.421&3.963&1.585 \\
+    & 720 &\boldres{0.413} &\boldres{0.384} &\secondres{0.417} &\secondres{0.390} &0.426 &0.417 & 0.436 & 0.440 & 0.433 & 0.427 & 0.474& 0.449& 0.712 & 0.614 & 1.913 & 1.166 &0.461&0.438& 0.589 & 0.557 & 1.096 & 0.791 & 3.909 & 1.543&3.711&1.532 \\
+    &Avg &\boldres{0.274} &\boldres{0.319} &\secondres{0.277} &\secondres{0.323} &0.293 &0.335 &0.316 &0.368 &0.296 &0.343 &0.320 &0.353 &0.463 &0.488 &1.342 &0.930 &0.332 &0.366 &0.447 &0.487 &0.987 &0.756 &3.370 &1.440 &3.978 &1.587\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Weather}$}}
+    & 96  &\boldres{0.159} &\boldres{0.209} &\secondres{0.161} &\secondres{0.210} &0.163 &0.215 &0.171 &0.224 &0.165 &0.215 &0.184 &0.230 &0.188 &0.253 &0.221 &0.297 &0.192 &0.234 &0.199 &0.272 &0.217 &0.269 &0.374 &0.401 &0.335 &0.380 \\
+    & 192  &\boldres{0.199} &\boldres{0.244} &\secondres{0.204} &\secondres{0.248} &0.210 &0.254 &0.215 &0.263 &0.210 &0.257 &0.245 &0.283 &0.250 &0.304 &0.270 &0.322 &0.269 &0.295 &0.279 &0.332 &0.259 &0.304 &0.552 &0.478 &0.522 &0.462 \\
+    & 336  &\secondres{0.257} &\boldres{0.292} &0.261 &\secondres{0.302} &\boldres{0.256} &\boldres{0.292} &0.258 &0.299 &0.259 &0.297 &0.305 &0.321 &0.312 &0.346 &0.320 &0.351 &0.370 &0.357 &0.356 &0.386 &0.303 &0.334 &724 &0.541 &0.715 &0.535 \\
+    & 720  &\secondres{0.311} &\secondres{0.335} &\boldres{0.309} &\boldres{0.332} &0.321 &0.339 &0.320 &0.346 &0.332 &0.346 &0.381 &0.371 &0.387 &0.393 &0.390 &0.396 &0.441 &0.405 &0.437 &0.448 &0.377 &0.382 &0.739 &0.558 &0.611 &0.500 \\
+    & Avg  &\boldres{0.232} &\boldres{0.270} &\secondres{0.234} &\secondres{0.273} &0.238 &0.275 &0.241 &0.283 &0.242 &0.279 &0.279 &0.301 &0.284 &0.324 &0.300 &0.342 &0.318 &0.323 &0.318 &0.360 &0.289 &0.322 &0.597 &0.495 &0.546 &0.469 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Electricity}$}}
+    & 96  &0.141 &\boldres{0.237} &\boldres{0.139} &0.241 &\boldres{0.139} &\boldres{0.237} &0.150 &0.253 &\secondres{0.140} &\secondres{0.238} &0.299 &0.373 &0.231 &0.323 &0.261 &0.348 &0.420 &0.466 &0.599 &0.587 &0.350 &0.425 &1.259 &0.919 &0.993 &0.784 \\
+    & 192  &\secondres{0.153} &\boldres{0.247} &\boldres{0.151} &\secondres{0.248} &0.156 &0.252 &0.164 &0.264 &0.160 &0.255 &0.305 &0.379 &0.261 &0.356 &0.338 &0.406 &0.411 &0.459 &0.620 &0.598 &0.376 &0.448 &1.160 &0.873 &0.938 &0.753 \\
+    & 336  &\secondres{0.171} &\boldres{0.269} &\boldres{0.169} &\secondres{0.270} &0.175 &\secondres{0.270} &0.181 &0.282 &0.180 &0.276 &0.319 &0.391 &0.360 &0.445 &0.410 &0.474 &0.434 &0.473 &0.662 &0.619 &0.428 &0.485 &1.157 &0.872 &0.925 &0.745 \\
+    & 720  &\secondres{0.227} &\secondres{0.318} &0.240 &0.322 &0.233 &\boldres{0.317} &\boldres{0.223} &0.321 &0.241 &0.323 &0.369 &0.426 &0.530 &0.585 &0.715 &0.685 &0.510 &0.521 &0.757 &0.664 &0.611 &0.597 &1.203 &0.898 &1.004 &0.790 \\
+    & \revision{Avg}  &\boldres{0.173} &\boldres{0.268} &\secondres{0.175} &0.270 &0.176 &\secondres{0.269} &0.180 &0.280 &0.180 &0.273 &0.323 &0.392 &0.346 &0.427 &0.431 &0.478 &0.444 &0.480 &0.660 &0.617 &0.441 &0.489 &1.195 &0.891 &0.965 &0.768 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$\revision{Traffic}$}}
+    & 96  &\secondres{0.405} &\boldres{0.288} &0.418 &0.291 &0.414 &0.297 &0.419 &0.298 &\boldres{0.403} &\secondres{0.289} &0.719 &0.416 &0.639 &0.400 &0.672 &0.405 &1.412 &0.802 &1.643 &0.855 &1.157 &0.636 &1.557 &0.821 &1.527 &0.815 \\
+    & 192  &\boldres{0.412} &\boldres{0.292} &\secondres{0.414} &\secondres{0.296} &0.426 &0.301 &0.434 &0.305 &0.415 &\secondres{0.296} &0.748 &0.428 &0.637 &0.416 &0.727 &0.424 &1.419 &0.806 &1.641 &0.854 &1.207 &0.661 &1.454 &0.765 &1.538 &0.817 \\
+    & 336  &\secondres{0.424} &0.306 &\boldres{0.421} &0.311 &0.434 &\boldres{0.303} &0.449 &0.313 &0.426 &\secondres{0.304} &0.853 &0.471 &0.655 &0.427 &0.749 &0.454 &1.443 &0.815 &1.711 &0.878 &1.334 &0.713 &1.521 &0.812 &1.550 &0.819 \\
+    & 720  &\secondres{0.463} &\boldres{0.325} &\boldres{0.462} &\secondres{0.327} &0.487 &0.337 &0.484 &0.336 &0.474 &0.331 &1.485 &0.825 &0.722 &0.456 &0.847 &0.499 &1.539 &0.837 &2.660 &1.157 &1.292 &0.726 &1.605 &0.846 &1.588 &0.833 \\
+    & Avg  &\boldres{0.426} &\boldres{0.303} &\secondres{0.429} &0.306 &0.440 &0.310 &0.447 &0.313 &0.430 &\secondres{0.305} &0.951 &0.535 &0.663 &0.425 &0.749 &0.446 &1.453 &0.815 &1.914 &0.936 &1.248 &0.684 &1.534 &0.811 &1.551 &0.821 \\
+    \midrule
+
+    \multicolumn{2}{c|}{$1^{\text{st}}$Count}&\multicolumn{2}{c|}{\boldres{58}}&\multicolumn{2}{c|}{\secondres{8}}&\multicolumn{2}{c|}{7}&\multicolumn{2}{c|}{1}&\multicolumn{2}{c|}{1}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c}{0}\\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{small}
+}
+\vskip -0.1in
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{13}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\captionsetup{font=small}
+\caption{Full few-shot learning results on 5\% training data. '-' means that 5\% time series is not sufficient to constitute a training set.}
+\label{tab:few-shot-forecasting-5per-full}
+\vspace{2mm}
+
+\centering
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.60}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c|}{FEDformer}&\multicolumn{2}{c|}{Autoformer}&\multicolumn{2}{c|}{Stationary}&\multicolumn{2}{c|}{ETSformer}&\multicolumn{2}{c|}{LightTS}&\multicolumn{2}{c|}{Informer}&\multicolumn{2}{c}{Reformer} \\
+
+    \midrule
+
+    \multicolumn{2}{c|}{Metric} & MSE  & MAE & MSE  & MAE & MSE & MAE& MSE & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  &
+MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE& MSE  & MAE\\
+
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh1$}}
+    & 96  &\boldres{0.479} &\boldres{0.460} & \secondres{0.483} & \secondres{0.464} & 0.543 & 0.506 & 0.547 & 0.503 & 0.557 & 0.519 & 0.892& 0.625& 0.593 & 0.529 & 0.681 & 0.570 &0.952&0.650& 1.169 & 0.832 & 1.483 & 0.91 & 1.225 & 0.812 &1.198&0.795 \\
+    & 192 &\boldres{0.624} &\boldres{0.536} & \secondres{0.629} & \secondres{0.540} & 0.748 & 0.580 & 0.720 & 0.604 & 0.711 & 0.570
+& 0.940 & 0.665& 0.652 & 0.563 & 0.725 & 0.602 &0.943&0.645& 1.221 & 0.853 & 1.525 & 0.93 & 1.249 & 0.828 &1.273&0.853\\
+    & 336 & \secondres{0.741} & 0.603 & 0.768 & 0.626 & 0.754 & \secondres{0.595} & 0.984 & 0.727 & 0.816 & 0.619 & 0.945&0.653 & \boldres{0.731} & \boldres{0.594} & 0.761 & 0.624 &0.935&0.644& 1.179 & 0.832 & 1.347 & 0.87 & 1.202 & 0.811 &1.254&0.857 \\
+    & 720 & - & - & - & - & - & - & - & - & - & - & - & - & - & - &
+- & - & - & - & - & - & - & - & - & - & - & - \\
+    &Avg &\boldres{0.615} &\boldres{0.535} & \secondres{0.627} & \secondres{0.543} & 0.681 & 0.560 & 0.750 & 0.611 & 0.694 & 0.569 & 0.925&0.647&0.658&0.562&0.722&0.598&0.943&0.646&1.189&0.839&1.451&0.903&1.225&0.817&1.241&0.835\\
+    \midrule
+
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTh2$}}
+    & 96  &\boldres{0.332} &\boldres{0.394} & \secondres{0.336} & \secondres{0.397} & 0.376 & 0.421 & 0.442 & 0.456 & 0.401 & 0.421 & 0.409& 0.420& 0.390 & 0.424 & 0.428 & 0.468 &0.408&0.423 & 0.678 & 0.619 & 2.022 & 1.006 & 3.837 & 1.508 &3.753&1.518\\
+    & 192 &\boldres{0.405} &\boldres{0.423} & \secondres{0.406}  &\secondres{0.425} &0.418 &0.441 & 0.617 & 0.542 &
+0.452 & 0.455 & 0.483& 0.464& 0.457 & 0.465 & 0.496 & 0.504 &0.497&0.468 & 0.845 & 0.697 & 3.534 & 1.348 & 3.975 & 1.933 &3.516&1.473\\
+    & 336 &0.410 &\secondres{0.438} & \boldres{0.405} & \boldres{0.432} & \secondres{0.408} & 0.439 & 1.424 & 0.849 & 0.464 & 0.469 & 0.499& 0.479& 0.477 & 0.483 & 0.486 & 0.496 &0.507&0.481 & 0.905 & 0.727 & 4.063 & 1.451 & 3.956 & 1.520 &3.312&1.427\\
+    & 720 & - & - & - & - & - & - & - & - & - & - & - & - &
+- & - & - & - & - & - & - & - & - & - & - & - & - & - \\
+    &Avg &\boldres{0.382} &\boldres{0.418} & \boldres{0.382} & \boldres{0.418} & \secondres{0.400} & \secondres{0.433} & 0.694 & 0.577 & 0.827 & 0.615 & 0.439&0.448&0.463&0.454&0.441&0.457&0.470&0.489&0.809&0.681&3.206&1.268&3.922&1.653&3.527&1.472\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm1$}}
+    & 96  &\boldres{0.313} &\boldres{0.369} & \secondres{0.316} & 0.377 & 0.386 & 0.405 & 0.332 & \secondres{0.374} & 0.399 & 0.414 & 0.606& 0.518& 0.628 & 0.544 & 0.726 & 0.578 &0.823&0.587 & 1.031 & 0.747 & 1.048 & 0.733 & 1.130 & 0.775 &1.234&0.798\\
+    & 192 & \secondres{0.438} & \secondres{0.427} & 0.450 & 0.464 & 0.440 & 0.438 & \boldres{0.358} & \boldres{0.390} &
+0.441 & 0.436 & 0.681& 0.539& 0.666 & 0.566 & 0.750 & 0.591 &0.844&0.591 & 1.087 & 0.766 & 1.097 & 0.756 & 1.150 & 0.788 &1.287&0.839\\
+    & 336 & \secondres{0.446} & 0.431 & 0.450 & \secondres{0.424} & 0.485 & 0.459 & \boldres{0.402} & \boldres{0.416} & 0.499 & 0.467 & 0.786& 0.597& 0.807 & 0.628 & 0.851 & 0.659 &0.870&0.603 & 1.138 & 0.787 & 1.147 & 0.775 & 1.198 & 0.809 &1.288&0.842\\
+    & 720 &\secondres{0.485} &\secondres{0.478} & \boldres{0.483} & \boldres{0.471} & 0.577 & 0.499 & 0.511 & 0.489 & 0.767 & 0.587 & 0.796& 0.593& 0.822 & 0.633 & 0.857 & 0.655 &0.893&0.611 & 1.245
+& 0.831 & 1.200 & 0.799 & 1.175 & 0.794 &1.247&0.828\\
+    &Avg &\secondres{0.421} &\secondres{0.426} & 0.425 & 0.434 & 0.472 & 0.450 & \boldres{0.400} & \boldres{0.417} & 0.526 & 0.476 & 0.717&0.561&0.730&0.592&0.796&0.620&0.857&0.598&1.125&0.782&1.123&0.765&1.163&0.791&1.264&0.826\\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$ETTm2$}}
+    & 96  &\secondres{0.176} &\boldres{0.260} & \boldres{0.174} & \secondres{0.261} & 0.199 & 0.280 & 0.236 & 0.326 & 0.206 & 0.288 & 0.220& 0.299& 0.229 & 0.320 & 0.232 & 0.322 &0.238&0.316 & 0.404 & 0.485 & 1.108 & 0.772 & 3.599 & 1.478&3.883&1.545 \\
+    & 192 &\boldres{0.213} &\boldres{0.286} & \secondres{0.215} & \secondres{0.287} & 0.256 & 0.316 & 0.306 & 0.373 & 0.264 & 0.324 & 0.311& 0.361& 0.394 & 0.361 & 0.291 &
+0.357 &0.298&0.349 & 0.479 & 0.521 & 1.317 & 0.850 & 3.578 & 1.475 &3.553&1.484\\
+    & 336 &\boldres{0.271} &\boldres{0.327} & \secondres{0.273} & \secondres{0.330} & 0.318 & 0.353 & 0.380 & 0.423 & 0.334 & 0.367 & 0.338& 0.366& 0.378 & 0.427 & 0.478 & 0.517 &0.353&0.380 & 0.552 & 0.555 & 1.415 & 0.879 & 3.561 & 1.473 &3.446&1.460\\
+    & 720 &\secondres{0.436} &\secondres{0.415} & \boldres{0.433} & \boldres{0.412} & 0.460 & 0.436 & 0.674 & 0.583 & 0.454 & 0.432 & 0.509& 0.465& 0.523 & 0.510 & 0.553 & 0.538 &0.475&0.445 & 0.701 & 0.627 & 1.822 & 0.984 & 3.896 & 1.533 &3.445&1.460\\
+
+ &Avg &\boldres{0.274} &\boldres{0.322} & \boldres{0.274} & \secondres{0.323} & \secondres{0.308} & 0.346 & 0.399 & 0.426 & 0.314 & 0.352 & 0.344& 0.372& 0.381 & 0.404 & 0.388 & 0.433 & 0.341 & 0.372 & 0.534 & 0.547 & 1.415 & 0.871 & 3.658 & 1.489 & 3.581 & 1.487 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$Weather$}}
+    & 96  &\boldres{0.168} & \boldres{0.220} & 0.172 & 0.263 & 0.175 & 0.230 & 0.184 & 0.242 & \secondres{0.171} & \secondres{0.224} & 0.207 & 0.253 & 0.229 & 0.309 & 0.227 & 0.299 & 0.215 & 0.252 & 0.218 & 0.295 & 0.230 & 0.285 & 0.497 & 0.497 & 0.406 & 0.435 \\
+    & 192  &\boldres{0.220} & \boldres{0.267} & \secondres{0.224} & \secondres{0.271} & 0.227 & 0.276 & 0.228 & 0.283 & 0.230 & 0.277 & 0.272 & 0.307 & 0.265 & 0.317 & 0.278 & 0.333 & 0.290 & 0.307 & 0.294 & 0.331 & 0.274 & 0.323 & 0.620 & 0.545 & 0.446 & 0.450 \\
+    & 336  &\boldres{0.278} & \boldres{0.317} & 0.282 & \secondres{0.321} & 0.286 & 0.322 & \secondres{0.279} & 0.322 & 0.294 & 0.326 & 0.313 & 0.328 & 0.353 & 0.392 & 0.351 & 0.393 & 0.353 & 0.348
+&0.359 &0.398 &0.318 &0.355 &0.649 &0.547 &0.465 &0.459 \\
+    & 720  & 0.367 & 0.384 & \secondres{0.366} & \secondres{0.381} & \secondres{0.366} & \boldres{0.379} & \boldres{0.364} & 0.388 & 0.384 & 0.387 & 0.400 & 0.385 & 0.391 & 0.394 & 0.387 & 0.389 & 0.452 & 0.407 & 0.461 & 0.461 & 0.401 & 0.418 & 0.570 & 0.522 & 0.471 & 0.468 \\
+    & Avg  &\boldres{0.258} & \boldres{0.297} & \secondres{0.260} & 0.309 & 0.263 & \secondres{0.301} & 0.263 & 0.308 & 0.269 & 0.303 & 0.298 & 0.318 & 0.309 & 0.353 & 0.310 & 0.353 & 0.327 & 0.328 & 0.333 & 0.371 & 0.305 & 0.345 & 0.584 & 0.527 & 0.447 & 0.453 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$Electricity$}}
+    & 96  &\boldres{0.143} & \boldres{0.238} & 0.147 & \secondres{0.242} & \boldres{0.143} & 0.241 & 0.150 & 0.251 & \secondres{0.145} & 0.244 & 0.315 & 0.389 & 0.235
+&0.322 &0.297 &0.367 &0.484 &0.518 &0.697 &0.638 &0.639 &0.609 &1.265 &0.919 &1.414 &0.855 \\
+    & 192  &\boldres{0.155} & \boldres{0.240} & \secondres{0.158} & \secondres{0.241} & 0.159 & 0.255 & 0.163 & 0.263 & 0.163 & 0.260 & 0.318 & 0.396 & 0.247 & 0.341 & 0.308 & 0.375 & 0.501 & 0.531 & 0.718 & 0.648 & 0.772 & 0.678 & 1.298 & 0.939 & 1.240 & 0.919 \\
+    & 336  &\boldres{0.174} & \boldres{0.273} & 0.178 & 0.277 & 0.179 & \secondres{0.274} & \secondres{0.175} & 0.278 & 0.183 & 0.281 & 0.340 & 0.415 & 0.267 & 0.356 & 0.354 & 0.411 & 0.574 & 0.578 & 0.758 & 0.667 & 0.901 & 0.745 & 1.302 & 0.942 & 1.253 & 0.921 \\
+    & 720 &\secondres{0.220} & \boldres{0.308} & 0.224 & 0.312 & 0.233 & 0.323 & \boldres{0.219} & \secondres{0.311} & 0.233 & 0.323 & 0.635 & 0.613 & 0.318 & 0.394 & 0.426 & 0.466 & 0.952 & 0.786 & 1.028 & 0.788
+&1.200 &0.871 &1.259 &0.919 &1.249 &0.921 \\
+    & Avg  &\boldres{0.173} & \boldres{0.265} & 0.179 & \secondres{0.268} & 0.178 & 0.273 & \secondres{0.176} & 0.275 & 0.181 & 0.277 & 0.402 & 0.453 & 0.266 & 0.353 & 0.346 & 0.404 & 0.627 & 0.603 & 0.800 & 0.685 & 0.878 & 0.725 & 1.281 & 0.929 & 1.289 & 0.904 \\
+    \midrule
+
+    \multirow{5}{*}{\rotatebox{90}{$Traffic$}}
+    & 96 & \secondres{0.410} & \secondres{0.287} & 0.414 & 0.291 & 0.419 & 0.298 & 0.427 & 0.304 & \boldres{0.404} & \boldres{0.286} & 0.854 & 0.492 & 0.670 & 0.421 & 0.795 & 0.481 & 1.468 & 0.821 & 1.643 & 0.855 & 1.157 & 0.636 & 1.557 & 0.821 & 1.586 & 0.841 \\
+    & 192  & \secondres{0.415} & \boldres{0.290} & 0.419 & 0.291 & 0.434 & 0.305 & 0.447 & 0.315 & \boldres{0.412} & \secondres{0.294} & 0.894 & 0.517 & 0.653 & 0.405 & 0.837
+&0.503 &1.509 &0.838 &1.856 &0.928 &1.688 &0.848 &1.596 &0.834 &1.602 &0.844 \\
+    & 336  &\secondres{0.439} & 0.316 & \boldres{0.437} & 0.314 & 0.449 & \secondres{0.313} & 0.478 & 0.333 & \secondres{0.439} & \boldres{0.310} & 0.853 & 0.471 & 0.707 & 0.445 & 0.867 & 0.523 & 1.602 & 0.860 & 2.080 & 0.999 & 1.826 & 0.903 & 1.621 & 0.841 & 1.668 & 0.868 \\
+    & 720  &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- &- \\
+    & Avg  & \secondres{0.421} & \secondres{0.298} & 0.423 & 0.298 & 0.434 & 0.305 & 0.450 & 0.317 & \boldres{0.418} & \boldres{0.296} & 0.867 & 0.493 & 0.676 & 0.423 & 0.833 & 0.502 & 1.526 & 0.839 & 1.859 & 0.927 & 1.557 & 0.795
+&1.591 &0.832 &1.618 &0.851 \\
+    \midrule
+
+    \multicolumn{2}{c|}{$1^{\text{st}}$Count}&\multicolumn{2}{c|}{\boldres{39}}&\multicolumn{2}{c|}{\secondres{10}}&\multicolumn{2}{c|}{2}&\multicolumn{2}{c|}{8}&\multicolumn{2}{c|}{6}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{2}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c|}{0}&\multicolumn{2}{c}{0}\\
+
+    \bottomrule
+    \end{tabular}
+    }
+    \end{small}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{14}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\captionsetup{font=small}
+\caption{Full zero-shot learning results on ETT datasets. A lower value indicates better performance. \boldres{Red}: the best, \secondres{Blue}: the second best, \thirdres{Green}: the third best.}
+\label{tab:zero-shot-forecasting}
+
+\resizebox{\textwidth}{!}{
+    \begin{small}
+    \scalebox{0.75}{
+    \setlength\tabcolsep{3pt}
+    \begin{tabular}{c|c|cc|cc|cc|cc|cc|cc|cc|cc}
+    \toprule
+    \multicolumn{2}{c|}{Methods}&\multicolumn{2}{c|}{\method}&\multicolumn{2}{c|}{Time-LLM}&\multicolumn{2}{c|}{LLMTime}&\multicolumn{2}{c|}{GPT4TS}&\multicolumn{2}{c|}{DLinear}&\multicolumn{2}{c|}{PatchTST}&\multicolumn{2}{c|}{TimesNet}&\multicolumn{2}{c}{Autoformer}\\
+    \midrule
+    \multicolumn{2}{c|}{Metric} & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE& MSE & MAE & MSE & MAE \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTh1$} $\rightarrow$ \rotatebox{0}{$ETTh2$}} &
+    96  &\boldres{0.272} & \boldres{0.329} &\secondres{0.279} & \secondres{0.337} &0.510 &0.576 & 0.335 & 0.374 & 0.347 & 0.400 & \thirdres{0.304} & \thirdres{0.350} & 0.358 & 0.387 & 0.469 & 0.486 \\
+    & 192 & \boldres{0.343} & \boldres{0.368} & \secondres{0.351} & \secondres{0.374} &0.523 &0.586 & 0.412 & 0.417 & 0.447 & 0.460 & \thirdres{0.386} & \thirdres{0.400} & 0.427 & 0.429 & 0.634 & 0.567 \\
+    & 336 & \boldres{0.378} & \boldres{0.407} & \secondres{0.388} & \secondres{0.415} &0.640 &0.637 & 0.441 & 0.444 & 0.515 & 0.505 & \thirdres{0.414} & \thirdres{0.428} & 0.449 & 0.451 & 0.655 & 0.588 \\
+    & 720 & \boldres{0.384} & \boldres{0.413} & \secondres{0.391} & \secondres{0.420} &2.296 &1.034 & 0.438 & 0.452 & 0.665 & 0.589 & \thirdres{0.419} & \thirdres{0.443} & 0.448 & 0.458 & 0.570 & 0.549 \\
+    &Avg & \boldres{0.344} & \boldres{0.379} & \secondres{0.353} & \secondres{0.387} &0.992 &0.708 & 0.406 & 0.422 & 0.493 & 0.488 & \thirdres{0.380} & \thirdres{0.405} & 0.421 & 0.431 & 0.582 & 0.548 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTh1 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & 96  & \boldres{0.178} & \boldres{0.282} & \secondres{0.189} & \secondres{0.293} &0.646&0.563& 0.236 & 0.315 & 0.255 & 0.357 & \thirdres{0.215} & \thirdres{0.304} & 0.239 & 0.313 & 0.352 & 0.432 \\
+    & 192 & \boldres{0.231} & \boldres{0.307} & \secondres{0.237} & \secondres{0.312} &0.934&0.654& 0.287 & 0.342 & 0.338 & 0.413 & \thirdres{0.275} & \thirdres{0.339} & 0.291 & 0.342 & 0.413 & 0.460 \\
+    & 336 & \boldres{0.287} & \boldres{0.359} & \secondres{0.291} & \secondres{0.365} &1.157&0.728& 0.341 & 0.374 & 0.425 & 0.465 & \thirdres{0.334} & \thirdres{0.373} & 0.342 & 0.371 & 0.465 & 0.489 \\
+    & 720 & \boldres{0.367} & \boldres{0.383} & \secondres{0.372} & \secondres{0.390} &4.730 &1.531 & 0.435 & \thirdres{0.422} & 0.640 & 0.573 & \thirdres{0.431} & 0.424 & 0.434 & 0.419 & 0.599 & 0.551 \\
+    &Avg & \boldres{0.266} & \boldres{0.333} & \secondres{0.273} & \secondres{0.340} &1.867 &0.869 & 0.325 & 0.363 & 0.415 & 0.452 & \thirdres{0.314} & \thirdres{0.360} & 0.327 & 0.361 & 0.457 & 0.483 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTh2 $} $\rightarrow$ \rotatebox{0}{$ETTh1 $}}
+    & 96  & \boldres{0.446} & \boldres{0.449} & \secondres{0.450} & \secondres{0.452} &1.130 &0.777 & 0.732 & 0.577 & 0.689 & 0.555 & \thirdres{0.485} & \thirdres{0.465} & 0.848 & 0.601 & 0.693 & 0.569 \\
+    & 192 & \boldres{0.462} & \boldres{0.459} & \secondres{0.465} & \secondres{0.461} &1.242 &0.820 & 0.758 & 0.559 & 0.707 & 0.568 &\thirdres{0.565} & \thirdres{0.509} & 0.860 & 0.610 & 0.760 & 0.601 \\
+    & 336 & \secondres{0.503} & \boldres{0.480} & \boldres{0.501} & \secondres{0.482} &1.328 &0.864 & 0.759 & 0.578 & 0.710 & 0.577 & \thirdres{0.581} & \thirdres{0.515} & 0.867 & 0.626 & 0.781 & 0.619 \\
+    & 720 & \secondres{0.509} & \boldres{0.495} & \boldres{0.501} & \secondres{0.502} &4.145 &1.461 & 0.781 & 0.597 & 0.704 & 0.596 & \thirdres{0.628} & \thirdres{0.561} & 0.887 & 0.648 & 0.796 & 0.644 \\
+    &Avg & \secondres{0.480} & \boldres{0.471} & \boldres{0.479} & \secondres{0.474} &1.961 &0.981 & 0.757 & 0.578 & 0.703 & 0.574 & \thirdres{0.565} & \thirdres{0.513} & 0.865 & 0.621 & 0.757 & 0.608 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTh2 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & 96  & \boldres{0.169} & \boldres{0.269} & \secondres{0.174} & \secondres{0.276} &0.646&0.563& 0.253 & 0.329 & 0.240 & 0.336 & \thirdres{0.226} & \thirdres{0.309} & 0.248 & 0.324 & 0.263 & 0.352 \\
+    & 192 & \boldres{0.228} & \boldres{0.307} & \secondres{0.233} & \secondres{0.315} &0.934&0.654& 0.293 & 0.346 & 0.295 & 0.369 & \thirdres{0.289} & \thirdres{0.345} & 0.296 & 0.352 & 0.326 & 0.389 \\
+    & 336 & \boldres{0.288} & \boldres{0.330} & \secondres{0.291} & \secondres{0.337} &1.157&0.728& 0.347 & \thirdres{0.376} & \thirdres{0.345} & 0.397 & 0.348 & 0.379 & 0.353 & 0.383 & 0.387 & 0.426 \\
+    & 720 & \boldres{0.387} & \boldres{0.411} & \secondres{0.392} & \secondres{0.417} &4.730 &1.531 & 0.446 & 0.429 & \thirdres{0.432} & 0.442 &  0.439 & 0.427 & 0.471 & 0.446 & 0.487 & 0.478 \\
+    &Avg & \boldres{0.268} & \boldres{0.329} & \secondres{0.272} & \secondres{0.341} &1.867 &0.869 & 0.335 & 0.370 & 0.328 & 0.386 & \thirdres{0.325} & \thirdres{0.365} & 0.342 & 0.376 & 0.366 & 0.411 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTm1 $} $\rightarrow$ \rotatebox{0}{$ETTh2 $}}
+    & 96  & \boldres{0.319} & \boldres{0.363} & \secondres{0.321} & \secondres{0.369} &0.510 &0.576 & \thirdres{0.353} & 0.392 & 0.365 & 0.415 & 0.354 & \thirdres{0.385} & 0.377 & 0.407 & 0.435 & 0.470 \\
+    & 192 & \boldres{0.383} & \boldres{0.406} & \secondres{0.389} & \secondres{0.410} &0.523 &0.586 & \thirdres{0.443} & 0.437 & 0.454 & 0.462 & 0.447 & \thirdres{0.434} & 0.471 & 0.453 & 0.495 & 0.489 \\
+    & 336 & \boldres{0.401} & \boldres{0.428} & \secondres{0.408} & \secondres{0.433} &0.640 &0.637 & \thirdres{0.469} & \thirdres{0.461} & 0.496 & 0.494 & 0.481 & 0.463 & 0.472 & 0.484 & 0.470 & 0.472 \\
+    & 720 & \secondres{0.407} & \boldres{0.433} & \boldres{0.406} & \secondres{0.436} &2.296 &1.034 & \thirdres{0.466} & \thirdres{0.468} & 0.541 & 0.529 & 0.474 & 0.471 & 0.495 & 0.482 & 0.480 & 0.485 \\
+    &Avg & \boldres{0.378} & \boldres{0.408} & \secondres{0.381} & \secondres{0.412} &0.992 &0.708 & \thirdres{0.433} & 0.439 & 0.464 & 0.475 & 0.439 & \thirdres{0.438} & 0.457 & 0.454 & 0.470 & 0.479 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTm1 $} $\rightarrow$ \rotatebox{0}{$ETTm2 $}}
+    & 96  & \boldres{0.165} & \boldres{0.254} & \secondres{0.169} & \secondres{0.257} &0.646&0.563& 0.217 & 0.294 & 0.221 & 0.314 & \thirdres{0.195} & \thirdres{0.271} & 0.222 & 0.295 & 0.385 & 0.457 \\
+    & 192 & \boldres{0.225} & \boldres{0.315} & \secondres{0.227} & \secondres{0.318} &0.934&0.654& 0.277 & 0.327 & 0.286 & 0.359 & \thirdres{0.258} & \thirdres{0.311} & 0.288 & 0.337 & 0.433 & 0.469 \\
+    & 336 & \boldres{0.282} & \boldres{0.334} & \secondres{0.290} & \secondres{0.338} &1.157&0.728& 0.331 & 0.360 & 0.357 & 0.406 & \thirdres{0.317} & \thirdres{0.348} & 0.341 & 0.367 & 0.476 & 0.477 \\
+    & 720 & \boldres{0.372} & \boldres{0.362} & \secondres{0.375} & \secondres{0.367} &4.730 &1.531 & 0.429 & 0.413 & 0.476 & 0.476 & \thirdres{0.416} & \thirdres{0.404} & 0.436 & 0.418 & 0.582 & 0.535 \\
+    &Avg & \boldres{0.261} & \boldres{0.316} & \secondres{0.268} & \secondres{0.320} &1.867 &0.869 & 0.313 & 0.348 & 0.335 & 0.389 & \thirdres{0.296} & \thirdres{0.334} & 0.322 & 0.354 & 0.469 & 0.484 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTm2 $} $\rightarrow$ \rotatebox{0}{$ETTh2 $}}
+    & 96  & \boldres{0.295} & \boldres{0.351} & \secondres{0.298} & \secondres{0.356} &0.510 &0.576 & 0.360 & 0.401 & 0.333 & 0.391 & \thirdres{0.327} & \thirdres{0.367} & 0.360 &  0.401 & 0.353 & 0.393 \\
+    & 192 & \boldres{0.356} & \boldres{0.392} & \secondres{0.359} & \secondres{0.397} &0.523 &0.586 & 0.434 & 0.437 & 0.441 & 0.456 & \thirdres{0.411} & \thirdres{0.418} & 0.434 & 0.437 & 0.432 & 0.437 \\
+    & 336 & \boldres{0.363} & \boldres{0.407} & \secondres{0.367} & \secondres{0.412} &0.640 &0.637 & 0.460 & 0.459 & 0.505 & 0.503 & \thirdres{0.439} & \thirdres{0.447} & 0.460 & 0.459 & 0.452 & 0.459 \\
+    & 720 & \boldres{0.388} & \boldres{0.429} & \secondres{0.393} & \secondres{0.434} &2.296 &1.034 & 0.485 & 0.477 & 0.543 & 0.534 & 0.459 & 0.470 & 0.485 & 0.477 & \thirdres{0.453} & \thirdres{0.467} \\
+    &Avg & \boldres{0.351} & \boldres{0.395} & \secondres{0.354} & \secondres{0.400} &0.992 &0.708 & 0.435 & 0.443 & 0.455 & 0.471 & \thirdres{0.409} & \thirdres{0.425} & 0.435 & 0.443 & 0.423 & 0.439 \\
+    \midrule
+    \multirow{5}{*}{\rotatebox{0}{$ETTm2 $} $\rightarrow$ \rotatebox{0}{$ETTm1 $}}
+    & 96  & \boldres{0.356} & \boldres{0.394} & \secondres{0.359} & \secondres{0.397} &1.179& 0.781& 0.747 & 0.558 & 0.570 & 0.490 & \thirdres{0.491} & \thirdres{0.437} & 0.747 & 0.558 & 0.735 & 0.576 \\
+    & 192 & \boldres{0.386} & \boldres{0.414} & \secondres{0.390} & \secondres{0.420} &1.327&0.846& 0.781 & 0.560 & 0.590 & 0.506  & \thirdres{0.530} & \thirdres{0.470} & 0.781 & 0.560 & 0.753 & 0.586 \\
+    & 336 & \boldres{0.419} & \boldres{0.440} & \secondres{0.421} & \secondres{0.445} &1.478&0.902& 0.778 & 0.578 & 0.706 & 0.567  & \thirdres{0.565} & \thirdres{0.497} & 0.778 & 0.578 & 0.750 & 0.593 \\
+    & 720 & \boldres{0.485} & \boldres{0.487} & \secondres{0.487} & \secondres{0.488} &3.749 &1.408 & 0.769 & 0.573 & 0.731 & 0.584 & \thirdres{0.686} & \thirdres{0.565} & 0.769 & 0.573 & 0.782 & 0.609 \\
+    &Avg & \boldres{0.412} & \boldres{0.434} & \secondres{0.414} & \secondres{0.438} &1.933 &0.984 & 0.769 & 0.567 & 0.649 & 0.537 & \thirdres{0.568} & \thirdres{0.492} & 0.769 & 0.567 & 0.755 & 0.591 \\
+    \bottomrule
+
+    \end{tabular}
+    }
+    \end{small}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{15}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Zero-shot length generalization of RDTU. Models trained only up to $H=336$ under the 5\% data regime are directly evaluated on $H=720$ without additional training, and are compared with RDTU trained on $H=720$ using 10\% data.}
+\label{tab:length_generalization}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llcc}
+\toprule
+\textbf{Dataset} & \textbf{Metric}
+& \textbf{RDTU Trained on $H=336$ w/ 5\% Data, Eval on $H=720$}
+& \textbf{RDTU Trained on $H=720$ w/ 10\% Data} \\
+\midrule
+ETTh1   & MSE / MAE & 0.705 / 0.598 & 0.694 / 0.587 \\
+ETTh2   & MSE / MAE & 0.442 / 0.456 & 0.425 / 0.443 \\
+Traffic & MSE / MAE & 0.478 / 0.337 & 0.463 / 0.325 \\
+\bottomrule
+\end{tabular}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{16}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\caption{Cross-domain zero-shot generalization results. All zero-shot models are trained on ETTh1 and directly evaluated on target datasets from different domains without target-domain training. Lower MSE and MAE indicate better performance.}
+\label{tab:cross_domain_zero_shot}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Target Dataset} & \textbf{Metric}
+& \textbf{Supervised RDTU}
+& \textbf{Zero-Shot RDTU}
+& \textbf{Zero-Shot Time-LLM}
+& \textbf{Zero-Shot GPT4TS} \\
+\midrule
+Electricity & MSE / MAE & 0.156 / 0.246 & \textbf{0.182 / 0.270} & 0.254 / 0.312 & 0.328 / 0.385 \\
+Weather     & MSE / MAE & 0.221 / 0.251 & \textbf{0.245 / 0.278} & 0.386 / 0.395 & 0.462 / 0.431 \\
+Traffic     & MSE / MAE & 0.389 / 0.255 & \textbf{0.421 / 0.295} & 0.652 / 0.415 & 0.735 / 0.484 \\
+Illness     & MSE / MAE & 1.559 / 0.812 & \textbf{1.645 / 0.910} & 2.642 / 1.753 & 3.215 / 2.058 \\
+\bottomrule
+\end{tabular}
+}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{17}
+
+\begin{minipage}{5.5in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\small
+\caption{Ablation study on RDFR training data construction on ETTh1 with prediction horizon $H=96$. We compare RDFR trained on the full training set and the proposed Dual-Stream selected subset.}
+\label{tab:rdfr_data_construction_ablation}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{RDFR Training Data} & \textbf{MSE} $\downarrow$ & \textbf{MAE} $\downarrow$ & \textbf{Training Time} \\
+\midrule
+Full Dataset & 0.358 & 0.388 & $>3$h \\
+Dual-Stream Selected (Ours) & \textbf{0.351} & \textbf{0.382} & \textbf{0.3h} \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{0}
+
+\begin{minipage}{7.1in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\caption{Average long-term forecasting results on the benchmark datasets. We followed the same setting in DMMV~\citep{shen2025dmmv}. We set the forecasting horizons $H \in \{24, 36, 48, 60\}$ for Illness and $\{96, 192, 336, 720\}$ for the others. {\boldres{Red}}: the best, \secondres{Blue}: the second best.}
+\label{tab:long-term-forecasting-brief}
+
+\vspace{-5pt}
+
+\centering
+
+\resizebox{\textwidth}{!}{\begin{tabular}{cc|cc|cc|cc|cc|cc|cc|cc|cc}
+\toprule
+\textbf{View} & &
+\multicolumn{6}{c|}{\textbf{Language}} &
+\multicolumn{4}{c|}{\textbf{Multi-Modal}} &
+\multicolumn{2}{c|}{\textbf{Visual}} &
+\multicolumn{4}{c}{\textbf{Numerical}} \\
+\cmidrule(lr){3-8}
+\cmidrule(lr){9-12}
+\cmidrule(lr){13-14}
+\cmidrule(lr){15-18}
+
+\multicolumn{2}{c|}{\textbf{Methods}} &
+\multicolumn{2}{c|}{\method{} (\textbf{Ours})} &
+\multicolumn{2}{c|}{GPT4TS} &
+\multicolumn{2}{c|}{Time-LLM} &
+\multicolumn{2}{c|}{DMMV-A} &
+\multicolumn{2}{c|}{Time-VLM} &
+\multicolumn{2}{c|}{VisionTS} &
+\multicolumn{2}{c|}{PatchTST} &
+\multicolumn{2}{c}{TimesNet} \\
+\cmidrule(lr){3-4}
+\cmidrule(lr){5-6}
+\cmidrule(lr){7-8}
+\cmidrule(lr){9-10}
+\cmidrule(lr){11-12}
+\cmidrule(lr){13-14}
+\cmidrule(lr){15-16}
+\cmidrule(lr){17-18}
+
+\textbf{Metric} & &
+MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE &
+MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE \\
+\midrule
+\midrule
+
+\textbf{ETTh1} & &
+\secondres{0.399} & \boldres{0.413} &
+0.418 & 0.421 &
+0.418 & 0.432 &
+\boldres{0.395} & \secondres{0.414} &
+0.405 & 0.420 &
+0.407 & 0.419 &
+0.413 & 0.431 &
+0.458 & 0.450 \\
+\hline
+
+\textbf{ETTh2} & &
+\secondres{0.337} & \boldres{0.377} &
+0.354 & 0.389 &
+0.361 & 0.396 &
+\secondres{0.337} & 0.388 &
+0.341 & 0.391 &
+0.351 & 0.386 &
+\boldres{0.330} & \secondres{0.379} &
+0.414 & 0.427 \\
+\hline
+
+\textbf{ETTm1} & &
+\boldres{0.340} & \boldres{0.367} &
+0.363 & 0.378 &
+0.356 & 0.377 &
+\boldres{0.340} & \secondres{0.371} &
+0.351 & 0.376 &
+\secondres{0.344} & 0.373 &
+0.351 & 0.381 &
+0.400 & 0.406 \\
+\hline
+
+\textbf{ETTm2} & &
+\secondres{0.250} & \boldres{0.309} &
+0.254 & \secondres{0.311} &
+0.261 & 0.316 &
+0.256 & 0.317 &
+\boldres{0.248} & \secondres{0.311} &
+0.267 & 0.327 &
+0.255 & 0.315 &
+0.291 & 0.333 \\
+\hline
+
+\textbf{Illness} & &
+1.559 & 0.812 &
+1.871 & 0.852 &
+2.018 & 0.894 &
+\boldres{1.407} & \boldres{0.771} &
+-- & -- &
+1.482 & \secondres{0.796} &
+\secondres{1.443} & 0.798 &
+2.139 & 0.931 \\
+\hline
+
+\textbf{Electricity} & &
+\boldres{0.156} & \boldres{0.246} &
+0.170 & 0.263 &
+0.165 & 0.259 &
+\secondres{0.158} & \secondres{0.248} &
+0.172 & 0.272 &
+0.159 & 0.250 &
+0.162 & 0.253 &
+0.193 & 0.295 \\
+\hline
+
+\textbf{Weather} & &
+\secondres{0.221} & \boldres{0.251} &
+0.227 & \secondres{0.255} &
+0.244 & 0.270 &
+\boldres{0.217} & 0.256 &
+0.224 & 0.263 &
+0.225 & 0.258 &
+0.226 & 0.264 &
+0.259 & 0.287 \\
+\hline
+
+\textbf{Traffic} & &
+\secondres{0.389} & \boldres{0.255} &
+0.421 & 0.274 &
+0.422 & 0.281 &
+\secondres{0.389} & 0.257 &
+0.419 & 0.304 &
+\boldres{0.386} & \secondres{0.256} &
+0.391 & 0.264 &
+0.620 & 0.336 \\
+\bottomrule
+
+\multicolumn{2}{l|}{\textbf{\# Wins}} &
+\multicolumn{2}{c|}{\boldres{9}} &
+\multicolumn{2}{c|}{0} &
+\multicolumn{2}{c|}{0} &
+\multicolumn{2}{c|}{\secondres{5}} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c|}{1} &
+\multicolumn{2}{c}{0} \\
+\bottomrule
+\end{tabular}}
+
+\vspace{-2pt}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{1}
+
+\begin{minipage}{7.1in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+\begingroup
+
+\definecolor{fzBest}{HTML}{B13A3A}
+\definecolor{fzSecond}{HTML}{326A9D}
+\renewcommand{\boldres}[1]{\textcolor{fzBest}{\textbf{#1}}}
+\renewcommand{\secondres}[1]{\textcolor{fzSecond}{\underline{#1}}}
+
+\setlength{\tabcolsep}{4pt}
+\setlength{\heavyrulewidth}{0.7pt}
+\setlength{\lightrulewidth}{0.35pt}
+\renewcommand{\arraystretch}{1.12}
+
+\caption{Few-shot and zero-shot forecasting results, averaged over prediction horizons. \boldres{Bold red}: the best; \secondres{Blue}: the second best.}
+\label{tab:few-zero-shot-combined}
+\label{tab:few-shot-forecasting-10per-brief}
+\label{tab:zero-shot-forecasting-brief}
+
+\small
+\vspace{-9pt}
+
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
+\noindent\strut\textbf{(a) Few-shot}\hfill
+\textcolor{black!65}{10\% training data}\par
+\vspace{4pt}
+
+\centering
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+\textbf{Dataset}
+  & \textbf{RDTU}
+  & \textbf{Time-LLM}
+  & \textbf{GPT4TS} \\
+\midrule
+ETTh1       & \boldres{0.551} & \secondres{0.556} & 0.590 \\
+ETTh2       & \boldres{0.367} & \secondres{0.370} & 0.397 \\
+ETTm1       & \boldres{0.402} & \secondres{0.404} & 0.464 \\
+ETTm2       & \boldres{0.274} & \secondres{0.277} & 0.293 \\
+\addlinespace[2pt]
+Weather     & \boldres{0.232} & \secondres{0.234} & 0.238 \\
+Electricity & \boldres{0.173} & \secondres{0.175} & 0.176 \\
+Traffic     & \boldres{0.426} & \secondres{0.429} & 0.440 \\
+\bottomrule
+\end{tabular*}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
+\noindent\strut\textbf{(b) Zero-shot}\hfill
+\textcolor{black!65}{ETT transfer}\par
+\vspace{4pt}
+
+\centering
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+\textbf{Source $\to$ Target}
+  & \textbf{RDTU}
+  & \textbf{Time-LLM}
+  & \textbf{LLMTime} \\
+\midrule
+ETTh1 $\to$ ETTh2
+  & \boldres{0.344} & \secondres{0.353} & 0.992 \\
+ETTh1 $\to$ ETTm2
+  & \boldres{0.266} & \secondres{0.273} & 1.867 \\
+ETTh2 $\to$ ETTh1
+  & \secondres{0.480} & \boldres{0.479} & 1.961 \\
+ETTh2 $\to$ ETTm2
+  & \boldres{0.268} & \secondres{0.272} & 1.867 \\
+\addlinespace[2pt]
+ETTm1 $\to$ ETTh2
+  & \boldres{0.378} & \secondres{0.381} & 0.992 \\
+ETTm1 $\to$ ETTm2
+  & \boldres{0.261} & \secondres{0.268} & 1.867 \\
+ETTm2 $\to$ ETTh2
+  & \boldres{0.351} & \secondres{0.354} & 0.992 \\
+\bottomrule
+\end{tabular*}
+\end{minipage}
+
+\endgroup
+
+\vspace{-12pt}
+
+\end{minipage}\par\endgroup
+
+\clearpage\begingroup
+
+\setcounter{table}{2}
+
+\begin{minipage}{3.4in}
+
+\setlength{\textwidth}{\linewidth}
+
+\captionsetup{type=table}
+
+\centering
+    \caption{Ablation study of different reward components in the RDFR training stage. Improvements are computed relative to STIT model.}
+    \label{tab:ablation_02}
+
+    \vspace{-5pt}
+
+    \newcommand{\imp}[1]{{\textcolor{red}{(#1)}}}
+    \newcommand{\bimp}[1]{{\textbf{\textcolor{red}{(#1)}}}}
+
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Method}
+        & \textbf{MSE} $\downarrow$
+        & \textbf{MAE} $\downarrow$ \\
+        \midrule
+        \shortstack[l]{Qwen2.5-Instruct-\\STIT}
+        & 0.403 & 0.428 \\
+        \midrule
+        + $R_{len}$
+        & 0.401 \imp{-0.50\%}
+        & 0.425 \imp{-0.70\%} \\
+        + $R_{fmt}$
+        & 0.395 \imp{-1.99\%}
+        & 0.419 \imp{-2.10\%} \\
+        + $R_{acc}$
+        & 0.367 \imp{-8.93\%}
+        & 0.398 \imp{-7.01\%} \\
+        + $R_{len} + R_{fmt}$
+        & 0.388 \imp{-3.72\%}
+        & 0.412 \imp{-3.74\%} \\
+        \midrule
+        \textbf{RDTU ($R_{total}$)}
+        & \textbf{0.351} \bimp{-12.90\%}
+        & \textbf{0.382} \bimp{-10.75\%} \\
+        \bottomrule
+    \end{tabular}
+    \vspace{-12pt}
+
+\end{minipage}\par\endgroup
+
+\clearpage\bibliographystyle{plainnat}\bibliography{reference}
+
+\end{document}

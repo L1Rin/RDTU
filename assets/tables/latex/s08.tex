@@ -1,0 +1,24 @@
+\begin{table}[h]
+\centering
+\caption{Statistical significance analysis on representative long-term forecasting settings with $H=96$.
+We report mean and standard deviation over three independent runs with different random seeds.
+$p$-values are computed using a paired two-sided $t$-test between RDTU and Time-LLM over matched dataset-seed pairs.}
+\label{tab:significance_main}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Dataset} & \textbf{Metric}
+& \textbf{RDTU}
+& \textbf{Time-LLM}
+& \textbf{Relative Gain}
+& \textbf{$p$-value} \\
+\midrule
+ETTh1       & MSE / MAE & $0.352 \pm 0.003$ / $0.383 \pm 0.002$ & $0.376 \pm 0.004$ / $0.403 \pm 0.003$ & 6.38\% / 4.96\% & $0.018$ / $0.021$ \\
+Electricity & MSE / MAE & $0.125 \pm 0.002$ / $0.211 \pm 0.002$ & $0.137 \pm 0.002$ / $0.233 \pm 0.003$ & 8.76\% / 9.44\% & $0.014$ / $0.012$ \\
+Traffic     & MSE / MAE & $0.359 \pm 0.004$ / $0.236 \pm 0.003$ & $0.393 \pm 0.005$ / $0.268 \pm 0.004$ & 8.65\% / 11.94\% & $0.011$ / $0.009$ \\
+\midrule
+Average     & MSE / MAE & $0.279 \pm 0.003$ / $0.277 \pm 0.002$ & $0.302 \pm 0.004$ / $0.301 \pm 0.003$ & 7.62\% / 7.97\% & $0.013$ / $0.015$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
