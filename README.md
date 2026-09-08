@@ -4,7 +4,7 @@
 
 ### Does LLM-based Time Series Forecasting Really Need Pre-Alignment?
 
-[**Complete PDF**](supplement/RDTU-Supplementary.pdf) · [**Original tables**](assets/tables/README.md) · [**CSV data**](data/README.md) · [**Citation**](#citation)
+[**Complete PDF**](supplement/RDTU-Supplementary.pdf) · [**Original tables**](assets/tables/README.md) · [**CSV data**](data/README.md)
 
 </div>
 
@@ -523,16 +523,3 @@ The unprecedented capabilities of foundation models have catalyzed cross-modalit
 - [Historical author checklist responses](docs/reporting-checklist.md)
 
 </details>
-
-<a id="citation"></a>
-
-## Citation
-
-```bibtex
-@misc{wang_rdtu_supplementary,
-  author = {Wang, Yuqing},
-  title = {RDTU: Supplementary Materials for Does LLM-based Time Series Forecasting Really Need Pre-Alignment?},
-  howpublished = {GitHub repository},
-  url = {https://github.com/L1Rin/RDTU}
-}
-```
